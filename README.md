@@ -27,12 +27,12 @@ A modern, sci-fi themed portfolio showcasing my projects, skills, and journey as
 
 ## 🚀 Live Demo
 
-Visit: [https://tanmoy44717.github.io/portfolio](https://tanmoy44717.github.io/portfolio)
+Visit: [https://tcode-motion.github.io/portfolio/](https://tcode-motion.github.io/portfolio/)
 
 ## 📬 Contact
 
-- GitHub: [@tanmoy44717](https://github.com/tanmoy44717)
-- Telegram: [@Tanmoy19114381189](https://t.me/Tanmoy19114381189)
+- GitHub: [@Tcode-Motion](https://github.com/Tcode-Motion)
+- Telegram: [@Tanmoy](https://t.me/Tanmoy19114381189)
 
 ---
 
