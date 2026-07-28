@@ -1,0 +1,53 @@
+/* ── Display Font ── */
+h1, h2, h3, .font-display {
+  font-family: 'Syne', -apple-system, sans-serif;
+}
+
+/* ── Body Font ── */
+p, span, label, input, textarea, h4, h5, h6, .font-body {
+  font-family: 'Inter', -apple-system, sans-serif;
+}
+
+/* ── Code Font ── */
+code, pre, kbd, samp, .font-code {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* ── Kinetic Variable Text ── */
+.kinetic-text {
+  transition: font-weight 400ms var(--ease-out-expo), letter-spacing 400ms var(--ease-out-expo);
+}
+.kinetic-text:hover {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+/* ── Tracking system ── */
+.tracking-heading { letter-spacing: -0.03em; }
+.tracking-body    { letter-spacing: 0; }
+.tracking-code    { letter-spacing: 0.06em; }
+.tracking-label   { letter-spacing: 0.1em; }
+.tracking-widest  { letter-spacing: 0.14em; }
+
+/* ── Line height rhythm ── */
+.leading-display  { line-height: 1.0; }
+.leading-heading  { line-height: 1.15; }
+.leading-body     { line-height: 1.65; }
+.leading-code     { line-height: 1.7; }
+
+/* ── Section label ── */
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+/* ── Text gradient ── */
+.text-gradient-lime {
+  background: linear-gradient(135deg, #c4ff36 0%, #a3e020 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

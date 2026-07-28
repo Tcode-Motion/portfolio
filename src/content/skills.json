@@ -1,0 +1,60 @@
+{
+  "superpowers": [
+    "Programming Language Engineering (TechScript)",
+    "AI-powered Software Development",
+    "Modern Frontend Engineering",
+    "Mobile Application Development",
+    "Software Architecture & System Design",
+    "Performance Optimization",
+    "Developer Tooling",
+    "Product Engineering",
+    "UI/UX Engineering"
+  ],
+  "categories": [
+    {
+      "id": "languages",
+      "name": "Programming Languages",
+      "skills": [
+        { "name": "Rust", "level": "Primary", "relatedProjects": ["techscript"] },
+        { "name": "TypeScript", "level": "Primary", "relatedProjects": ["armenu-ai", "funnelcore"] },
+        { "name": "JavaScript", "level": "Proficient", "relatedProjects": ["wallvault"] },
+        { "name": "Python", "level": "Primary", "relatedProjects": ["nutrilens-ai"] },
+        { "name": "Kotlin", "level": "Primary", "relatedProjects": ["cloudvault"] },
+        { "name": "Dart", "level": "Proficient", "relatedProjects": ["aurora-music"] },
+        { "name": "SQL", "level": "Proficient", "relatedProjects": ["nutrilens-ai"] }
+      ]
+    },
+    {
+      "id": "frontend",
+      "name": "Frontend & Creative Engineering",
+      "skills": [
+        { "name": "React", "level": "Primary", "relatedProjects": ["wallvault"] },
+        { "name": "Next.js", "level": "Primary", "relatedProjects": ["armenu-ai"] },
+        { "name": "Tailwind CSS", "level": "Primary", "relatedProjects": ["armenu-ai"] },
+        { "name": "GSAP", "level": "Proficient", "relatedProjects": ["portfolio"] },
+        { "name": "Three.js", "level": "Proficient", "relatedProjects": ["armenu-ai"] },
+        { "name": "Web Audio API", "level": "Proficient", "relatedProjects": ["portfolio"] }
+      ]
+    },
+    {
+      "id": "mobile",
+      "name": "Mobile & Cross-Platform",
+      "skills": [
+        { "name": "Flutter", "level": "Primary", "relatedProjects": ["aurora-music"] },
+        { "name": "Jetpack Compose", "level": "Primary", "relatedProjects": ["cloudvault"] },
+        { "name": "Android SDK", "level": "Primary", "relatedProjects": ["cloudvault", "aurora-music"] },
+        { "name": "Tauri", "level": "Proficient", "relatedProjects": ["wallvault"] }
+      ]
+    },
+    {
+      "id": "systems",
+      "name": "Compiler & Systems Engineering",
+      "skills": [
+        { "name": "Compiler Design", "level": "Primary", "relatedProjects": ["techscript"] },
+        { "name": "Lexer & Parser", "level": "Primary", "relatedProjects": ["techscript"] },
+        { "name": "AST Architecture", "level": "Primary", "relatedProjects": ["techscript"] },
+        { "name": "Bytecode VM", "level": "Primary", "relatedProjects": ["techscript"] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "cloudvault",
+  "featured": true,
+  "title": "CloudVault",
+  "tagline": "A secure cloud storage experience powered by Telegram infrastructure.",
+  "category": "Cloud Storage • Android Application",
+  "description": "CloudVault utilizes Telegram's infrastructure via TDLib as a secure, infinite cloud storage backend while presenting a modern drive interface with folder hierarchy, file previews, and smart caching.",
+  "problem": "Traditional cloud storage services enforce expensive subscription tiers and storage caps.",
+  "solution": "Built natively in Kotlin using Jetpack Compose, TDLib, MVVM, Room database, and Coroutines for seamless cloud file management.",
+  "techStack": ["Kotlin", "Jetpack Compose", "TDLib", "MVVM", "Coroutines", "Room", "Hilt"],
+  "githubUrl": "https://github.com/Tcode-Motion",
+  "highlights": [
+    "Telegram TDLib storage engine abstraction",
+    "Modern Jetpack Compose native UI",
+    "Large file chunking & smart local Room cache",
+    "Offline file availability & instant folder search"
+  ],
+  "interactiveType": "architecture-diagram"
+}

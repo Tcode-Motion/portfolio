@@ -1,0 +1,18 @@
+{
+  "siteName": "Tanmoy Majumder Portfolio",
+  "domain": "https://tcode-motion.vercel.app",
+  "defaultTheme": "dark",
+  "enableSoundByDefault": false,
+  "features": {
+    "techscriptPlayground": true,
+    "interactive3DHero": true,
+    "developerCli": true,
+    "githubSync": true,
+    "resumePage": true
+  },
+  "analytics": {
+    "cloudflare": {
+      "enabled": true
+    }
+  }
+}
