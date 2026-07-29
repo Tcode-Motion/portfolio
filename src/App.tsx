@@ -54,7 +54,7 @@ const AppContent: React.FC = () => {
       )}
 
       <div
-        className="min-h-screen flex flex-col relative"
+        className="min-h-screen flex flex-col relative z-10"
         style={{
           opacity: preloaderFinished ? 1 : 0,
           pointerEvents: preloaderFinished ? 'auto' : 'none',
@@ -64,7 +64,7 @@ const AppContent: React.FC = () => {
         <NoiseTexture />
         <Navbar />
 
-        <main className="flex-1 w-full">
+        <main className="flex-1 w-full relative">
           <HeroModule />
           <ProjectsModule />
           <SkillConstellationModule />

@@ -36,6 +36,12 @@ export interface SocialItem {
   icon: string;
 }
 
+export interface RoadmapItem {
+  phase: string;
+  title: string;
+  status: 'completed' | 'in-progress' | 'planned';
+}
+
 export interface ProjectData {
   id: string;
   featured?: boolean;
@@ -58,7 +64,7 @@ export interface ProjectData {
   timeline?: string;
   challenges?: string[];
   optimizations?: string[];
-  roadmap?: string[];
+  roadmap?: (string | RoadmapItem)[];
 }
 
 export interface SiteConfig {

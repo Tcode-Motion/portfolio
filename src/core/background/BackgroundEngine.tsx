@@ -41,14 +41,16 @@ export const BackgroundEngine: React.FC = () => {
       scrollRef.current = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
     };
 
-    const particles = Array.from({ length: 80 }, () => ({
+    const particles = Array.from({ length: 240 }, () => ({
       x: Math.random() * w,
       y: Math.random() * h,
-      vx: (Math.random() - 0.5) * 0.15,
-      vy: (Math.random() - 0.5) * 0.1,
+      vx: (Math.random() - 0.5) * 0.12,
+      vy: (Math.random() - 0.5) * 0.08,
       size: Math.random() * 1.8 + 0.4,
-      opacity: Math.random() * 0.2 + 0.03,
+      baseOpacity: Math.random() * 0.5 + 0.2,
+      twinkleSpeed: Math.random() * 0.04 + 0.01,
       phase: Math.random() * Math.PI * 2,
+      colorType: Math.floor(Math.random() * 10), // 0-6 White, 7 Lime, 8 Cyan, 9 Violet
     }));
 
     const tick = () => {
@@ -58,53 +60,76 @@ export const BackgroundEngine: React.FC = () => {
       const sy = scrollRef.current;
 
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      ctx.clearRect(0, 0, w, h);
+      ctx.fillStyle = '#04060a';
+      ctx.fillRect(0, 0, w, h);
 
-      // Particles with mouse attraction + scroll drift
+      // Render Twinkling Space Stars
       for (let pi = 0; pi < particles.length; pi++) {
         const p = particles[pi];
+
+        // Parallax drift with cursor and scroll
         const ddx = mx * w - p.x;
-        const ddy = (my * h + sy * h * 0.3) - p.y;
+        const ddy = (my * h + sy * h * 0.4) - p.y;
         const dist = Math.sqrt(ddx * ddx + ddy * ddy);
-        if (dist < 350 && dist > 1) {
-          const f = (350 - dist) / 350 * 0.006;
+        if (dist < 300 && dist > 1) {
+          const f = (300 - dist) / 300 * 0.004;
           p.vx += (ddx / dist) * f;
           p.vy += (ddy / dist) * f;
         }
+
         p.x += p.vx;
         p.y += p.vy;
         p.vx *= 0.99;
         p.vy *= 0.99;
-        p.phase += 0.005;
 
-        if (p.x < -30) p.x = w + 30;
-        if (p.x > w + 30) p.x = -30;
-        if (p.y < -30) p.y = h + 30;
-        if (p.y > h + 30) p.y = -30;
+        if (p.x < -20) p.x = w + 20;
+        if (p.x > w + 20) p.x = -20;
+        if (p.y < -20) p.y = h + 20;
+        if (p.y > h + 20) p.y = -20;
 
-        const a = p.opacity * (0.6 + 0.4 * Math.sin(p.phase + sy * 4));
+        // Twinkle Alpha Modulation
+        const a = Math.max(0.08, Math.min(0.95, p.baseOpacity * (0.6 + 0.4 * Math.sin(time * p.twinkleSpeed * 10 + p.phase))));
+
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        const isLime = (p.phase + pi) % 5 === 0;
-        ctx.fillStyle = isLime
-          ? `rgba(196,255,54,${a * 0.6})`
-          : `rgba(240,237,232,${a})`;
+
+        if (p.colorType === 7) {
+          ctx.fillStyle = `rgba(196, 255, 54, ${a})`;
+        } else if (p.colorType === 8) {
+          ctx.fillStyle = `rgba(34, 211, 238, ${a})`;
+        } else if (p.colorType === 9) {
+          ctx.fillStyle = `rgba(168, 85, 247, ${a})`;
+        } else {
+          ctx.fillStyle = `rgba(255, 255, 255, ${a})`;
+        }
         ctx.fill();
+
+        // Cross-flare glow for prominent stars
+        if (p.size > 1.7 && a > 0.4) {
+          ctx.beginPath();
+          ctx.moveTo(p.x - p.size * 2.5, p.y);
+          ctx.lineTo(p.x + p.size * 2.5, p.y);
+          ctx.moveTo(p.x, p.y - p.size * 2.5);
+          ctx.lineTo(p.x, p.y + p.size * 2.5);
+          ctx.strokeStyle = `rgba(255, 255, 255, ${a * 0.3})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
       }
 
-      // Connection lines between nearby particles
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
+      // Constellation webs between nearby star clusters
+      for (let i = 0; i < particles.length; i += 2) {
+        for (let j = i + 1; j < particles.length; j += 2) {
           const ddx = particles[i].x - particles[j].x;
           const ddy = particles[i].y - particles[j].y;
           const d2 = ddx * ddx + ddy * ddy;
-          if (d2 < 12000) {
+          if (d2 < 9000) {
             const d = Math.sqrt(d2);
-            const a = (1 - d / 110) * 0.03;
+            const a = (1 - d / 95) * 0.04;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(196,255,54,${a})`;
+            ctx.strokeStyle = `rgba(196, 255, 54, ${a})`;
             ctx.lineWidth = 0.4;
             ctx.stroke();
           }
@@ -153,30 +178,30 @@ export const BackgroundEngine: React.FC = () => {
   }, []);
 
   const blobs = useMemo(() => [
-    { w: 550, left: '20%', top: '30%', bg: 'radial-gradient(circle,rgba(196,255,54,0.08) 0%,transparent 70%)' },
-    { w: 650, left: '75%', top: '35%', bg: 'radial-gradient(circle,rgba(6,182,212,0.05) 0%,transparent 70%)' },
-    { w: 450, left: '45%', top: '70%', bg: 'radial-gradient(circle,rgba(196,255,54,0.04) 0%,transparent 70%)' },
-    { w: 500, left: '10%', top: '75%', bg: 'radial-gradient(circle,rgba(6,182,212,0.03) 0%,transparent 70%)' },
+    { w: 600, left: '15%', top: '25%', bg: 'radial-gradient(circle,rgba(196,255,54,0.06) 0%,transparent 70%)' },
+    { w: 700, left: '80%', top: '30%', bg: 'radial-gradient(circle,rgba(6,182,212,0.05) 0%,transparent 70%)' },
+    { w: 500, left: '50%', top: '65%', bg: 'radial-gradient(circle,rgba(168,85,247,0.04) 0%,transparent 70%)' },
+    { w: 550, left: '10%', top: '80%', bg: 'radial-gradient(circle,rgba(6,182,212,0.03) 0%,transparent 70%)' },
   ], []);
 
   return (
     <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-      {/* Canvas particles */}
+      {/* Canvas space particles */}
       <canvas ref={canvasRef} className="absolute inset-0" />
 
-      {/* Animated grid */}
+      {/* Animated subtle grid */}
       <div
-        className="absolute inset-0 opacity-[0.04]"
+        className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(240,237,232,0.3) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(240,237,232,0.3) 1px, transparent 1px)
+            linear-gradient(rgba(240,237,232,0.2) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(240,237,232,0.2) 1px, transparent 1px)
           `,
-          backgroundSize: '50px 50px',
+          backgroundSize: '60px 60px',
         }}
       />
 
-      {/* Mouse-reactive blobs */}
+      {/* Mouse-reactive nebulae blobs */}
       {blobs.map((b, i) => (
         <div
           key={i}
@@ -190,29 +215,13 @@ export const BackgroundEngine: React.FC = () => {
         />
       ))}
 
-      {/* Moving scan line */}
-      <div
-        className="absolute left-0 right-0 h-px opacity-[0.04]"
-        style={{
-          background: 'linear-gradient(90deg, transparent, #c4ff36, transparent)',
-          animation: 'scanLine 8s ease-in-out infinite',
-        }}
-      />
-
       {/* Vignette */}
       <div
         className="absolute inset-0"
         style={{
-          background: 'radial-gradient(ellipse 65% 65% at 50% 50%, transparent 30%, rgba(5,5,5,0.6) 100%)',
+          background: 'radial-gradient(ellipse 70% 70% at 50% 50%, transparent 40%, rgba(4,6,10,0.7) 100%)',
         }}
       />
-
-      <style>{`
-        @keyframes scanLine {
-          0%, 100% { top: 10%; }
-          50% { top: 80%; }
-        }
-      `}</style>
     </div>
   );
 };

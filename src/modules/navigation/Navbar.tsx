@@ -117,29 +117,23 @@ export const Navbar: React.FC = () => {
   return (
     <>
       <motion.nav
-        className="fixed top-0 left-0 right-0 z-50"
+        className="fixed top-0 left-0 right-0 z-50 py-3 transition-all duration-500"
         initial={false}
         animate={{ y: hidden ? -100 : 0 }}
         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
       >
-        {/* Glass background layer */}
-        <div
-          className="absolute inset-0 transition-all duration-500 pointer-events-none"
-          style={{
-            backgroundColor: scrolled ? 'rgba(5, 5, 5, 0.72)' : 'rgba(5, 5, 5, 0)',
-            backdropFilter: scrolled ? 'blur(24px) saturate(1.4)' : 'blur(0px)',
-            WebkitBackdropFilter: scrolled ? 'blur(24px) saturate(1.4)' : 'blur(0px)',
-            borderBottom: scrolled ? '1px solid var(--border)' : '1px solid transparent',
-          }}
-        />
-
-        <div className="relative max-w-[1400px] mx-auto px-6 sm:px-8 md:px-12 lg:px-20">
-          <div className="flex items-center justify-between h-16">
-
+        <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 md:px-10">
+          <div
+            className={`flex items-center justify-between h-14 px-5 rounded-full transition-all duration-500 ${
+              scrolled
+                ? 'nav-glass-capsule'
+                : 'bg-transparent border border-transparent'
+            }`}
+          >
             {/* ─── Left: Avatar ─── */}
             <a
               href="#"
-              className="flex-shrink-0 magnetic-btn"
+              className="flex items-center gap-3 magnetic-btn group"
               onClick={(e) => {
                 e.preventDefault();
                 lenisRef.current?.scrollTo(0, { offset: 0, duration: 1.5 });
@@ -149,9 +143,12 @@ export const Navbar: React.FC = () => {
             >
               <img
                 src="https://github.com/Tcode-Motion.png"
-                alt=""
-                className="w-7 h-7 rounded-full border border-[var(--border)]"
+                alt="Tanmoy Majumder"
+                className="w-8 h-8 rounded-full border border-white/20 group-hover:border-[#c4ff36] transition-colors shadow-sm"
               />
+              <span className="font-code font-bold text-xs text-white tracking-wider hidden sm:inline-block">
+                Tanmoy Majumder
+              </span>
             </a>
 
             {/* ─── Center: Nav Links + Pill (desktop) ─── */}
@@ -159,14 +156,14 @@ export const Navbar: React.FC = () => {
               ref={linksContainerRef}
               onMouseMove={handleSpotlightMove}
               onMouseLeave={() => setSpotlight((s) => ({ ...s, active: false }))}
-              className="hidden md:flex items-center relative"
+              className="hidden md:flex items-center relative p-1 rounded-full bg-[#080d1a]/50 border border-white/10 backdrop-blur-md"
             >
               {/* Spotlight glow */}
               <div
                 className="pointer-events-none absolute inset-0 rounded-full transition-opacity duration-300 z-0"
                 style={{
                   opacity: spotlight.active ? 1 : 0,
-                  background: `radial-gradient(120px circle at ${spotlight.x}px ${spotlight.y}px, rgba(196,255,54,0.08), transparent 70%)`,
+                  background: `radial-gradient(120px circle at ${spotlight.x}px ${spotlight.y}px, rgba(196,255,54,0.12), transparent 70%)`,
                 }}
               />
               {NAV_LINKS.map((link) => {
@@ -189,10 +186,10 @@ export const Navbar: React.FC = () => {
                         setSpotlight({ x: r.left - container.left + r.width / 2, y: r.top - container.top + r.height / 2, active: true });
                       }
                     }}
-                    className={`relative px-4 py-2 text-sm transition-colors duration-200 magnetic-btn z-10 ${
+                    className={`relative px-4 py-1.5 text-xs font-code font-bold transition-all duration-300 magnetic-btn z-10 ${
                       isActive
-                        ? 'text-[var(--text-1)]'
-                        : 'text-[var(--text-3)] hover:text-[var(--text-2)]'
+                        ? 'text-[#c4ff36]'
+                        : 'text-[#94a3b8] hover:text-white'
                     }`}
                   >
                     {link.label}
@@ -203,47 +200,46 @@ export const Navbar: React.FC = () => {
               {/* Animated active pill background */}
               <div
                 ref={pillRef}
-                className="absolute top-1/2 -translate-y-1/2 h-8 rounded-full border border-[var(--border)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                className="absolute top-1/2 -translate-y-1/2 h-7 rounded-full border border-[#c4ff36]/40 bg-[#c4ff36]/10 shadow-[0_0_12px_rgba(196,255,54,0.2)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
                 style={{
                   zIndex: 0,
                   left: 0,
                   width: 0,
                   opacity: 0,
-                  background: 'var(--surface-2)',
                 }}
               />
             </div>
 
             {/* ─── Right: Nav actions ─── */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               {/* Contact CTA */}
               <a
                 href="#contact"
                 onClick={(e) => handleClick(e, '#contact')}
                 onMouseEnter={() => playHover()}
-                className="hidden sm:flex items-center gap-1.5 px-4 h-8 text-xs font-medium bg-[var(--accent-lime)] text-[#050505] rounded-full hover:shadow-[0_0_20px_rgba(196,255,54,0.15)] transition-all duration-300 magnetic-btn"
+                className="hidden sm:flex items-center gap-1.5 px-4 h-8 text-xs font-code font-bold bg-[#c4ff36] text-black rounded-full hover:shadow-[0_0_20px_rgba(196,255,54,0.3)] hover:scale-105 transition-all duration-300 magnetic-btn"
               >
                 Let's Talk
               </a>
 
               {/* Mobile hamburger */}
               <button
-                className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 magnetic-btn"
+                className="md:hidden flex flex-col justify-center items-center w-9 h-9 gap-1.5 rounded-full border border-white/10 bg-[#0d1527]/60 text-white magnetic-btn"
                 onClick={() => { playClick(); setMenuOpen(!menuOpen); }}
                 aria-label="Toggle menu"
               >
                 <motion.span
-                  className="block w-5 h-px bg-[var(--text-1)] origin-center"
+                  className="block w-4 h-0.5 bg-white origin-center"
                   animate={menuOpen ? { rotate: 45, y: 3.5 } : { rotate: 0, y: 0 }}
                   transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                 />
                 <motion.span
-                  className="block w-5 h-px bg-[var(--text-1)]"
+                  className="block w-4 h-0.5 bg-white"
                   animate={menuOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
                   transition={{ duration: 0.2 }}
                 />
                 <motion.span
-                  className="block w-5 h-px bg-[var(--text-1)] origin-center"
+                  className="block w-4 h-0.5 bg-white origin-center"
                   animate={menuOpen ? { rotate: -45, y: -3.5 } : { rotate: 0, y: 0 }}
                   transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                 />

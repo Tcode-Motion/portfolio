@@ -5,12 +5,12 @@
     "layout": "featured",
     "title": "TechScript",
     "tagline": "A modern programming language and developer ecosystem built from the ground up in Rust.",
-    "category": "Programming Language • Developer Tool",
+    "category": "Compiler • Developer Tool",
     "color": "#c4ff36",
-    "description": "TechScript is a complete programming ecosystem featuring a custom Lexer, Parser, AST architecture, Stack-based Bytecode VM, Standard library, and Package manager — all engineered in Rust for maximum performance and extensibility.",
+    "description": "TechScript is a complete programming language ecosystem featuring a custom Lexer, Parser, AST architecture, Stack-based Bytecode VM, Standard library, and Package manager — all engineered in Rust for maximum performance.",
     "problem": "Most modern languages are either overly complex, hard to extend, or lack an integrated developer-first toolchain.",
     "solution": "Built from scratch in Rust with a modular Cargo workspace architecture. Features a custom Lexer & Parser producing a strict AST, a Stack-based Bytecode VM, a Standard library, and a Package manager foundation.",
-    "techStack": ["Rust", "Cargo Workspaces", "Compiler Design", "AST", "Bytecode VM", "CLI Tooling", "LLVM"],
+    "techStack": ["Rust", "Cargo Workspaces", "Compiler Design", "AST", "Bytecode VM", "CLI Tooling", "TypeScript"],
     "githubUrl": "https://github.com/Tcode-Motion/techscript",
     "githubRepo": "Tcode-Motion/techscript",
     "liveUrl": "https://techscript.is-a.dev/",
@@ -22,7 +22,7 @@
       "Future LLVM backend & Language Server (LSP) roadmap"
     ],
     "architecture": "Lexer → Parser → AST → Bytecode Compiler → Stack VM → Runtime Output",
-    "timeline": "Started late 2024 — ongoing development",
+    "timeline": "2024 — Active development",
     "challenges": [
       "Designing a type system that balances simplicity with expressiveness",
       "Implementing a stack-based VM from scratch in Rust",
@@ -34,580 +34,212 @@
       "Bytecode instruction folding for constant expressions"
     ],
     "roadmap": [
-      "LLVM backend integration for native compilation",
-      "Language Server Protocol (LSP) implementation",
-      "WebAssembly compilation target",
-      "Package registry (tspkg) with community packages"
+      { "phase": "Phase 1", "title": "Core Rust Lexer, Parser & Cargo Workspaces Architecture", "status": "completed" },
+      { "phase": "Phase 2", "title": "TechScript v2.0 AST Generator & Stack Bytecode VM Runtime", "status": "completed" },
+      { "phase": "Phase 3", "title": "Package Manager Foundation (tspkg) & Standard Library Modules", "status": "completed" },
+      { "phase": "Phase 4", "title": "In-Browser WebAssembly Playground & Interactive Sandbox Execution", "status": "completed" },
+      { "phase": "Phase 5", "title": "LLVM IR Emitter & Language Server Protocol (LSP) IDE Server Integration", "status": "in-progress" }
     ],
     "interactiveType": "playground"
   },
   {
-    "id": "aurora-music",
+    "id": "novos",
     "featured": true,
     "layout": "featured",
-    "title": "Aurora Music",
-    "tagline": "A premium offline Android music player with Material Design 3, built with Flutter.",
-    "category": "Mobile App • Audio",
-    "color": "#8b5cf6",
-    "description": "Aurora Music delivers a premium offline listening experience with fluid Material Design 3 animations, intelligent media library management, and a high-performance audio engine — all built cross-platform with Flutter.",
-    "problem": "Offline music players feel outdated, lack modern Material UI, and offer poor media library management.",
-    "solution": "Built using Flutter & Dart with Material Design 3, featuring a custom audio playback engine, intelligent media indexing, and smooth 60fps transitions.",
-    "techStack": ["Flutter", "Dart", "Android SDK", "Material Design 3", "Audio Engine"],
-    "githubUrl": "https://github.com/Tcode-Motion/Aurora-Music",
-    "githubRepo": "Tcode-Motion/Aurora-Music",
+    "title": "NovOS",
+    "tagline": "A futuristic web-based desktop operating system with neomorphic window management.",
+    "category": "Web OS • Operating System",
+    "color": "#38bdf8",
+    "description": "NovOS is a full web-based operating system providing a reactive desktop interface, custom window manager, virtual file system, taskbar app launcher, and built-in system app ecosystem in React & TypeScript.",
+    "problem": "Standard web portfolios feel flat, static, and fail to showcase desktop-grade state management and windowing systems.",
+    "solution": "Engineered a custom windowing engine with draggable floating viewports, virtual file system, theme customization, and an integrated suite of desktop applications.",
+    "techStack": ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "Zustand", "Vite"],
+    "githubUrl": "https://github.com/Tcode-Motion/NovOS",
+    "githubRepo": "Tcode-Motion/NovOS",
+    "liveUrl": "https://tcode-motion.github.io/NovOS/",
     "features": [
-      "Modern Material 3 fluid interface with dynamic theming",
-      "High-performance local media library indexing",
-      "Advanced audio playback engine architecture",
-      "Equalizer & DSP integration architecture",
-      "Offline-first with zero network dependency"
+      "Custom reactive window manager with maximize/minimize/snap",
+      "Virtual File System with folder hierarchy & file previews",
+      "Taskbar app launcher & dynamic system tray",
+      "Neomorphic dark glass design system",
+      "Built-in terminal emulator & system utilities"
     ],
-    "architecture": "Flutter UI → Audio Engine → Media Indexer → Local Storage → Platform Channel → Android SDK",
-    "timeline": "2024 — Active development with bi-weekly releases",
+    "architecture": "React Desktop Shell → Window Manager → Virtual FS → State Stores → App Renders",
+    "timeline": "2024 — Open Source Release",
     "challenges": [
-      "Achieving 60fps animations while scanning large music libraries",
-      "Cross-platform audio engine with consistent latency",
-      "Material Design 3 compliance with custom overrides"
+      "Managing z-index ordering & active window focus states across multiple apps",
+      "Implementing smooth 60fps window dragging and resizing performance",
+      "Building an in-memory virtual file system with persistent state"
     ],
     "optimizations": [
-      "Isolate-based background media scanning",
-      "Image caching with size-adaptive quality",
-      "Audio buffer management for gapless playback"
+      "Virtual DOM window isolation to prevent re-renders",
+      "GPU-accelerated transform CSS for window physics",
+      "Lazy loading application sub-modules"
     ],
     "roadmap": [
-      "AI-powered playlist generation",
-      "Last.fm scrobbling integration",
-      "Widget support for lock screen",
-      "Wear OS companion app"
+      { "phase": "Phase 1", "title": "Reactive Window Manager with Maximize, Snap & Focus Engine", "status": "completed" },
+      { "phase": "Phase 2", "title": "Virtual File System with Folder Hierarchy & Previews", "status": "completed" },
+      { "phase": "Phase 3", "title": "Neomorphic Dark Glass System & Taskbar App Launcher", "status": "completed" },
+      { "phase": "Phase 4", "title": "In-Browser WebAssembly Terminal Execution Engine", "status": "in-progress" },
+      { "phase": "Phase 5", "title": "Cloud Sync Infrastructure & Multi-Monitor Workspaces", "status": "planned" }
     ],
     "interactiveType": "3d-device"
   },
   {
-    "id": "cloudvault",
+    "id": "aurora-os",
     "featured": true,
     "layout": "featured",
-    "title": "CloudVault",
-    "tagline": "Secure unlimited cloud storage powered by Telegram's TDLib infrastructure.",
-    "category": "Cloud Storage • Android",
-    "color": "#06b6d4",
-    "description": "CloudVault harnesses Telegram's infrastructure via TDLib as a secure, infinite cloud storage backend with folder hierarchy, file previews, and intelligent local caching — built natively in Kotlin.",
-    "problem": "Traditional cloud storage enforces expensive subscription tiers and rigid storage caps.",
-    "solution": "Built in Kotlin with Jetpack Compose, abstracting TDLib as a storage engine with MVVM, Room, Hilt, and Coroutines.",
-    "techStack": ["Kotlin", "Jetpack Compose", "TDLib", "MVVM", "Coroutines", "Room", "Hilt"],
-    "githubUrl": "https://github.com/Tcode-Motion/CloudVault",
-    "githubRepo": "Tcode-Motion/CloudVault",
+    "title": "Aurora-OS.js",
+    "tagline": "Extensible web OS game and hacking simulator framework in TypeScript.",
+    "category": "Web OS • Game Framework",
+    "color": "#a855f7",
+    "description": "Aurora OS.js is an extensible web OS game and hacking simulator framework. Provides a virtual OS experience with scripting, sandboxed apps, interactive terminals, and gameplay mechanics.",
+    "problem": "Building complex web OS simulators requires huge boilerplate for process isolation and app sandboxing.",
+    "solution": "Built a modular web OS architecture with a virtual process scheduler, terminal emulator, and custom app registration system.",
+    "techStack": ["TypeScript", "React", "State Machine", "Canvas API", "WebGL"],
+    "githubUrl": "https://github.com/Tcode-Motion/Aurora-OS.js",
+    "githubRepo": "Tcode-Motion/Aurora-OS.js",
+    "liveUrl": "https://mental-os.github.io/Aurora-OS.js/",
     "features": [
-      "Telegram TDLib storage engine abstraction",
-      "Modern Jetpack Compose native UI",
-      "Large file chunking & smart local Room cache",
-      "Offline file availability & instant folder search",
-      "End-to-end encrypted file transfer"
+      "Virtual process scheduler & app execution framework",
+      "Extensible terminal interface with custom command scripts",
+      "Glassmorphism UI design system",
+      "Sandboxed gameplay & hacking simulator mechanics"
     ],
-    "architecture": "Compose UI → ViewModel → Repository → TDLib/Room → Telegram API → Cloud",
-    "timeline": "2024 — Production-ready with ongoing additions",
+    "architecture": "Kernel → Shell → App Sandbox → Window Manager → Viewport",
+    "timeline": "2024",
     "challenges": [
-      "Abstracting TDLib's complex API into a clean storage interface",
-      "Implementing reliable large file chunking with resume",
-      "Managing Room database for offline-first metadata cache"
+      "Sandboxing virtual app execution without polluting global scope",
+      "Designing a pluggable command registry for the terminal"
     ],
     "optimizations": [
-      "Predictive pre-fetching for frequently accessed files",
-      "Delta sync for modified files",
-      "Memory-mapped file reading for large previews"
+      "Dynamic module imports for app packages",
+      "Optimized DOM event delegation"
     ],
     "roadmap": [
-      "Web dashboard for file management",
-      "Shared folders with permissions",
-      "Desktop client via Kotlin Multiplatform",
-      "Version history and file recovery"
+      { "phase": "Phase 1", "title": "Virtual Kernel & Shell Execution Framework", "status": "completed" },
+      { "phase": "Phase 2", "title": "Pluggable Terminal Emulator & Command Engine", "status": "completed" },
+      { "phase": "Phase 3", "title": "App Sandboxing & Interactive Hacking Gameplay Engine", "status": "in-progress" }
     ],
     "interactiveType": "architecture-diagram"
   },
   {
-    "id": "techscript-playground",
-    "featured": true,
-    "layout": "featured",
-    "title": "TechScript Playground",
-    "tagline": "In-browser IDE for writing and running TechScript code with live output and syntax highlighting.",
-    "category": "Developer Tool • IDE",
-    "color": "#22d3ee",
-    "description": "TechScript Playground is a full-featured web-based IDE that lets developers write, compile, and run TechScript code directly in the browser with real-time output, syntax highlighting, and an interactive terminal.",
-    "problem": "Trying a new language shouldn't require installing toolchains, configuring PATH, or setting up build systems.",
-    "solution": "Built a WebAssembly-powered playground using React, TypeScript, and Tailwind CSS that compiles and executes TechScript in the browser with instant feedback.",
-    "techStack": ["React", "TypeScript", "Tailwind CSS", "WebAssembly", "CodeMirror"],
-    "githubUrl": "https://github.com/Tcode-Motion/techscript",
-    "githubRepo": "Tcode-Motion/techscript",
-    "liveUrl": "https://techscript.is-a.dev/",
+    "id": "os-wallpapers",
+    "featured": false,
+    "layout": "standard",
+    "title": "OS Wallpapers",
+    "tagline": "Collection of minimalist wallpapers tailored for operating system interfaces.",
+    "category": "Design Assets • Collection",
+    "color": "#ec4899",
+    "description": "A hand-crafted collection of ambient wallpapers and background textures designed specifically for custom Linux setups, Android ROMs, and desktop operating systems.",
+    "problem": "Standard desktop backgrounds clash with developer IDEs and dark mode UI elements.",
+    "solution": "Curated a dedicated set of deep-contrast, low-distraction background assets optimized for OLED displays.",
+    "techStack": ["Design", "Vector Art", "Digital Media", "GitHub Pages"],
+    "githubUrl": "https://github.com/Tcode-Motion/os-wallpapers",
+    "githubRepo": "Tcode-Motion/os-wallpapers",
+    "liveUrl": "https://tcode-motion.github.io/os-wallpapers/",
     "features": [
-      "In-browser TechScript compilation via WebAssembly",
-      "Real-time syntax highlighting with CodeMirror",
-      "Interactive output terminal with execution history",
-      "Share code snippets via URL",
-      "Zero setup — works on any device"
+      "Minimalist OLED dark backgrounds",
+      "High contrast ratios for crisp text visibility",
+      "Multiple aspect ratio formats (16:9, 21:9, Mobile)"
     ],
-    "architecture": "React UI → CodeMirror Editor → WASM Compiler → Output Terminal → URL State Sync",
-    "timeline": "2025 — Launched alongside TechScript core",
-    "challenges": [
-      "Compiling Rust-based compiler to WebAssembly efficiently",
-      "Maintaining low latency for live code execution",
-      "Handling large code inputs without UI jank"
-    ],
-    "optimizations": [
-      "Debounced compilation with streaming output",
-      "Web Worker offloading for heavy WASM execution",
-      "Virtual scrolling for long output logs"
-    ],
+    "architecture": "Vector Source → Export Engine → Asset Repository → GitHub Pages",
+    "timeline": "2024",
+    "challenges": ["Maintaining consistent color palettes across display types"],
+    "optimizations": ["Lossless PNG & WebP compression"],
     "roadmap": [
-      "Package import support in playground",
-      "Collaborative editing with live cursors",
-      "Pre-built project templates",
-      "AI-powered code completion"
+      { "phase": "Phase 1", "title": "Minimalist OLED Dark Wallpaper Collection", "status": "completed" },
+      { "phase": "Phase 2", "title": "Multi-Aspect Ratio Optimization Pipeline", "status": "completed" },
+      { "phase": "Phase 3", "title": "Community Submission Portal & Automated Processing", "status": "in-progress" }
+    ]
+  },
+  {
+    "id": "arc-reactor-3d",
+    "featured": false,
+    "layout": "standard",
+    "title": "ARC Reactor 3D",
+    "tagline": "Interactive 3D Iron Man ARC Reactor rendering engine in Three.js & TypeScript.",
+    "category": "3D Graphics • WebGL",
+    "color": "#00f2fe",
+    "description": "An interactive 3D WebGL experience rendering a high-detail Iron Man ARC Reactor with customizable energy core glow, rotating metallic rings, and dynamic lighting effects.",
+    "problem": "Complex 3D mechanical models require heavy geometry and shader tuning for 60fps web performance.",
+    "solution": "Utilized custom GLSL shaders and optimized Three.js geometries for realistic energy core glow and physical metallic rendering.",
+    "techStack": ["Three.js", "TypeScript", "WebGL", "GLSL Shaders", "Vite"],
+    "githubUrl": "https://github.com/Tcode-Motion/arc-reactor-3d",
+    "githubRepo": "Tcode-Motion/arc-reactor-3d",
+    "liveUrl": "https://tcode-motion.github.io/arc-reactor-3d/",
+    "features": [
+      "Real-time 3D metallic mechanical ring rotation",
+      "Custom GLSL bloom & energy core shader effects",
+      "Interactive mouse & touch orbit control"
     ],
-    "interactiveType": "playground"
+    "architecture": "Three.js Scene → GLSL Energy Shader → Metallic Ring Mesh → Canvas Renderer",
+    "timeline": "2024",
+    "challenges": ["Simulating realistic glowing energy core shaders at 60fps"],
+    "optimizations": ["Instanced mesh rendering & shader uniform caching"],
+    "roadmap": [
+      { "phase": "Phase 1", "title": "3D Mesh Geometry & Ring Physics Rotation Engine", "status": "completed" },
+      { "phase": "Phase 2", "title": "Custom GLSL Bloom Core Energy Shaders", "status": "completed" },
+      { "phase": "Phase 3", "title": "Audio-Reactive Pulse Mode Integration", "status": "in-progress" }
+    ]
+  },
+  {
+    "id": "vortyx",
+    "featured": false,
+    "layout": "standard",
+    "title": "Vortyx",
+    "tagline": "High-performance CLI utility and system performance tool.",
+    "category": "CLI Tool • Utility",
+    "color": "#f59e0b",
+    "description": "Vortyx is a lightweight system performance utility designed for monitoring system resources, process trees, and runtime metrics with zero overhead.",
+    "problem": "Existing system monitoring tools consume heavy memory and introduce lag during intensive workloads.",
+    "solution": "Engineered a low-footprint CLI utility focused on ultra-fast process inspection and CPU/RAM telemetry.",
+    "techStack": ["Rust", "CLI", "System Telemetry", "Process Inspection"],
+    "githubUrl": "https://github.com/Tcode-Motion/Vortyx",
+    "githubRepo": "Tcode-Motion/Vortyx",
+    "liveUrl": "http://techscript.is-a.dev/Vortyx/",
+    "features": [
+      "Real-time CPU, RAM, & process metrics",
+      "Zero-dependency binary execution",
+      "Customizable terminal dashboard"
+    ],
+    "architecture": "Kernel Metrics API → Polling Engine → Terminal Renderer → Dashboard Output",
+    "timeline": "2024",
+    "challenges": ["Cross-platform kernel metrics extraction"],
+    "optimizations": ["Asynchronous non-blocking metrics polling"],
+    "roadmap": [
+      { "phase": "Phase 1", "title": "Rust Core Engine & Real-Time Telemetry CLI", "status": "completed" },
+      { "phase": "Phase 2", "title": "Zero-Dependency Cross-Platform Binary Target", "status": "completed" },
+      { "phase": "Phase 3", "title": "Network Throughput & Storage I/O Monitoring Dashboard", "status": "in-progress" }
+    ]
   },
   {
     "id": "neosketch",
-    "featured": true,
-    "layout": "featured",
+    "featured": false,
+    "layout": "standard",
     "title": "NeoSketch",
-    "tagline": "AI-powered digital sketching app with real-time stroke refinement and smart shape recognition.",
-    "category": "Creative Tool • AI Application",
-    "color": "#a855f7",
-    "description": "NeoSketch combines traditional digital drawing with AI-powered stroke refinement, turning rough sketches into clean, polished artwork with intelligent shape recognition and vector smoothing.",
-    "problem": "Digital sketching tools either lack AI assistance or overwhelm users with complex toolbars and steep learning curves.",
-    "solution": "Built a Flutter-based drawing app with on-device AI models for real-time stroke smoothing, shape detection, and intelligent layer management.",
-    "techStack": ["Flutter", "Dart", "Python", "AI Models", "Canvas API"],
+    "tagline": "Offline AI-powered artistic photo editor for Android & Windows.",
+    "category": "Mobile App • Flutter & Rust",
+    "color": "#00b4ab",
+    "description": "NeoSketch is an offline AI-powered artistic photo editor for Android and Windows built with Flutter, Rust, and ONNX runtime for privacy-first image processing.",
+    "problem": "Cloud-based AI photo editors compromise user privacy and require constant internet connectivity.",
+    "solution": "Engineered an offline image processing pipeline leveraging Flutter UI, Rust FFI, and ONNX neural network models.",
+    "techStack": ["Flutter", "Dart", "Rust", "ONNX Runtime", "Android", "Windows"],
     "githubUrl": "https://github.com/Tcode-Motion/NeoSketch",
     "githubRepo": "Tcode-Motion/NeoSketch",
     "features": [
-      "Real-time AI stroke refinement and smoothing",
-      "Smart shape recognition (circles, squares, lines)",
-      "Vector export from raster sketches",
-      "Multi-layer canvas with blend modes",
-      "Pressure-sensitive brush engine"
+      "100% offline AI artistic filters & style transfer",
+      "Cross-platform Flutter UI for Android & Windows",
+      "High-speed Rust native FFI bridge"
     ],
-    "architecture": "Flutter Canvas → Stroke Capture → AI Refinement Model → Vector Output → Layer Compositor",
-    "timeline": "2025 — Beta with weekly feature drops",
-    "challenges": [
-      "Achieving <10ms latency for real-time stroke AI",
-      "Balancing stroke fidelity with AI smoothing aggressiveness",
-      "Optimizing on-device model inference for older devices"
-    ],
-    "optimizations": [
-      "WebGL-accelerated canvas rendering",
-      "Stroke batching for reduced draw calls",
-      "Model quantization for mobile inference"
-    ],
+    "architecture": "Flutter UI → Dart FFI → Rust Native Core → ONNX Neural Model Execution",
+    "timeline": "2024",
+    "challenges": ["Optimizing ONNX neural model execution speed on mobile GPUs"],
+    "optimizations": ["Zero-copy memory sharing between Dart and Rust FFI"],
     "roadmap": [
-      "Collaborative real-time sketching",
-      "Style transfer from reference images",
-      "3D sketch extrusion",
-      "Plugin system for custom brushes"
-    ],
-    "interactiveType": "default"
-  },
-  {
-    "id": "wallverse",
-    "featured": true,
-    "layout": "featured",
-    "title": "Wallverse",
-    "tagline": "Community-driven wallpaper platform with AI curation and real-time sharing.",
-    "category": "Platform • Creative Web",
-    "color": "#14b8a6",
-    "description": "Wallverse is a social wallpaper platform where creators share, discover, and curate collections — powered by AI recommendation engines and a blazing-fast Next.js frontend.",
-    "problem": "Wallpaper communities are fragmented across forums and social media with no dedicated discovery or curation tools.",
-    "solution": "Built a full-stack platform with Next.js, Supabase for backend, and AI-powered recommendation that learns user preferences to surface perfect wallpapers.",
-    "techStack": ["Next.js", "TypeScript", "Supabase", "Tailwind CSS", "AI APIs"],
-    "githubUrl": "https://github.com/Tcode-Motion/Wallverse",
-    "githubRepo": "Tcode-Motion/Wallverse",
-    "features": [
-      "AI-powered personalized wallpaper feed",
-      "Creator profiles with collection management",
-      "Real-time upload and processing pipeline",
-      "Resolution-aware cropping and fitting",
-      "Community ratings and trending算法"
-    ],
-    "architecture": "Next.js Frontend → Supabase API → Storage → AI Processor → CDN → Client",
-    "timeline": "2025 — MVP launched with growing community",
-    "challenges": [
-      "Scaling image processing pipeline for high-res uploads",
-      "Building accurate AI recommendation without user fatigue",
-      "Maintaining fast page loads with image-heavy content"
-    ],
-    "optimizations": [
-      "Next.js Image optimization with responsive srcsets",
-      "Edge-cached API responses via Supabase Edge Functions",
-      "Progressive image loading with blur placeholders"
-    ],
-    "roadmap": [
-      "Mobile app with offline collection sync",
-      "Live wallpaper generation from text prompts",
-      "Creator monetization with premium collections",
-      "Desktop widget integration"
-    ],
-    "interactiveType": "default"
-  },
-  {
-    "id": "nutrilens-ai",
-    "featured": true,
-    "layout": "featured",
-    "title": "NutriLens AI",
-    "tagline": "AI-powered food analysis — snap a photo, get instant ingredient breakdown and nutrition data.",
-    "category": "AI Application • Health",
-    "color": "#f59e0b",
-    "description": "NutriLens AI uses computer vision and AI APIs to analyze food photos in real-time, providing detailed ingredient breakdowns, nutritional information, and dietary recommendations.",
-    "problem": "Manually tracking nutrition is tedious and inaccurate. Users need a fast, visual way to understand what they're eating.",
-    "solution": "Integrated AI vision APIs with a Python/FastAPI backend and Flutter frontend for real-time food analysis with actionable nutrition insights.",
-    "techStack": ["Python", "FastAPI", "Flutter", "AI Vision APIs", "PostgreSQL"],
-    "githubUrl": "https://github.com/Tcode-Motion/Nutrilens-Ai",
-    "githubRepo": "Tcode-Motion/Nutrilens-Ai",
-    "features": [
-      "Real-time food photo recognition",
-      "Detailed ingredient breakdown with percentages",
-      "Daily nutrition tracking dashboard",
-      "Dietary restriction alerts",
-      "Historical meal logging with trends"
-    ],
-    "architecture": "Flutter Camera → Image Upload → FastAPI → AI Vision Model → Nutrition DB → Dashboard",
-    "timeline": "2024 — Active with weekly model improvements",
-    "challenges": [
-      "Achieving accurate ingredient identification across cuisines",
-      "Estimating portion sizes from 2D images",
-      "Reducing API latency for real-time feedback"
-    ],
-    "optimizations": [
-      "Client-side image preprocessing to reduce payload",
-      "Model caching for frequent food categories",
-      "Batch inference for multi-item photos"
-    ],
-    "roadmap": [
-      "Barcode and packaging recognition",
-      "Integration with fitness tracking APIs",
-      "Multi-language food database",
-      "Social sharing and meal challenges"
-    ],
-    "interactiveType": "default"
-  },
-  {
-    "id": "armenu-ai",
-    "featured": true,
-    "layout": "featured",
-    "title": "ARMenu AI",
-    "tagline": "AI-powered interactive 3D restaurant menu with augmented reality visualization.",
-    "category": "Web & 3D • AR Application",
-    "color": "#ec4899",
-    "description": "ARMenu AI transforms the dining experience with AI-driven 3D food visualization and augmented reality menu interactions, built with Next.js, Three.js, and NestJS.",
-    "problem": "Static restaurant menus don't convey portion size, presentation, or ingredients.",
-    "solution": "Full-stack platform with Next.js frontend, Three.js for 3D food rendering, NestJS API, and Prisma ORM for data management.",
-    "techStack": ["Next.js", "TypeScript", "Three.js", "NestJS", "Prisma", "PostgreSQL", "AR"],
-    "githubUrl": "https://github.com/Tcode-Motion/Arm-Menu-Ai",
-    "githubRepo": "Tcode-Motion/Arm-Menu-Ai",
-    "features": [
-      "Interactive 3D food models with rotation & zoom",
-      "AR camera view for real-world menu placement",
-      "AI-powered menu recommendations",
-      "Nutrition overlay on 3D models",
-      "Restaurant dashboard for menu management"
-    ],
-    "architecture": "Next.js UI → Three.js Renderer → NestJS API → Prisma ORM → PostgreSQL → AR Layer",
-    "timeline": "2024 — Production with restaurant partners",
-    "challenges": [
-      "Optimizing 3D model load times for mobile browsers",
-      "AR tracking accuracy across lighting conditions",
-      "Real-time menu data synchronization"
-    ],
-    "optimizations": [
-      "GLTF model compression and LOD switching",
-      "WebXR fallback for non-AR browsers",
-      "Edge-cached 3D assets via CDN"
-    ],
-    "roadmap": [
-      "Voice-activated ordering integration",
-      "Multi-language automatic translation",
-      "Restaurant analytics dashboard",
-      "Allergen detection with real-time alerts"
-    ],
-    "interactiveType": "3d-device"
-  },
-  {
-    "id": "wallvault",
-    "featured": false,
-    "layout": "featured",
-    "title": "WallVault",
-    "tagline": "Modern desktop wallpaper manager built with Tauri, React, and Rust.",
-    "category": "Desktop App • Productivity",
-    "color": "#10b981",
-    "description": "WallVault is a blazing-fast desktop wallpaper manager combining Tauri's Rust backend with a React frontend for seamless wallpaper management, scheduling, and smart collections.",
-    "problem": "Desktop wallpaper managers are bloated Electron apps or lack smart features like auto-rotation and collections.",
-    "solution": "Built with Tauri (Rust + WebView) for a tiny memory footprint, React for the UI, and native file system APIs for instant operations.",
-    "techStack": ["Tauri", "React", "Rust", "TypeScript", "Tailwind CSS"],
-    "githubUrl": "https://github.com/Tcode-Motion/WallVault",
-    "githubRepo": "Tcode-Motion/WallVault",
-    "features": [
-      "Sub-50MB memory footprint via Tauri",
-      "Smart auto-rotation scheduler",
-      "Multi-monitor wallpaper support",
-      "Keyboard-driven quick-switch",
-      "AI-suggested collections from local library"
-    ],
-    "challenges": [
-      "Efficient thumbnail generation for 10,000+ wallpapers",
-      "Cross-platform file watching for library sync",
-      "Minimal memory usage while maintaining rich UI"
-    ],
-    "roadmap": [
-      "Community wallpaper sharing platform",
-      "AI wallpaper generation from prompts",
-      "System tray widget with weather-based rotation"
-    ],
-    "interactiveType": "default"
-  },
-  {
-    "id": "kinotix",
-    "featured": true,
-    "layout": "featured",
-    "title": "KinotiX",
-    "tagline": "Cinematic motion design toolkit for creating stunning web animations and transitions.",
-    "category": "Creative Tool • Motion Design",
-    "color": "#f43f5e",
-    "description": "KinotiX is a motion design toolkit that enables developers and designers to create cinematic web animations, scroll-driven transitions, and interactive motion sequences with a visual timeline editor.",
-    "problem": "Creating premium web animations requires deep knowledge of GSAP, Three.js, and CSS — tools that are powerful but hard to compose.",
-    "solution": "Built a React-based visual animation editor with a timeline interface, live preview, and exportable code — making cinematic web motion accessible to all skill levels.",
-    "techStack": ["React", "TypeScript", "GSAP", "Three.js", "Framer Motion", "Tailwind CSS"],
-    "githubUrl": "https://github.com/Tcode-Motion/KinotiX",
-    "githubRepo": "Tcode-Motion/KinotiX",
-    "features": [
-      "Visual timeline editor for complex animations",
-      "Real-time preview with scrubbing",
-      "Export production-ready GSAP/Framer code",
-      "Pre-built cinematic transition library",
-      "Scroll-triggered sequence builder"
-    ],
-    "architecture": "React UI → Timeline Engine → GSAP/Framer Runtime → Code Export → Preview Canvas",
-    "timeline": "2025 — Alpha with core timeline features",
-    "challenges": [
-      "Synchronizing visual timeline with code output accurately",
-      "Supporting nested animation groups without performance loss",
-      "Making the editor responsive on smaller screens"
-    ],
-    "optimizations": [
-      "Virtualized timeline rendering for complex sequences",
-      "Web Worker-based animation preview compilation",
-      "Incremental code generation for live export"
-    ],
-    "roadmap": [
-      "Collaborative editing with team sharing",
-      "AI-suggested animation presets from mockups",
-      "Plugin ecosystem for custom easing curves",
-      "Figma import for design-to-animation workflow"
-    ],
-    "interactiveType": "default"
-  },
-  {
-    "id": "funnelcore",
-    "featured": false,
-    "layout": "featured",
-    "title": "FunnelCore",
-    "tagline": "Developer platform exploring scalable backend architecture with TypeScript.",
-    "category": "Backend System • Platform",
-    "color": "#f97316",
-    "description": "FunnelCore is a developer platform exploring modern backend architecture patterns — scalable APIs, event-driven systems, and developer tooling built entirely in TypeScript.",
-    "problem": "Backend boilerplate and infrastructure setup slow down development.",
-    "solution": "Architected a modular TypeScript backend with clean separation of concerns, event-driven patterns, and first-class developer experience.",
-    "techStack": ["TypeScript", "Node.js", "Express", "PostgreSQL", "Redis"],
-    "githubUrl": "https://github.com/Tcode-Motion/FunnelCore",
-    "githubRepo": "Tcode-Motion/FunnelCore",
-    "features": [
-      "Modular service architecture",
-      "Event-driven message queue integration",
-      "Auto-generated API documentation",
-      "CLI scaffolding tool",
-      "Built-in rate limiting and auth middleware"
-    ],
-    "challenges": [
-      "Designing a plugin system that's both flexible and type-safe",
-      "Achieving horizontal scaling with stateless services",
-      "Managing database migrations across environments"
-    ],
-    "roadmap": [
-      "GraphQL subscription support",
-      "Docker Compose deployment templates",
-      "OpenTelemetry observability integration"
-    ],
-    "interactiveType": "default"
-  },
-  {
-    "id": "vidstrim",
-    "featured": true,
-    "layout": "featured",
-    "title": "VidStrim",
-    "tagline": "Real-time video streaming platform with adaptive bitrate and low-latency delivery.",
-    "category": "Streaming • Media Platform",
-    "color": "#ef4444",
-    "description": "VidStrim is a video streaming platform engineered for real-time delivery with adaptive bitrate streaming, WebRTC-powered low-latency playback, and a modern creator dashboard.",
-    "problem": "Existing streaming solutions either introduce high latency, require expensive infrastructure, or lack creator-friendly tools.",
-    "solution": "Built a full-stack streaming platform with Next.js, Supabase for auth/database, and custom WebRTC signaling for sub-second live streams with adaptive quality.",
-    "techStack": ["Next.js", "TypeScript", "Supabase", "WebRTC", "Redis", "Tailwind CSS"],
-    "githubUrl": "https://github.com/Tcode-Motion/VidStrim",
-    "githubRepo": "Tcode-Motion/VidStrim",
-    "features": [
-      "Sub-second live streaming via WebRTC",
-      "Adaptive bitrate with quality switching",
-      "Creator dashboard with real-time analytics",
-      "Chat system with moderation tools",
-      "VOD processing with automatic highlights"
-    ],
-    "architecture": "WebRTC Ingest → Media Server → Adaptive Transcoder → CDN → Player → Supabase Analytics",
-    "timeline": "2025 — Beta with select creator access",
-    "challenges": [
-      "Maintaining sub-second latency at scale across regions",
-      "Building reliable adaptive bitrate without buffering",
-      "Real-time chat that stays synchronized during stream spikes"
-    ],
-    "optimizations": [
-      "Edge-located signaling servers for minimal RTT",
-      "Hardware-accelerated transcoding pipeline",
-      "Redis pub/sub for instant chat distribution"
-    ],
-    "roadmap": [
-      "Multi-bitrate recording for VOD archives",
-      "Screen sharing and co-streaming support",
-      "AI-generated stream summaries and clips",
-      "Mobile streaming with camera integration"
-    ],
-    "interactiveType": "default"
-  },
-  {
-    "id": "cloudvault-web",
-    "featured": false,
-    "layout": "featured",
-    "title": "CloudVault Web",
-    "tagline": "Web-based file management dashboard for CloudVault's Telegram-powered storage.",
-    "category": "Web Dashboard • Cloud",
-    "color": "#0ea5e9",
-    "description": "CloudVault Web extends the Android app's capabilities to the browser, providing a full file management interface for browsing, uploading, and organizing files stored via Telegram's TDLib infrastructure.",
-    "problem": "CloudVault's powerful storage engine was locked to Android — users needed browser access for desktop workflows.",
-    "solution": "Built a Next.js web dashboard that connects to the same TDLib backend, offering file previews, folder management, and drag-and-drop uploads from any device.",
-    "techStack": ["Next.js", "TypeScript", "Tailwind CSS", "Supabase", "TDLib"],
-    "githubUrl": "https://github.com/Tcode-Motion/CloudVault",
-    "githubRepo": "Tcode-Motion/CloudVault",
-    "features": [
-      "Browser-based file browser with folder hierarchy",
-      "Drag-and-drop upload with progress tracking",
-      "In-browser file preview for images, videos, documents",
-      "Cross-device sync with Android app",
-      "Shared link generation with expiry controls"
-    ],
-    "challenges": [
-      "Replicating TDLib's complex auth flow in the browser",
-      "Streaming large file uploads without memory spikes",
-      "Real-time folder sync between web and mobile clients"
-    ],
-    "roadmap": [
-      "Bulk download as zip archives",
-      "Version history comparison",
-      "Collaborative folder sharing",
-      "Browser extension for quick save"
-    ],
-    "interactiveType": "default"
-  },
-  {
-    "id": "ar-keyboard",
-    "featured": false,
-    "layout": "featured",
-    "title": "AR Keyboard",
-    "tagline": "Type in the air with hand tracking — augmented reality keyboard using computer vision.",
-    "category": "AR • AI Application",
-    "color": "#8b5cf6",
-    "description": "AR Keyboard uses MediaPipe hand tracking and OpenCV to detect finger positions in real-time, enabling typing in augmented reality without physical hardware.",
-    "problem": "AR interfaces lack efficient text input methods. Gesture-based typing is slow and inaccurate.",
-    "solution": "Combined MediaPipe hand landmark detection with OpenCV to create a virtual keyboard responding to pinch gestures with predictive text.",
-    "techStack": ["Python", "OpenCV", "MediaPipe", "NumPy"],
-    "githubUrl": "https://github.com/Tcode-Motion/AR-Keyboard",
-    "githubRepo": "Tcode-Motion/AR-Keyboard",
-    "features": [
-      "Real-time hand tracking at 30+ FPS",
-      "Pinch gesture detection for key presses",
-      "Visual keyboard overlay in AR space",
-      "Predictive text suggestions",
-      "Calibration-free setup"
-    ],
-    "challenges": [
-      "Maintaining tracking accuracy with fast hand movements",
-      "Reducing false positives in gesture detection",
-      "Low-latency rendering of keyboard overlay"
-    ],
-    "roadmap": [
-      "Multi-hand support for two-handed typing",
-      "Swipe gesture word completion",
-      "Integration with Android ARCore"
-    ],
-    "interactiveType": "default"
-  },
-  {
-    "id": "solar-system",
-    "featured": false,
-    "layout": "featured",
-    "title": "Solar System",
-    "tagline": "Interactive 3D solar system visualization with realistic orbits and planet textures.",
-    "category": "Creative • Web",
-    "color": "#eab308",
-    "description": "An immersive 3D solar system built with Three.js, featuring accurate orbital mechanics, realistic textures, interactive camera controls, and educational overlays.",
-    "problem": "Educational space visualizations are either static or overly complex.",
-    "solution": "Built a focused Three.js scene with accurate orbital calculations, high-quality textures, and smooth camera interpolation at 60fps.",
-    "techStack": ["JavaScript", "Three.js", "WebGL", "HTML5 Canvas"],
-    "githubUrl": "https://github.com/Tcode-Motion/solar-system",
-    "githubRepo": "Tcode-Motion/solar-system",
-    "features": [
-      "Accurate orbital mechanics simulation",
-      "High-resolution planet textures",
-      "Smooth orbital camera controls",
-      "Planet info overlays on hover",
-      "Time control (pause, speed up, rewind)"
-    ],
-    "challenges": [
-      "Balancing orbital accuracy with visual appeal",
-      "Managing texture memory for 8+ high-res planets",
-      "Smooth camera transitions between planets"
-    ],
-    "roadmap": [
-      "Asteroid belt particle system",
-      "Rocket launch simulation",
-      "VR mode support"
-    ],
-    "interactiveType": "3d-device"
-  },
-  {
-    "id": "voicevault-ai",
-    "featured": false,
-    "layout": "featured",
-    "title": "VoiceVault AI",
-    "tagline": "AI-powered voice cloning and recognition with real-time inference.",
-    "category": "AI Application • Voice",
-    "color": "#f43f5e",
-    "description": "VoiceVault AI leverages deep learning models for voice cloning and recognition, enabling real-time voice transformation and custom voice synthesis through a Flutter interface.",
-    "problem": "Voice cloning tools are expensive, require technical expertise, and lack real-time capabilities.",
-    "solution": "Integrated pre-trained voice models with Flutter, optimizing inference for mobile with quantized models and streaming audio processing.",
-    "techStack": ["Flutter", "Dart", "Python", "AI Models", "Audio Processing"],
-    "githubUrl": "https://github.com/Tcode-Motion/VoiceVault-Ai",
-    "githubRepo": "Tcode-Motion/VoiceVault-Ai",
-    "features": [
-      "Real-time voice cloning with <2s latency",
-      "Speaker identification across sessions",
-      "Custom voice training from samples",
-      "Cross-platform Flutter interface",
-      "Export cloned voices as audio files"
-    ],
-    "challenges": [
-      "Optimizing neural network inference for mobile CPUs",
-      "Maintaining voice quality with quantized models",
-      "Real-time audio streaming without dropouts"
-    ],
-    "roadmap": [
-      "Multi-speaker conversation generation",
-      "Voice translation with cloned voices",
-      "API for third-party integration"
-    ],
-    "interactiveType": "default"
+      { "phase": "Phase 1", "title": "Flutter UI & Cross-Platform Window Frame", "status": "completed" },
+      { "phase": "Phase 2", "title": "Rust FFI Bridge & ONNX Model Execution Core", "status": "completed" },
+      { "phase": "Phase 3", "title": "Batch Image Processing & Custom Filter Training", "status": "in-progress" }
+    ]
   }
 ]

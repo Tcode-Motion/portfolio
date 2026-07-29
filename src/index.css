@@ -36,6 +36,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+    overscroll-behavior-y: none;
   }
 
   input, textarea, select { cursor: text; }
@@ -178,3 +179,36 @@
   0%, 100% { box-shadow: 0 0 20px rgba(196, 255, 54, 0.06); }
   50% { box-shadow: 0 0 40px rgba(196, 255, 54, 0.12); }
 }
+
+/* ─── Modal Active Background Focus ─── */
+body.modal-active main > section,
+body.modal-active footer {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ─── Custom Modal Scrollbar ─── */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(196, 255, 54, 0.6);
+}
+
+/* ─── Floating Nav Glass Capsule ─── */
+.nav-glass-capsule {
+  background: rgba(10, 15, 29, 0.78);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.65), 0 0 1px rgba(255, 255, 255, 0.2);
+}
+

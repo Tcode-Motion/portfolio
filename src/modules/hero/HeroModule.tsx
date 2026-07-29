@@ -1,6 +1,6 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { LucideGithub, LucideLinkedin, LucideMail, LucideDownload } from 'lucide-react';
+import React, { useRef, useState } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { Github, Instagram, Youtube, Twitter, Sparkles } from 'lucide-react';
 import { useSound } from '@/core/audio/SoundManager';
 import { useGithubStats } from '@/hooks/useGithubStats';
 import { FadeIn } from '@/primitives/FadeIn';
@@ -9,14 +9,11 @@ export const HeroModule: React.FC = () => {
   const gh = useGithubStats();
   const sectionRef = useRef<HTMLDivElement>(null);
   const { playClick, playHover } = useSound();
+  const [isSocialHovered, setIsSocialHovered] = useState(false);
 
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start start', 'end start'],
-  });
-
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95]);
+  const { scrollY } = useScroll();
+  const opacity = useTransform(scrollY, [0, 450], [1, 0]);
+  const scale = useTransform(scrollY, [0, 450], [1, 0.95]);
 
   const stats = [
     { value: `${gh.repoCount || '30'}+`, label: 'Projects' },
@@ -31,6 +28,13 @@ export const HeroModule: React.FC = () => {
     { icon: '⚡', label: 'Flutter Apps' },
     { icon: '✨', label: 'AI Systems' },
     { icon: '♡', label: 'Open Source' },
+  ];
+
+  const socialLinks = [
+    { icon: Github, href: 'https://github.com/Tcode-Motion', label: 'GitHub', color: '#c4ff36' },
+    { icon: Instagram, href: 'https://www.instagram.com/tcodemotion/', label: 'Instagram', color: '#e1306c' },
+    { icon: Youtube, href: 'https://www.youtube.com/@tcodemotin', label: 'YouTube', color: '#ff0000' },
+    { icon: Twitter, href: 'https://x.com/TanmoyMaju40558', label: 'Twitter / X', color: '#38bdf8' },
   ];
 
   return (
@@ -64,7 +68,7 @@ export const HeroModule: React.FC = () => {
             <FadeIn delay={0.3}>
               <h1
                 className="font-display tracking-tight leading-[0.95] mb-6"
-                style={{ fontSize: 'clamp(3.8rem, 8.5vw, 8rem)' }}
+                style={{ fontSize: 'clamp(2.5rem, 8.5vw, 8rem)' }}
               >
                 <span className="text-white block">Tanmoy</span>
                 <span className="text-[#c4ff36] block">Majumder</span>
@@ -117,27 +121,62 @@ export const HeroModule: React.FC = () => {
         </div>
       </motion.div>
 
-      {/* ─── Right Vertical Social Sidebar ─── */}
-      <div className="fixed right-6 top-1/2 -translate-y-1/2 hidden md:flex flex-col gap-3 z-30">
-        {[
-          { icon: LucideGithub, href: 'https://github.com/tdlibx', label: 'GitHub' },
-          { icon: LucideLinkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-          { icon: LucideMail, href: '#contact', label: 'Email' },
-          { icon: LucideDownload, href: '/resume.pdf', label: 'Resume' },
-        ].map((item, i) => (
-          <a
-            key={i}
-            href={item.href}
-            target={item.href.startsWith('http') ? '_blank' : undefined}
-            rel="noreferrer"
-            className="w-10 h-10 rounded-full border border-[#27272a] bg-[#090a0f]/80 backdrop-blur-md flex items-center justify-center text-[#a1a1aa] hover:text-[#c4ff36] hover:border-[#c4ff36] transition-all duration-300 shadow-lg"
-            title={item.label}
-            onClick={() => playClick()}
-            onMouseEnter={() => playHover()}
-          >
-            <item.icon className="w-4 h-4" />
-          </a>
-        ))}
+      {/* ─── Right Floating Glass Social Navigation Bar ─── */}
+      <div
+        className="fixed right-6 top-1/2 -translate-y-1/2 hidden md:flex flex-col items-center z-40"
+        onMouseEnter={() => setIsSocialHovered(true)}
+        onMouseLeave={() => setIsSocialHovered(false)}
+      >
+        <AnimatePresence mode="wait">
+          {isSocialHovered ? (
+            <motion.div
+              key="expanded"
+              initial={{ opacity: 0, scale: 0.85, x: 10 }}
+              animate={{ opacity: 1, scale: 1, x: 0 }}
+              exit={{ opacity: 0, scale: 0.85, x: 10 }}
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              className="p-2.5 rounded-full border border-white/15 bg-[#090a0f]/95 backdrop-blur-2xl shadow-2xl flex flex-col gap-3 items-center"
+            >
+              {socialLinks.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="relative group w-10 h-10 rounded-full border border-[#27272a] bg-[#121824] flex items-center justify-center text-[#a1a1aa] transition-all duration-300 shadow-md active:scale-95"
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = item.color;
+                    e.currentTarget.style.color = item.color;
+                    e.currentTarget.style.boxShadow = `0 0 16px ${item.color}40`;
+                    playHover();
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = '#27272a';
+                    e.currentTarget.style.color = '#a1a1aa';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}
+                  onClick={() => playClick()}
+                  title={item.label}
+                >
+                  <item.icon className="w-4 h-4" />
+                </a>
+              ))}
+            </motion.div>
+          ) : (
+            <motion.div
+              key="collapsed"
+              initial={{ opacity: 0, scale: 0.85 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.85 }}
+              transition={{ duration: 0.25 }}
+              className="relative p-2.5 rounded-full border border-white/15 bg-[#090a0f]/80 backdrop-blur-md text-[#c4ff36] shadow-xl hover:border-[#c4ff36] hover:bg-[#090a0f]/95 transition-all duration-300 cursor-pointer flex items-center justify-center group"
+              title="Social Networks"
+            >
+              <Sparkles className="w-5 h-5 text-[#c4ff36] transition-transform duration-300 group-hover:scale-110" />
+              <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-[#c4ff36] animate-ping" />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* ─── Scroll Indicator & Bottom Feature Bar ─── */}

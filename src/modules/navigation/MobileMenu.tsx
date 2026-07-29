@@ -32,9 +32,9 @@ export const MobileMenu: React.FC<{
         >
           {/* Backdrop */}
           <motion.div
-            className="absolute inset-0 bg-[var(--bg)]"
+            className="absolute inset-0 bg-[#0a0f1d]/95 backdrop-blur-3xl border-b border-white/10"
             initial={{ opacity: 0 }}
-            animate={{ opacity: 0.98 }}
+            animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           />
 

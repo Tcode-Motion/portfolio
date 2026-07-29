@@ -1,20 +1,20 @@
 {
-  "name": "Tanmoy Majumder",
+  "name": "Tanmoy",
   "handle": "Tcode-Motion",
-  "title": "Software Engineer • Creative Developer • TechScript Creator",
+  "title": "Rust Language Creator • 3D Web Developer • Open Source Builder",
   "roles": [
-    "Software Engineer",
-    "Creative Developer",
-    "Programming Language Creator",
-    "AI Application Developer",
-    "Open Source Builder"
+    "Rust Language Creator",
+    "3D Web Developer",
+    "Open Source Builder",
+    "Compiler Engineer",
+    "Systems Architect"
   ],
-  "location": "India (GMT+5:30)",
-  "blog": "https://techscript.is-a.dev/",
+  "location": "West Bengal, India 🇮🇳",
+  "blog": "https://github.com/Tcode-Motion/techscript",
   "githubUsername": "Tcode-Motion",
-  "tagline": "Building intelligent software, creative developer tools, and AI-powered experiences that blend engineering, performance, and beautiful design.",
-  "elevatorPitch": "I'm Tanmoy Majumder, a software engineer and creative developer from India passionate about building products that push technology forward. My work spans AI applications, developer tools, programming languages, Android apps, and modern web experiences. I believe great software isn't just functional — it should feel fast, intuitive, memorable, and beautifully engineered.",
-  "philosophy": "I believe every product should combine exceptional user experience, clean architecture, high performance, accessibility, and long-term maintainability. Rather than following trends, I focus on building timeless software that solves real problems while delivering an unforgettable user experience.",
+  "tagline": "I don't just write code. I architect the future. Predict the future by coding it. ⚡",
+  "elevatorPitch": "I'm Tanmoy (alias Tcode-Motion) — an independent developer and open source builder from West Bengal, India. I specialize in Rust systems programming, 3D web development, WebGL/GLSL shaders, programming language design, and native GUI with Egui. Creator of TechScript 2.0 — a plain-English programming language with a native Rust compiler, bytecode VM, and built-in Studio IDE.",
+  "philosophy": "I don't just write code. I architect the future. Predict the future by coding it. ⚡",
   "targetAudience": [
     "Recruiters at world-class technology companies",
     "Startup founders",
@@ -27,10 +27,10 @@
   ],
   "contactEmail": "tcodemotion@gmail.com",
   "superpowers": [
-    "Custom Programming Language Design (TechScript — Rust-based compiler, bytecode VM, package manager)",
-    "AI-Powered Application Development — Python, FastAPI, Vision",
-    "3D Web & Creative Engineering — Three.js, GSAP, Web Audio",
-    "Production Android Apps — Kotlin, Jetpack Compose, Flutter",
-    "Full-Stack TypeScript Architecture — React, Next.js, Node.js"
+    "Creator of TechScript 2.0 — Native Rust Compiler, Bytecode VM, NaN-boxed stack VM, and Studio IDE",
+    "Cinematic Web Operating Systems (NovOS — POSIX VFS via IndexedDB, 40+ apps, Nova AI)",
+    "Desktop Native GUI (WallVault — Sci-fi wallpaper desktop app built with Tauri v2 + React)",
+    "3D WebGL & GLSL Shader Architecture (Three.js, GLSL, Custom Shaders)",
+    "Full-Stack Web & Open Source Tooling (React, TypeScript, Vite, Tailwind CSS, Python PyPI)"
   ]
 }

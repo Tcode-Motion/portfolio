@@ -20,8 +20,15 @@ export const GlobalPlanetaryCanvas: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // 3D Distance Depth Opacity Modulation (Fades to 0.35 in deep space, brightens to 0.98 during close flyby)
+  const depthFactor = Math.sin(scrollProgress * Math.PI * 3.5) * 0.30;
+  const globeOpacity = Math.max(0.35, Math.min(0.98, 0.70 + depthFactor));
+
   return (
-    <div className="fixed inset-0 pointer-events-none z-[1] overflow-hidden">
+    <div
+      className="fixed inset-0 pointer-events-none z-[1] overflow-hidden transition-opacity duration-300"
+      style={{ opacity: globeOpacity }}
+    >
       <Suspense fallback={null}>
         <Canvas
           camera={{ position: [0, 0, 7.5], fov: 44 }}

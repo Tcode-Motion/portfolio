@@ -1,59 +1,54 @@
 {
   "superpowers": [
-    "Programming Language Engineering (TechScript)",
-    "AI-powered Software Development",
-    "Modern Frontend Engineering",
-    "Mobile Application Development",
-    "Software Architecture & System Design",
-    "Performance Optimization",
-    "Developer Tooling",
-    "Product Engineering",
-    "UI/UX Engineering"
+    "Programming Language Engineering (TechScript 2.0)",
+    "Native Rust Virtual Machine & Compiler Architecture",
+    "Cinematic Web Operating Systems (NovOS)",
+    "Desktop Native Apps (Tauri v2 & Egui)",
+    "3D WebGL & GLSL Shader Development (Three.js)",
+    "Full-Stack Web Systems (React, TypeScript, Vite)",
+    "Open Source Package Management (PyPI, Cargo, jsDelivr)"
   ],
   "categories": [
     {
       "id": "languages",
       "name": "Programming Languages",
       "skills": [
-        { "name": "Rust", "level": "Primary", "relatedProjects": ["techscript"] },
-        { "name": "TypeScript", "level": "Primary", "relatedProjects": ["armenu-ai", "funnelcore"] },
-        { "name": "JavaScript", "level": "Proficient", "relatedProjects": ["wallvault"] },
-        { "name": "Python", "level": "Primary", "relatedProjects": ["nutrilens-ai"] },
-        { "name": "Kotlin", "level": "Primary", "relatedProjects": ["cloudvault"] },
-        { "name": "Dart", "level": "Proficient", "relatedProjects": ["aurora-music"] },
-        { "name": "SQL", "level": "Proficient", "relatedProjects": ["nutrilens-ai"] }
+        { "name": "Rust", "level": "Primary", "relatedProjects": ["TechScript 2.0"] },
+        { "name": "JavaScript", "level": "Primary", "relatedProjects": ["NovOS", "WallVault"] },
+        { "name": "TypeScript", "level": "Primary", "relatedProjects": ["WallVault", "TechScript 2.0"] },
+        { "name": "Python", "level": "Primary", "relatedProjects": ["TechScript 2.0"] },
+        { "name": "GLSL Shaders", "level": "Proficient", "relatedProjects": ["NovOS"] }
       ]
     },
     {
       "id": "frontend",
-      "name": "Frontend & Creative Engineering",
+      "name": "Frontend & 3D Web",
       "skills": [
-        { "name": "React", "level": "Primary", "relatedProjects": ["wallvault"] },
-        { "name": "Next.js", "level": "Primary", "relatedProjects": ["armenu-ai"] },
-        { "name": "Tailwind CSS", "level": "Primary", "relatedProjects": ["armenu-ai"] },
-        { "name": "GSAP", "level": "Proficient", "relatedProjects": ["portfolio"] },
-        { "name": "Three.js", "level": "Proficient", "relatedProjects": ["armenu-ai"] },
-        { "name": "Web Audio API", "level": "Proficient", "relatedProjects": ["portfolio"] }
+        { "name": "Three.js / WebGL", "level": "Primary", "relatedProjects": ["NovOS"] },
+        { "name": "React", "level": "Primary", "relatedProjects": ["NovOS", "WallVault"] },
+        { "name": "Vite", "level": "Primary", "relatedProjects": ["NovOS"] },
+        { "name": "Tailwind CSS", "level": "Primary", "relatedProjects": ["NovOS", "WallVault"] },
+        { "name": "Framer Motion", "level": "Proficient", "relatedProjects": ["TechScript 2.0"] },
+        { "name": "Zustand", "level": "Proficient", "relatedProjects": ["NovOS", "WallVault"] }
       ]
     },
     {
       "id": "mobile",
-      "name": "Mobile & Cross-Platform",
+      "name": "Desktop & Native GUI",
       "skills": [
-        { "name": "Flutter", "level": "Primary", "relatedProjects": ["aurora-music"] },
-        { "name": "Jetpack Compose", "level": "Primary", "relatedProjects": ["cloudvault"] },
-        { "name": "Android SDK", "level": "Primary", "relatedProjects": ["cloudvault", "aurora-music"] },
-        { "name": "Tauri", "level": "Proficient", "relatedProjects": ["wallvault"] }
+        { "name": "Tauri v2", "level": "Primary", "relatedProjects": ["WallVault"] },
+        { "name": "Egui / egui_dock", "level": "Primary", "relatedProjects": ["TechScript 2.0"] },
+        { "name": "POSIX VFS / IndexedDB", "level": "Primary", "relatedProjects": ["NovOS"] }
       ]
     },
     {
       "id": "systems",
       "name": "Compiler & Systems Engineering",
       "skills": [
-        { "name": "Compiler Design", "level": "Primary", "relatedProjects": ["techscript"] },
-        { "name": "Lexer & Parser", "level": "Primary", "relatedProjects": ["techscript"] },
-        { "name": "AST Architecture", "level": "Primary", "relatedProjects": ["techscript"] },
-        { "name": "Bytecode VM", "level": "Primary", "relatedProjects": ["techscript"] }
+        { "name": "Bytecode VM", "level": "Primary", "relatedProjects": ["TechScript 2.0"] },
+        { "name": "Logos Lexer & Pratt Parser", "level": "Primary", "relatedProjects": ["TechScript 2.0"] },
+        { "name": "AST Optimizer", "level": "Primary", "relatedProjects": ["TechScript 2.0"] },
+        { "name": "Cargo & Git", "level": "Primary", "relatedProjects": ["TechScript 2.0", "NovOS"] }
       ]
     }
   ]
