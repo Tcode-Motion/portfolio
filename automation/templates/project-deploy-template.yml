@@ -80,6 +80,18 @@ jobs:
         run: |
           node portfolio/scripts/register-project.cjs --metadata portfolio-metadata.json --portfolio portfolio
 
+      - name: Run Build Post-Processing (Rewrite Asset Paths)
+        run: |
+          PROJECT_ID=$(jq -r '.id' portfolio-metadata.json)
+          node portfolio/scripts/post-process-build.cjs dist $PROJECT_ID
+
+      - name: Verify Build index.html Exists
+        run: |
+          if [ ! -f dist/index.html ]; then
+            echo "❌ Validation Error: Build output is missing index.html!"
+            exit 1
+          fi
+
       - name: Deploy Compiled Site to Portfolio Folder
         run: |
           # Extract project ID/directory name from metadata
