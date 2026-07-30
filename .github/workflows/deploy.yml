@@ -135,3 +135,10 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      # =========================================================================
+      # 5.5 Verify Deployed Live URLs (HTTP 200)
+      # =========================================================================
+
+      - name: Verify Live URLs
+        run: node scripts/verify-live-urls.cjs

@@ -170,3 +170,30 @@ jobs:
             git commit -m "chore(auto): deploy/sync project '$PROJECT_ID' build and metadata"
             git push origin main
           fi
+
+      # =========================================================================
+      # 4. Wait for and Verify Live Pages Deployment (HTTP 200)
+      # =========================================================================
+
+      - name: Wait for and Verify Live Deployment
+        run: |
+          URL="https://tanmoy.is-a.dev/$PROJECT_ID/"
+          echo "Waiting for live URL to become active: $URL"
+          
+          # Poll the URL for up to 5 minutes (30 attempts, 10s sleep)
+          attempts=0
+          max_attempts=30
+          while [ $attempts -lt $max_attempts ]; do
+            status=$(curl -o /dev/null -s -w "%{http_code}" "$URL")
+            echo "Attempt $((attempts+1))/$max_attempts: HTTP status is $status"
+            if [ "$status" -eq 200 ]; then
+              echo "✅ Verification SUCCESS! $URL is live with HTTP 200."
+              exit 0
+            fi
+            attempts=$((attempts+1))
+            sleep 10
+          done
+          
+          echo "❌ Verification FAILED! URL did not return HTTP 200 within timeout."
+          exit 1
+
