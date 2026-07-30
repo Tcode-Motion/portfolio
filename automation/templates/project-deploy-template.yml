@@ -132,7 +132,7 @@ jobs:
 
       - name: Run Build Post-Processing (Rewrite Asset Paths)
         run: |
-          node portfolio/scripts/post-process-build.cjs portfolio/${{ env.PROJECT_ID }} ${{ env.PROJECT_ID }}
+          node portfolio/scripts/post-process-build.cjs portfolio/$PROJECT_ID $PROJECT_ID
 
       # =========================================================================
       # Quality Gate: Fail if portfolio/<project-name>/index.html is missing
@@ -140,7 +140,7 @@ jobs:
 
       - name: Verify Synced index.html Exists
         run: |
-          TARGET_INDEX="portfolio/${{ env.PROJECT_ID }}/index.html"
+          TARGET_INDEX="portfolio/$PROJECT_ID/index.html"
           if [ ! -f "$TARGET_INDEX" ]; then
             echo "❌ Critical Error: Sync failed. $TARGET_INDEX does not exist!"
             exit 1
@@ -161,12 +161,12 @@ jobs:
           
           # Stage metadata and project directory
           git add src/content/projects/showcase.json
-          git add ${{ env.PROJECT_ID }}/
+          git add $PROJECT_ID/
           
           # Check if there are changes to commit
           if git diff --staged --quiet; then
             echo "No changes to sync."
           else
-            git commit -m "chore(auto): deploy/sync project '${{ env.PROJECT_ID }}' build and metadata"
+            git commit -m "chore(auto): deploy/sync project '$PROJECT_ID' build and metadata"
             git push origin main
           fi
