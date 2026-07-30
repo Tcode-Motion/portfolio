@@ -17,21 +17,28 @@ export const ProjectSlugPage: React.FC = () => {
   return (
     <>
       <SeoHead
-        title={`${project.title} Case Study`}
-        description={project.description || project.tagline}
-        slug={`/projects/${project.id}`}
-        jsonLd={{
-          '@context': 'https://schema.org',
-          '@type': 'SoftwareSourceCode',
-          name: project.title,
-          description: project.tagline,
-          programmingLanguage: project.techStack.join(', '),
-          codeRepository: project.githubUrl,
-          author: {
-            '@type': 'Person',
-            name: 'Tanmoy Majumder',
+        title={`${project.title} — Open Source Project by Tanmoy Majumder`}
+        description={`${project.tagline} — An open source project by Tanmoy Majumder (Tcode-Motion). Built with ${project.techStack.slice(0, 3).join(', ')}. View the source code and case study on GitHub.`}
+        slug={`projects/${project.id}`}
+        breadcrumbs={[
+          { name: 'Projects', item: 'https://tanmoy.is-a.dev/projects' },
+          { name: project.title, item: `https://tanmoy.is-a.dev/projects/${project.id}` },
+        ]}
+        jsonLd={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'SoftwareSourceCode',
+            '@id': `https://tanmoy.is-a.dev/projects/${project.id}#software`,
+            name: project.title,
+            description: project.tagline,
+            programmingLanguage: project.techStack.join(', '),
+            codeRepository: project.githubUrl,
+            url: `https://tanmoy.is-a.dev/projects/${project.id}`,
+            author: { '@id': 'https://tanmoy.is-a.dev/#person' },
+            creator: { '@id': 'https://tanmoy.is-a.dev/#person' },
+            keywords: project.techStack,
           },
-        }}
+        ]}
       />
 
       <article className="py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">

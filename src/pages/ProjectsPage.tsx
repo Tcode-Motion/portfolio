@@ -41,9 +41,29 @@ export const ProjectsPage: React.FC = () => {
   return (
     <>
       <SeoHead
-        title="Projects & Case Studies"
-        description="Explore the complete project portfolio of Tanmoy Majumder — TechScript compiler, CloudVault, Aurora Music Player, NutriLens AI, and more."
-        slug="/projects"
+        title="Open Source Projects by Tanmoy Majumder — TechScript, Aurora, CloudVault, Vortex CLI & More"
+        description="Explore all open source projects by Tanmoy Majumder (Tcode-Motion): TechScript compiler, Aurora Music Player, CloudVault, WallVault, Vortex CLI, NutriLens AI, and more software engineering case studies."
+        slug="projects"
+        breadcrumbs={[{ name: 'Projects', item: 'https://tanmoy.is-a.dev/projects' }]}
+        jsonLd={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'CollectionPage',
+            '@id': 'https://tanmoy.is-a.dev/projects#collection',
+            name: 'Open Source Projects by Tanmoy Majumder',
+            description: 'Explore all open source software projects by Tanmoy Majumder — compiler design, AI applications, mobile apps, and developer tools.',
+            url: 'https://tanmoy.is-a.dev/projects',
+            author: { '@id': 'https://tanmoy.is-a.dev/#person' },
+            hasPart: [
+              { '@type': 'SoftwareSourceCode', name: 'TechScript', url: 'https://tanmoy.is-a.dev/projects/techscript', codeRepository: 'https://github.com/Tcode-Motion/techscript' },
+              { '@type': 'SoftwareSourceCode', name: 'Aurora Music Player', url: 'https://tanmoy.is-a.dev/projects/aurora-music', codeRepository: 'https://github.com/Tcode-Motion/aurora' },
+              { '@type': 'SoftwareSourceCode', name: 'CloudVault', url: 'https://tanmoy.is-a.dev/projects/cloudvault', codeRepository: 'https://github.com/Tcode-Motion/cloudvault' },
+              { '@type': 'SoftwareSourceCode', name: 'WallVault', url: 'https://tanmoy.is-a.dev/projects/wallvault', codeRepository: 'https://github.com/Tcode-Motion/wallvault' },
+              { '@type': 'SoftwareSourceCode', name: 'Vortex CLI', url: 'https://tanmoy.is-a.dev/projects/vortyx', codeRepository: 'https://github.com/Tcode-Motion/vortyx' },
+              { '@type': 'SoftwareSourceCode', name: 'NutriLens AI', url: 'https://tanmoy.is-a.dev/projects/nutrilens-ai', codeRepository: 'https://github.com/Tcode-Motion/nutrilens' },
+            ],
+          },
+        ]}
       />
 
       <div className="min-h-screen bg-[#090a0f]">

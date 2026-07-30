@@ -1,0 +1,23 @@
+{
+  "name": "Tanmoy Majumder Portfolio",
+  "short_name": "Tcode-Motion",
+  "description": "Official portfolio of Tanmoy Majumder — Rust developer, TechScript creator, open source engineer",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "icons": [
+    {
+      "src": "https://github.com/Tcode-Motion.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://github.com/Tcode-Motion.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["developer", "portfolio", "technology"],
+  "lang": "en-US"
+}

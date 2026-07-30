@@ -42,21 +42,40 @@ export const HomePage: React.FC = () => {
   return (
     <>
       <SeoHead
-        title="Software Engineer & TechScript Creator"
-        description="Official flagship portfolio of Tanmoy Majumder (Tcode-Motion) — Software Engineer, Creative Developer, Programming Language Creator (TechScript), AI Application Developer, and Open Source Builder."
-        jsonLd={{
-          '@context': 'https://schema.org',
-          '@type': 'Person',
-          name: 'Tanmoy Majumder',
-          alternateName: 'Tcode-Motion',
-          url: 'https://tanmoy.is-a.dev',
-          jobTitle: 'Software Engineer & Creative Developer',
-          sameAs: [
-            'https://github.com/Tcode-Motion',
-            'https://x.com/TanmoyMaju40558',
-            'https://youtube.com/@tcodemotin',
-          ],
-        }}
+        title="Tanmoy Majumder — Software Engineer, TechScript Creator & Open Source Developer"
+        description="Official portfolio of Tanmoy Majumder (Tcode-Motion) — Rust developer, creator of the TechScript programming language, AI developer, full-stack engineer, and open source builder from West Bengal, India."
+        slug="/"
+        jsonLd={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'Person',
+            '@id': 'https://tanmoy.is-a.dev/#person',
+            name: 'Tanmoy Majumder',
+            alternateName: ['Tcode-Motion', 'Tanmoy', 'Tanmoy Developer'],
+            url: 'https://tanmoy.is-a.dev',
+            image: 'https://github.com/Tcode-Motion.png',
+            email: 'tcodemotion@gmail.com',
+            jobTitle: 'Software Engineer & TechScript Language Creator',
+            description: 'Rust developer, creator of TechScript programming language, open source engineer, AI developer, and full-stack software engineer from West Bengal, India.',
+            knowsAbout: ['Rust', 'TechScript', 'Compiler Design', 'AI Development', 'React', 'TypeScript', 'Systems Programming', 'Open Source'],
+            nationality: { '@type': 'Country', name: 'India' },
+            address: { '@type': 'PostalAddress', addressRegion: 'West Bengal', addressCountry: 'IN' },
+            sameAs: [
+              'https://github.com/Tcode-Motion',
+              'https://x.com/TanmoyMaju40558',
+              'https://youtube.com/@tcodemotin',
+            ],
+            mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://tanmoy.is-a.dev/' },
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'ProfilePage',
+            '@id': 'https://tanmoy.is-a.dev/#profilepage',
+            name: 'Tanmoy Majumder — Developer Portfolio',
+            url: 'https://tanmoy.is-a.dev/',
+            about: { '@id': 'https://tanmoy.is-a.dev/#person' },
+          },
+        ]}
       />
 
       {/* ── HERO ── */}

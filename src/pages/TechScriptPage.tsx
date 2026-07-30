@@ -9,9 +9,66 @@ export const TechScriptPage: React.FC = () => {
   return (
     <>
       <SeoHead
-        title="TechScript Programming Language & Compiler"
-        description="Detailed specification and interactive syntax playground for TechScript—a modern programming language ecosystem built from scratch in Rust."
-        slug="/techscript"
+        title="TechScript Programming Language — Rust Compiler, Bytecode VM & Developer Toolchain by Tanmoy Majumder"
+        description="TechScript is a modern programming language built from scratch in Rust by Tanmoy Majumder. Features a custom lexer, AST parser, bytecode compiler, stack-based VM, and Studio IDE. Download, explore examples, and view source code on GitHub."
+        slug="techscript"
+        breadcrumbs={[{ name: 'TechScript Language', item: 'https://tanmoy.is-a.dev/techscript' }]}
+        jsonLd={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'SoftwareSourceCode',
+            '@id': 'https://tanmoy.is-a.dev/techscript#software',
+            name: 'TechScript Programming Language',
+            alternateName: ['TechScript Compiler', 'TechScript Language', 'TechScript Rust'],
+            description: 'A modern programming language and developer toolchain built from the ground up in Rust — featuring a custom lexer, AST parser, bytecode compiler, stack-based virtual machine, and Studio IDE.',
+            programmingLanguage: 'Rust',
+            runtimePlatform: 'Cross-platform (Windows, macOS, Linux)',
+            codeRepository: 'https://github.com/Tcode-Motion/techscript',
+            url: 'https://tanmoy.is-a.dev/techscript',
+            author: { '@id': 'https://tanmoy.is-a.dev/#person' },
+            creator: { '@id': 'https://tanmoy.is-a.dev/#person' },
+            license: 'https://opensource.org/licenses/MIT',
+            keywords: ['TechScript', 'Programming Language', 'Rust', 'Compiler', 'Bytecode VM', 'Open Source'],
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'What is TechScript?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'TechScript is a modern programming language created by Tanmoy Majumder, built from scratch in Rust. It features a custom lexer, recursive descent AST parser, bytecode compiler, and stack-based virtual machine.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Who created TechScript?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'TechScript was created by Tanmoy Majumder (GitHub: Tcode-Motion), an independent developer and open source engineer from West Bengal, India.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'What language is TechScript built in?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'TechScript is built entirely in Rust for maximum performance, safety, and cross-platform compatibility.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Where can I find TechScript on GitHub?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'The TechScript source code is available at https://github.com/Tcode-Motion/techscript.',
+                },
+              },
+            ],
+          },
+        ]}
       />
 
       <div className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
