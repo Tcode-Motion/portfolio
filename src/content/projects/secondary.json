@@ -1,0 +1,66 @@
+[
+  {
+    "id": "aurora-music",
+    "title": "Aurora Music",
+    "tagline": "Open-source AI music streaming app built with Flutter — offline playback, sleek UI, 18+ stars on GitHub.",
+    "category": "Mobile App",
+    "techStack": ["Flutter", "Dart", "AI Integration"],
+    "githubUrl": "https://github.com/Tcode-Motion/Aurora-Music"
+  },
+  {
+    "id": "voicevault-ai",
+    "title": "VoiceVault AI",
+    "tagline": "AI-powered voice cloning and recognition system with real-time inference — 18+ stars.",
+    "category": "AI Application",
+    "techStack": ["Flutter", "Dart", "AI APIs"],
+    "githubUrl": "https://github.com/Tcode-Motion/VoiceVault-Ai"
+  },
+  {
+    "id": "wallvault",
+    "title": "WallVault",
+    "tagline": "Modern desktop wallpaper manager focused on performance and aesthetics — 7+ stars.",
+    "category": "Desktop App",
+    "techStack": ["Tauri", "React", "Rust"],
+    "githubUrl": "https://github.com/Tcode-Motion/WallVault"
+  },
+  {
+    "id": "armenu-ai",
+    "title": "Arm-Menu-Ai",
+    "tagline": "AI-powered interactive 3D restaurant menu with AR visualization — 16+ stars.",
+    "category": "Web & 3D Application",
+    "techStack": ["Next.js", "TypeScript", "Three.js"],
+    "githubUrl": "https://github.com/Tcode-Motion/Arm-Menu-Ai"
+  },
+  {
+    "id": "nutrilens-ai",
+    "title": "NutriLens AI",
+    "tagline": "AI-powered food analysis app — snap a photo, get ingredient breakdown and nutrition data.",
+    "category": "AI Application",
+    "techStack": ["Python", "FastAPI", "AI APIs"],
+    "githubUrl": "https://github.com/Tcode-Motion/Nutrilens-Ai"
+  },
+  {
+    "id": "funnelcore",
+    "title": "FunnelCore",
+    "tagline": "Developer software platform exploring scalable backend architecture — TypeScript + Node.",
+    "category": "Backend System",
+    "techStack": ["TypeScript", "Node.js"],
+    "githubUrl": "https://github.com/Tcode-Motion/FunnelCore"
+  },
+  {
+    "id": "ar-keyboard",
+    "title": "AR Keyboard",
+    "tagline": "Augmented reality keyboard using hand tracking — type in the air with computer vision.",
+    "category": "AR / AI Application",
+    "techStack": ["Python", "OpenCV", "MediaPipe"],
+    "githubUrl": "https://github.com/Tcode-Motion/AR-Keyboard"
+  },
+  {
+    "id": "solar-system",
+    "title": "Solar System",
+    "tagline": "Interactive 3D solar system visualization with realistic orbits and planet textures.",
+    "category": "Creative / Web",
+    "techStack": ["JavaScript", "Three.js"],
+    "githubUrl": "https://github.com/Tcode-Motion/solar-system"
+  }
+]

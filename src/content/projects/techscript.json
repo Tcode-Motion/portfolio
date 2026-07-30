@@ -1,0 +1,20 @@
+{
+  "id": "techscript",
+  "featured": true,
+  "title": "TechScript",
+  "tagline": "A modern programming language and developer ecosystem built from the ground up.",
+  "category": "Developer Tool • Programming Language",
+  "description": "TechScript is a long-term programming language project combining modern language design, developer productivity, performance, and clean syntax into a complete programming ecosystem with its own compiler, bytecode VM, standard library, and package manager.",
+  "problem": "Most modern programming languages are either overly complex, hard to extend, or lack a integrated developer-first toolchain.",
+  "solution": "Built in Rust from scratch, TechScript features a custom Lexer, Parser, AST Generator, Stack-based VM, Bytecode compiler, Standard library, and Package manager foundation.",
+  "techStack": ["Rust", "Cargo Workspaces", "Compiler Design", "AST", "Bytecode VM", "CLI Tooling"],
+  "githubUrl": "https://github.com/Tcode-Motion",
+  "highlights": [
+    "Modular Cargo workspace architecture",
+    "Custom Lexer & Parser producing strict AST",
+    "Stack-based Bytecode Virtual Machine runtime",
+    "Package manager foundation & Stdlib",
+    "Future LLVM backend & Language Server (LSP) roadmap"
+  ],
+  "interactiveType": "playground"
+}

@@ -1,29 +1,30 @@
 # Tanmoy's Portfolio 🚀
 
-A modern, sci-fi themed portfolio showcasing my projects, skills, and journey as a developer, hacker, and builder.
+A premium, interactive, sci-fi themed developer portfolio showcasing custom projects, engineering philosophy, and custom code integrations.
 
-## 🌟 Features
+## 🌟 Key Features
 
-- **Animated starfield background** - Because space is cool
-- **Glitch text effects** - Cyberpunk vibes
-- **Smooth animations** - Parallax, fade-ins, and hover effects
-- **Fully responsive** - Works on all devices
-- **Fast & lightweight** - Pure HTML/CSS/JS, no frameworks
+- **Interactive 3D Planetary Canvas**: Powered by Three.js and custom shader materials, featuring orbital rings, atmospheric glows, and smooth interactivity.
+- **TechScript Playground**: A custom mini-IDE & syntax highlighter console to write and test code snippets directly in the browser.
+- **Dynamic Projects & Case Studies**: Immersive full-screen project previews with modern grid transitions, custom audio feedback cues, and markdown support.
+- **Github Activity Engine**: Dynamically displays pinned repos with a responsive swiper track on mobile and direct link interaction.
+- **Responsive Layout**: Designed for mobile compatibility (vertical stack reordering, sliding controls, custom carousels) and ultra-wide PC monitors.
+- **Integrated Mail client routing**: Smart custom contact form with subject selectors, conditional entries, and client preferences (`localStorage`) to auto-launch Gmail Web, Outlook Web, or default native mail applications.
 
-## 🛠️ Tech Stack
+## 🛠️ Modern Tech Stack
 
-- HTML5
-- CSS3 (Custom animations, gradients, flexbox/grid)
-- Vanilla JavaScript (Intersection Observer, smooth scrolling)
+- **Framework**: React 18 + TypeScript + Vite
+- **Styling & Motion**: Tailwind CSS + Framer Motion + GSAP
+- **3D Graphics**: Three.js / WebGL
+- **Typography & Icons**: Lucide React + custom sci-fi font tokens
+- **Orchestration & Performance**: Lenis Smooth Scroll + SoundManager Audio
 
-## 📂 Projects Featured
+## 📂 Featured Projects
 
-- **Jarvis AI Assistant** (Mark 1-18)
-- **Web Operating System**
-- **YouTube Automation Suite**
-- **Telegram Bot Framework**
-- **Streaming Platform Clones** (YouTube, Netflix)
-- **Client Websites** (Freelance work)
+- **TechScript Compiler** — Custom lightweight stack-based language interpreter
+- **Aurora Music Engine** — Web Audio API powered interactive visualization player
+- **CloudVault Systems** — End-to-end encrypted local client storage engine
+- **NeoSketch Studio** — HTML5 Canvas graphics and vector design suite
 
 ## 🚀 Live Demo
 
@@ -31,8 +32,8 @@ Visit: [https://tcode-motion.github.io/portfolio/](https://tcode-motion.github.i
 
 ## 📬 Contact
 
-- GitHub: [@Tcode-Motion](https://github.com/Tcode-Motion)
-- Telegram: [@Tanmoy](https://t.me/Tanmoy19114381189)
+- **GitHub**: [@Tcode-Motion](https://github.com/Tcode-Motion)
+- **Email**: [tcodemotion@gmail.com](mailto:tcodemotion@gmail.com)
 
 ---
 

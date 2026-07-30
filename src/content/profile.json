@@ -1,0 +1,36 @@
+{
+  "name": "Tanmoy",
+  "handle": "Tcode-Motion",
+  "title": "Rust Language Creator • 3D Web Developer • Open Source Builder",
+  "roles": [
+    "Rust Language Creator",
+    "3D Web Developer",
+    "Open Source Builder",
+    "Compiler Engineer",
+    "Systems Architect"
+  ],
+  "location": "West Bengal, India 🇮🇳",
+  "blog": "https://github.com/Tcode-Motion/techscript",
+  "githubUsername": "Tcode-Motion",
+  "tagline": "I don't just write code. I architect the future. Predict the future by coding it. ⚡",
+  "elevatorPitch": "I'm Tanmoy (alias Tcode-Motion) — an independent developer and open source builder from West Bengal, India. I specialize in Rust systems programming, 3D web development, WebGL/GLSL shaders, programming language design, and native GUI with Egui. Creator of TechScript 2.0 — a plain-English programming language with a native Rust compiler, bytecode VM, and built-in Studio IDE.",
+  "philosophy": "I don't just write code. I architect the future. Predict the future by coding it. ⚡",
+  "targetAudience": [
+    "Recruiters at world-class technology companies",
+    "Startup founders",
+    "Engineering managers",
+    "Open-source maintainers",
+    "Design agencies",
+    "Potential clients",
+    "Technical collaborators",
+    "Fellow developers"
+  ],
+  "contactEmail": "tcodemotion@gmail.com",
+  "superpowers": [
+    "Creator of TechScript 2.0 — Native Rust Compiler, Bytecode VM, NaN-boxed stack VM, and Studio IDE",
+    "Cinematic Web Operating Systems (NovOS — POSIX VFS via IndexedDB, 40+ apps, Nova AI)",
+    "Desktop Native GUI (WallVault — Sci-fi wallpaper desktop app built with Tauri v2 + React)",
+    "3D WebGL & GLSL Shader Architecture (Three.js, GLSL, Custom Shaders)",
+    "Full-Stack Web & Open Source Tooling (React, TypeScript, Vite, Tailwind CSS, Python PyPI)"
+  ]
+}

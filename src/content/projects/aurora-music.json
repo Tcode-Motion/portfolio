@@ -1,0 +1,19 @@
+{
+  "id": "aurora-music",
+  "featured": true,
+  "title": "Aurora Music Player",
+  "tagline": "A modern offline Android music player focused on beautiful UI, performance, and user experience.",
+  "category": "Android Application",
+  "description": "Aurora Music Player delivers a premium offline listening experience with smooth animations, Material Design 3, intelligent media library management, and high audio engine performance.",
+  "problem": "Offline music players often feel outdated or lack modern Material UI and high-performance playback management.",
+  "solution": "Built using Flutter & Dart with Material Design 3 guidelines, custom audio playback engine, and intelligent media indexing.",
+  "techStack": ["Flutter", "Dart", "Android SDK", "Material Design 3"],
+  "githubUrl": "https://github.com/Tcode-Motion",
+  "highlights": [
+    "Modern Material 3 fluid interface",
+    "High-performance local media library indexing",
+    "Advanced audio playback engine architecture",
+    "Equalizer & DSP integration architecture"
+  ],
+  "interactiveType": "3d-device"
+}

@@ -1,0 +1,245 @@
+[
+  {
+    "id": "techscript",
+    "featured": true,
+    "layout": "featured",
+    "title": "TechScript",
+    "tagline": "A modern programming language and developer ecosystem built from the ground up in Rust.",
+    "category": "Compiler • Developer Tool",
+    "color": "#c4ff36",
+    "description": "TechScript is a complete programming language ecosystem featuring a custom Lexer, Parser, AST architecture, Stack-based Bytecode VM, Standard library, and Package manager — all engineered in Rust for maximum performance.",
+    "problem": "Most modern languages are either overly complex, hard to extend, or lack an integrated developer-first toolchain.",
+    "solution": "Built from scratch in Rust with a modular Cargo workspace architecture. Features a custom Lexer & Parser producing a strict AST, a Stack-based Bytecode VM, a Standard library, and a Package manager foundation.",
+    "techStack": ["Rust", "Cargo Workspaces", "Compiler Design", "AST", "Bytecode VM", "CLI Tooling", "TypeScript"],
+    "githubUrl": "https://github.com/Tcode-Motion/techscript",
+    "githubRepo": "Tcode-Motion/techscript",
+    "liveUrl": "https://techscript.is-a.dev/",
+    "features": [
+      "Custom Lexer & Parser producing strict AST",
+      "Stack-based Bytecode Virtual Machine runtime",
+      "Modular Cargo workspace architecture",
+      "Package manager foundation & Standard Library",
+      "Future LLVM backend & Language Server (LSP) roadmap"
+    ],
+    "architecture": "Lexer → Parser → AST → Bytecode Compiler → Stack VM → Runtime Output",
+    "timeline": "2024 — Active development",
+    "challenges": [
+      "Designing a type system that balances simplicity with expressiveness",
+      "Implementing a stack-based VM from scratch in Rust",
+      "Managing Cargo workspace dependencies for 6+ crates"
+    ],
+    "optimizations": [
+      "Zero-copy string slicing in the Lexer",
+      "Arena allocation for AST nodes",
+      "Bytecode instruction folding for constant expressions"
+    ],
+    "roadmap": [
+      { "phase": "Phase 1", "title": "Core Rust Lexer, Parser & Cargo Workspaces Architecture", "status": "completed" },
+      { "phase": "Phase 2", "title": "TechScript v2.0 AST Generator & Stack Bytecode VM Runtime", "status": "completed" },
+      { "phase": "Phase 3", "title": "Package Manager Foundation (tspkg) & Standard Library Modules", "status": "completed" },
+      { "phase": "Phase 4", "title": "In-Browser WebAssembly Playground & Interactive Sandbox Execution", "status": "completed" },
+      { "phase": "Phase 5", "title": "LLVM IR Emitter & Language Server Protocol (LSP) IDE Server Integration", "status": "in-progress" }
+    ],
+    "interactiveType": "playground"
+  },
+  {
+    "id": "novos",
+    "featured": true,
+    "layout": "featured",
+    "title": "NovOS",
+    "tagline": "A futuristic web-based desktop operating system with neomorphic window management.",
+    "category": "Web OS • Operating System",
+    "color": "#38bdf8",
+    "description": "NovOS is a full web-based operating system providing a reactive desktop interface, custom window manager, virtual file system, taskbar app launcher, and built-in system app ecosystem in React & TypeScript.",
+    "problem": "Standard web portfolios feel flat, static, and fail to showcase desktop-grade state management and windowing systems.",
+    "solution": "Engineered a custom windowing engine with draggable floating viewports, virtual file system, theme customization, and an integrated suite of desktop applications.",
+    "techStack": ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "Zustand", "Vite"],
+    "githubUrl": "https://github.com/Tcode-Motion/NovOS",
+    "githubRepo": "Tcode-Motion/NovOS",
+    "liveUrl": "https://tcode-motion.github.io/NovOS/",
+    "features": [
+      "Custom reactive window manager with maximize/minimize/snap",
+      "Virtual File System with folder hierarchy & file previews",
+      "Taskbar app launcher & dynamic system tray",
+      "Neomorphic dark glass design system",
+      "Built-in terminal emulator & system utilities"
+    ],
+    "architecture": "React Desktop Shell → Window Manager → Virtual FS → State Stores → App Renders",
+    "timeline": "2024 — Open Source Release",
+    "challenges": [
+      "Managing z-index ordering & active window focus states across multiple apps",
+      "Implementing smooth 60fps window dragging and resizing performance",
+      "Building an in-memory virtual file system with persistent state"
+    ],
+    "optimizations": [
+      "Virtual DOM window isolation to prevent re-renders",
+      "GPU-accelerated transform CSS for window physics",
+      "Lazy loading application sub-modules"
+    ],
+    "roadmap": [
+      { "phase": "Phase 1", "title": "Reactive Window Manager with Maximize, Snap & Focus Engine", "status": "completed" },
+      { "phase": "Phase 2", "title": "Virtual File System with Folder Hierarchy & Previews", "status": "completed" },
+      { "phase": "Phase 3", "title": "Neomorphic Dark Glass System & Taskbar App Launcher", "status": "completed" },
+      { "phase": "Phase 4", "title": "In-Browser WebAssembly Terminal Execution Engine", "status": "in-progress" },
+      { "phase": "Phase 5", "title": "Cloud Sync Infrastructure & Multi-Monitor Workspaces", "status": "planned" }
+    ],
+    "interactiveType": "3d-device"
+  },
+  {
+    "id": "aurora-os",
+    "featured": true,
+    "layout": "featured",
+    "title": "Aurora-OS.js",
+    "tagline": "Extensible web OS game and hacking simulator framework in TypeScript.",
+    "category": "Web OS • Game Framework",
+    "color": "#a855f7",
+    "description": "Aurora OS.js is an extensible web OS game and hacking simulator framework. Provides a virtual OS experience with scripting, sandboxed apps, interactive terminals, and gameplay mechanics.",
+    "problem": "Building complex web OS simulators requires huge boilerplate for process isolation and app sandboxing.",
+    "solution": "Built a modular web OS architecture with a virtual process scheduler, terminal emulator, and custom app registration system.",
+    "techStack": ["TypeScript", "React", "State Machine", "Canvas API", "WebGL"],
+    "githubUrl": "https://github.com/Tcode-Motion/Aurora-OS.js",
+    "githubRepo": "Tcode-Motion/Aurora-OS.js",
+    "liveUrl": "https://mental-os.github.io/Aurora-OS.js/",
+    "features": [
+      "Virtual process scheduler & app execution framework",
+      "Extensible terminal interface with custom command scripts",
+      "Glassmorphism UI design system",
+      "Sandboxed gameplay & hacking simulator mechanics"
+    ],
+    "architecture": "Kernel → Shell → App Sandbox → Window Manager → Viewport",
+    "timeline": "2024",
+    "challenges": [
+      "Sandboxing virtual app execution without polluting global scope",
+      "Designing a pluggable command registry for the terminal"
+    ],
+    "optimizations": [
+      "Dynamic module imports for app packages",
+      "Optimized DOM event delegation"
+    ],
+    "roadmap": [
+      { "phase": "Phase 1", "title": "Virtual Kernel & Shell Execution Framework", "status": "completed" },
+      { "phase": "Phase 2", "title": "Pluggable Terminal Emulator & Command Engine", "status": "completed" },
+      { "phase": "Phase 3", "title": "App Sandboxing & Interactive Hacking Gameplay Engine", "status": "in-progress" }
+    ],
+    "interactiveType": "architecture-diagram"
+  },
+  {
+    "id": "os-wallpapers",
+    "featured": false,
+    "layout": "standard",
+    "title": "OS Wallpapers",
+    "tagline": "Collection of minimalist wallpapers tailored for operating system interfaces.",
+    "category": "Design Assets • Collection",
+    "color": "#ec4899",
+    "description": "A hand-crafted collection of ambient wallpapers and background textures designed specifically for custom Linux setups, Android ROMs, and desktop operating systems.",
+    "problem": "Standard desktop backgrounds clash with developer IDEs and dark mode UI elements.",
+    "solution": "Curated a dedicated set of deep-contrast, low-distraction background assets optimized for OLED displays.",
+    "techStack": ["Design", "Vector Art", "Digital Media", "GitHub Pages"],
+    "githubUrl": "https://github.com/Tcode-Motion/os-wallpapers",
+    "githubRepo": "Tcode-Motion/os-wallpapers",
+    "liveUrl": "https://tcode-motion.github.io/os-wallpapers/",
+    "features": [
+      "Minimalist OLED dark backgrounds",
+      "High contrast ratios for crisp text visibility",
+      "Multiple aspect ratio formats (16:9, 21:9, Mobile)"
+    ],
+    "architecture": "Vector Source → Export Engine → Asset Repository → GitHub Pages",
+    "timeline": "2024",
+    "challenges": ["Maintaining consistent color palettes across display types"],
+    "optimizations": ["Lossless PNG & WebP compression"],
+    "roadmap": [
+      { "phase": "Phase 1", "title": "Minimalist OLED Dark Wallpaper Collection", "status": "completed" },
+      { "phase": "Phase 2", "title": "Multi-Aspect Ratio Optimization Pipeline", "status": "completed" },
+      { "phase": "Phase 3", "title": "Community Submission Portal & Automated Processing", "status": "in-progress" }
+    ]
+  },
+  {
+    "id": "arc-reactor-3d",
+    "featured": false,
+    "layout": "standard",
+    "title": "ARC Reactor 3D",
+    "tagline": "Interactive 3D Iron Man ARC Reactor rendering engine in Three.js & TypeScript.",
+    "category": "3D Graphics • WebGL",
+    "color": "#00f2fe",
+    "description": "An interactive 3D WebGL experience rendering a high-detail Iron Man ARC Reactor with customizable energy core glow, rotating metallic rings, and dynamic lighting effects.",
+    "problem": "Complex 3D mechanical models require heavy geometry and shader tuning for 60fps web performance.",
+    "solution": "Utilized custom GLSL shaders and optimized Three.js geometries for realistic energy core glow and physical metallic rendering.",
+    "techStack": ["Three.js", "TypeScript", "WebGL", "GLSL Shaders", "Vite"],
+    "githubUrl": "https://github.com/Tcode-Motion/arc-reactor-3d",
+    "githubRepo": "Tcode-Motion/arc-reactor-3d",
+    "liveUrl": "https://tcode-motion.github.io/arc-reactor-3d/",
+    "features": [
+      "Real-time 3D metallic mechanical ring rotation",
+      "Custom GLSL bloom & energy core shader effects",
+      "Interactive mouse & touch orbit control"
+    ],
+    "architecture": "Three.js Scene → GLSL Energy Shader → Metallic Ring Mesh → Canvas Renderer",
+    "timeline": "2024",
+    "challenges": ["Simulating realistic glowing energy core shaders at 60fps"],
+    "optimizations": ["Instanced mesh rendering & shader uniform caching"],
+    "roadmap": [
+      { "phase": "Phase 1", "title": "3D Mesh Geometry & Ring Physics Rotation Engine", "status": "completed" },
+      { "phase": "Phase 2", "title": "Custom GLSL Bloom Core Energy Shaders", "status": "completed" },
+      { "phase": "Phase 3", "title": "Audio-Reactive Pulse Mode Integration", "status": "in-progress" }
+    ]
+  },
+  {
+    "id": "vortyx",
+    "featured": false,
+    "layout": "standard",
+    "title": "Vortyx",
+    "tagline": "High-performance CLI utility and system performance tool.",
+    "category": "CLI Tool • Utility",
+    "color": "#f59e0b",
+    "description": "Vortyx is a lightweight system performance utility designed for monitoring system resources, process trees, and runtime metrics with zero overhead.",
+    "problem": "Existing system monitoring tools consume heavy memory and introduce lag during intensive workloads.",
+    "solution": "Engineered a low-footprint CLI utility focused on ultra-fast process inspection and CPU/RAM telemetry.",
+    "techStack": ["Rust", "CLI", "System Telemetry", "Process Inspection"],
+    "githubUrl": "https://github.com/Tcode-Motion/Vortyx",
+    "githubRepo": "Tcode-Motion/Vortyx",
+    "liveUrl": "http://techscript.is-a.dev/Vortyx/",
+    "features": [
+      "Real-time CPU, RAM, & process metrics",
+      "Zero-dependency binary execution",
+      "Customizable terminal dashboard"
+    ],
+    "architecture": "Kernel Metrics API → Polling Engine → Terminal Renderer → Dashboard Output",
+    "timeline": "2024",
+    "challenges": ["Cross-platform kernel metrics extraction"],
+    "optimizations": ["Asynchronous non-blocking metrics polling"],
+    "roadmap": [
+      { "phase": "Phase 1", "title": "Rust Core Engine & Real-Time Telemetry CLI", "status": "completed" },
+      { "phase": "Phase 2", "title": "Zero-Dependency Cross-Platform Binary Target", "status": "completed" },
+      { "phase": "Phase 3", "title": "Network Throughput & Storage I/O Monitoring Dashboard", "status": "in-progress" }
+    ]
+  },
+  {
+    "id": "neosketch",
+    "featured": false,
+    "layout": "standard",
+    "title": "NeoSketch",
+    "tagline": "Offline AI-powered artistic photo editor for Android & Windows.",
+    "category": "Mobile App • Flutter & Rust",
+    "color": "#00b4ab",
+    "description": "NeoSketch is an offline AI-powered artistic photo editor for Android and Windows built with Flutter, Rust, and ONNX runtime for privacy-first image processing.",
+    "problem": "Cloud-based AI photo editors compromise user privacy and require constant internet connectivity.",
+    "solution": "Engineered an offline image processing pipeline leveraging Flutter UI, Rust FFI, and ONNX neural network models.",
+    "techStack": ["Flutter", "Dart", "Rust", "ONNX Runtime", "Android", "Windows"],
+    "githubUrl": "https://github.com/Tcode-Motion/NeoSketch",
+    "githubRepo": "Tcode-Motion/NeoSketch",
+    "features": [
+      "100% offline AI artistic filters & style transfer",
+      "Cross-platform Flutter UI for Android & Windows",
+      "High-speed Rust native FFI bridge"
+    ],
+    "architecture": "Flutter UI → Dart FFI → Rust Native Core → ONNX Neural Model Execution",
+    "timeline": "2024",
+    "challenges": ["Optimizing ONNX neural model execution speed on mobile GPUs"],
+    "optimizations": ["Zero-copy memory sharing between Dart and Rust FFI"],
+    "roadmap": [
+      { "phase": "Phase 1", "title": "Flutter UI & Cross-Platform Window Frame", "status": "completed" },
+      { "phase": "Phase 2", "title": "Rust FFI Bridge & ONNX Model Execution Core", "status": "completed" },
+      { "phase": "Phase 3", "title": "Batch Image Processing & Custom Filter Training", "status": "in-progress" }
+    ]
+  }
+]
