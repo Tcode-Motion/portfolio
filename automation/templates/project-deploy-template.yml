@@ -1,4 +1,4 @@
-# Reusable GitHub Actions Workflow for Sub-Projects
+# Redesigned Reusable GitHub Actions Workflow for Sub-Projects
 # Copy this file to your sub-project repo at `.github/workflows/deploy.yml`
 
 name: Build, Verify, and Sync to Portfolio
@@ -22,13 +22,15 @@ jobs:
           node-version: 20
           cache: 'npm'
 
+      - name: Install tree utility
+        run: sudo apt-get update && sudo apt-get install -y tree
+
       # =========================================================================
-      # 1. Quality Gates (Lint, Test, Build)
+      # 1. Quality Gates (Install, Lint, Test, Build)
       # =========================================================================
       
       - name: Install Dependencies
         run: npm ci --legacy-peer-deps
-        # For Rust project use: cargo build / cargo test
         
       - name: Run Code Formatter Check
         run: npx prettier --check . || echo "Format check warning"
@@ -43,6 +45,28 @@ jobs:
         run: npm run build
 
       # =========================================================================
+      # Debug Step: Print Build Output Directory Tree
+      # =========================================================================
+
+      - name: Print Build Directory Tree (Debug)
+        run: |
+          echo "Printing project build directory structure:"
+          tree -I 'node_modules|.git' dist/ || tree -I 'node_modules|.git' build/ || ls -R
+
+      # =========================================================================
+      # Upload Project Build Artifacts
+      # =========================================================================
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: project-dist
+          path: |
+            dist/
+            build/
+          if-no-files-found: error
+
+      # =========================================================================
       # 2. Security Scans
       # =========================================================================
 
@@ -53,10 +77,10 @@ jobs:
           base: ""
           head: "HEAD"
           extra_args: --debug --only-verified
-        continue-on-error: true # Warning only, customize as needed
+        continue-on-error: true # Warning only
 
       # =========================================================================
-      # 3. Synchronize with Central Portfolio
+      # 3. Synchronize with Central Portfolio Hub
       # =========================================================================
 
       - name: Generate GitHub App Token for Portfolio Access
@@ -74,37 +98,60 @@ jobs:
           path: portfolio
           persist-credentials: true
 
+      - name: Print Portfolio Root Tree Before Merge (Debug)
+        run: |
+          echo "Printing portfolio structure before copying project files:"
+          tree -L 2 -I 'node_modules|.git' portfolio/
+
       - name: Run Project Registration Script
         env:
           GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
           node portfolio/scripts/register-project.cjs --metadata portfolio-metadata.json --portfolio portfolio
 
-      - name: Run Build Post-Processing (Rewrite Asset Paths)
-        run: |
-          PROJECT_ID=$(jq -r '.id' portfolio-metadata.json)
-          node portfolio/scripts/post-process-build.cjs dist $PROJECT_ID
-
-      - name: Verify Build index.html Exists
-        run: |
-          if [ ! -f dist/index.html ]; then
-            echo "❌ Validation Error: Build output is missing index.html!"
-            exit 1
-          fi
-
       - name: Deploy Compiled Site to Portfolio Folder
         run: |
           # Extract project ID/directory name from metadata
           PROJECT_ID=$(jq -r '.id' portfolio-metadata.json)
           
-          # Clean old files and recreate directory in portfolio
+          # Clean old files and recreate directory in portfolio root
           rm -rf portfolio/$PROJECT_ID
           mkdir -p portfolio/$PROJECT_ID
           
-          # Copy new build files (adjust source 'dist/' if project builds elsewhere)
-          cp -r dist/* portfolio/$PROJECT_ID/
+          # Copy new build files (check whether output is dist or build)
+          if [ -d "dist" ]; then
+            cp -r dist/* portfolio/$PROJECT_ID/
+          elif [ -d "build" ]; then
+            cp -r build/* portfolio/$PROJECT_ID/
+          else
+            echo "❌ Error: Build output directory not found."
+            exit 1
+          fi
           
           echo "PROJECT_ID=$PROJECT_ID" >> $GITHUB_ENV
+
+      - name: Run Build Post-Processing (Rewrite Asset Paths)
+        run: |
+          node portfolio/scripts/post-process-build.cjs portfolio/${{ env.PROJECT_ID }} ${{ env.PROJECT_ID }}
+
+      # =========================================================================
+      # Quality Gate: Fail if portfolio/<project-name>/index.html is missing
+      # =========================================================================
+
+      - name: Verify Synced index.html Exists
+        run: |
+          TARGET_INDEX="portfolio/${{ env.PROJECT_ID }}/index.html"
+          if [ ! -f "$TARGET_INDEX" ]; then
+            echo "❌ Critical Error: Sync failed. $TARGET_INDEX does not exist!"
+            exit 1
+          else
+            echo "✓ Verified: $TARGET_INDEX exists."
+          fi
+
+      - name: Print Portfolio Root Tree After Merge (Debug)
+        run: |
+          echo "Printing portfolio structure after copying project files:"
+          tree -L 3 -I 'node_modules|.git' portfolio/
 
       - name: Commit and Push Changes to Portfolio
         run: |
@@ -114,7 +161,7 @@ jobs:
           
           # Stage metadata and project directory
           git add src/content/projects/showcase.json
-          git add $PROJECT_ID/
+          git add ${{ env.PROJECT_ID }}/
           
           # Check if there are changes to commit
           if git diff --staged --quiet; then

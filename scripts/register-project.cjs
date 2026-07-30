@@ -25,6 +25,12 @@ const run = async () => {
     const metadataRaw = fs.readFileSync(projectMetadataPath, 'utf8');
     const metadata = JSON.parse(metadataRaw);
     
+    // Enforce correct liveUrl formatting for portfolio subfolder projects
+    if (metadata.id && metadata.id !== 'techscript') {
+      metadata.liveUrl = `https://tanmoy.is-a.dev/${metadata.id}/`;
+      console.log(`Enforced liveUrl for project '${metadata.id}': ${metadata.liveUrl}`);
+    }
+    
     // 2. Fetch Github stats if repository is defined
     const githubStats = {
       stars: 0,

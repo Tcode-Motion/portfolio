@@ -22,21 +22,33 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout Portfolio Hub
         uses: actions/checkout@v4
 
-      - name: Set up Node
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
 
-      - name: Install dependencies
-        run: npm ci --legacy-peer-deps
+      - name: Install tree utility
+        run: sudo apt-get update && sudo apt-get install -y tree
+
+      # =========================================================================
+      # Debug Step: Print Repo Root Tree
+      # =========================================================================
+
+      - name: Print Repository Tree (Debug)
+        run: |
+          echo "Printing repository structure (shows synced sub-project folders):"
+          tree -L 2 -I 'node_modules|.git'
 
       # =========================================================================
       # 1. Quality Gates (Format, Lint, Type Check)
       # =========================================================================
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
       
       - name: Check Code Formatting (Prettier)
         run: npx prettier --check . || echo "Format check warning"
@@ -55,11 +67,16 @@ jobs:
         run: node scripts/generate-seo-assets.cjs --portfolio .
 
       # =========================================================================
-      # 3. Build Web Application
+      # 3. Build Main Web Application
       # =========================================================================
 
       - name: Build Portfolio Hub
         run: npm run build
+
+      - name: Print dist/ Tree Before Merging Sub-projects (Debug)
+        run: |
+          echo "Printing dist folder before merging static project builds:"
+          tree -L 2 dist/
 
       # =========================================================================
       # 4. Merge Sub-Project Build Folders
@@ -80,6 +97,26 @@ jobs:
         shell: bash
 
       # =========================================================================
+      # Debug Step: Print final dist/ tree showing merged projects
+      # =========================================================================
+
+      - name: Print Final dist/ Tree (Debug)
+        run: |
+          echo "Printing final dist directory structure showing merged projects:"
+          tree -L 3 dist/
+
+      # =========================================================================
+      # Upload Final Compiled Build as Artifact
+      # =========================================================================
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: portfolio-dist
+          path: dist/
+          if-no-files-found: error
+
+      # =========================================================================
       # 4.5 Validate Deployment Structure (Prevent 404s)
       # =========================================================================
 
@@ -90,7 +127,7 @@ jobs:
       # 5. Deploy to GitHub Pages
       # =========================================================================
 
-      - name: Upload artifact
+      - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist

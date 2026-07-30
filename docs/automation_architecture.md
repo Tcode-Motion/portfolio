@@ -22,15 +22,19 @@ Below is the orchestration flow when a developer runs `git push` on a project re
 graph TD
     A[Project Repo: git push] --> B(Project GitHub Action)
     B --> C[Run quality gates: Lint, Test, Build]
-    C --> D[Security Scans: CodeQL, Secrets, Vulns]
+    C --> D[Scan Secrets & print tree]
     D --> E[Clone Portfolio Repo]
-    E --> F[Run register-project.js script]
-    F --> G[Copy build output to portfolio/project-name/]
-    G --> H[Git commit & push to portfolio main]
-    H --> I(Portfolio GitHub Action)
-    I --> J[Run Quality Gates & SEO Generators]
-    J --> K[Copy subfolders to dist/]
-    K --> L[Deploy dist/ to GitHub Pages]
+    E --> F[Run register-project.cjs script]
+    F --> G[Copy project build output to portfolio/project-name/]
+    G --> H[Run post-process-build.cjs path rewriter]
+    H --> I[Verify portfolio/project-name/index.html exists]
+    I --> J[Git commit & push to portfolio main]
+    J --> K(Portfolio GitHub Action)
+    K --> L[Run Quality Gates & SEO Generators]
+    L --> M[Vite build portfolio]
+    M --> N[Copy subfolders to dist/]
+    N --> O[Verify dist/project-name/index.html exists for every project]
+    O --> P[Deploy dist/ to GitHub Pages]
 ```
 
 ### Path Mapping
@@ -52,8 +56,10 @@ portfolio/
 │   └── templates/
 │       └── project-deploy-template.yml  # Reusable template for sub-projects
 ├── scripts/
-│   ├── register-project.js     # Updates showcase.json with metadata & GitHub stats
-│   └── generate-seo-assets.js  # Dynamically generates sitemap, robots.txt, RSS, and search index
+│   ├── register-project.cjs     # Updates showcase.json with metadata & GitHub stats
+│   ├── generate-seo-assets.cjs  # Dynamically generates sitemap, robots.txt, RSS, and search index
+│   ├── post-process-build.cjs   # Rewrites root-relative URLs in sub-project build output
+│   └── validate-deployment.cjs  # Strict validation gate that fails deployment if folders/files are missing
 ├── src/
 │   ├── content/
 │   │   └── projects/
@@ -61,104 +67,36 @@ portfolio/
 │   └── ...
 ├── public/
 │   └── CNAME                   # Custom domain (tanmoy.is-a.dev)
-├── vortex/                      # Automatically pushed compiled build from vortex repo
-│   └── index.html
-├── aurora/                      # Automatically pushed compiled build from aurora repo
-│   └── index.html
-└── ...
-```
-
-### Sub-Project Repository Layout (e.g. `vortex/`)
-```
-vortex/
-├── .github/
-│   └── workflows/
-│       └── deploy.yml          # Copy of project-deploy-template.yml
-├── portfolio-metadata.json      # Metadata file describing the project
-├── src/
-├── package.json
+├── vortex/                      # Automatically pushed compiled build from vortex repo (contains index.html)
+├── aurora/                      # Automatically pushed compiled build from aurora repo (contains index.html)
 └── ...
 ```
 
 ---
 
-## 4. Automation Components
+## 4. Redesigned Deployment Strategy & Path Correction
 
-### A. Dynamic Project Registration (`register-project.js`)
-When a sub-project finishes its build, it clones the `portfolio` repo and invokes `register-project.js`. The script:
-1. Parses the project's `portfolio-metadata.json`.
-2. Queries the GitHub API to fetch:
-   - Stars, forks, and open issues.
-   - Contributor count.
-   - Latest release version and release notes.
-3. Automatically inserts or updates the project entry inside `portfolio/src/content/projects/showcase.json`.
-4. Updates the "Last Updated" timestamp for the portfolio.
+### A. The 404 Problem
+Vite and other React/Next frameworks by default compile assets with absolute root paths (e.g. `src="/assets/index.js"`). If deployed under a portfolio subfolder (`tanmoy.is-a.dev/vortex/`), the browser attempts to fetch assets from the root domain (`tanmoy.is-a.dev/assets/index.js`), causing a 404.
 
-### B. SEO & Asset Generation (`generate-seo-assets.js`)
-Triggered during the portfolio's build workflow. The script:
-- Loops over `showcase.json` and local subdirectories containing an `index.html`.
-- Generates `sitemap.xml` including all subfolders (`/vortex`, `/aurora`, etc.) with correct canonical URLs.
-- Generates `robots.txt` pointing to the sitemap.
-- Generates `search-index.json` containing searchable metadata of all projects for high-speed client-side search.
-- Generates an RSS/Atom feed containing updates for releases and projects.
-
-### C. Build Isolation & Output Merging
-Vite normally clears the output directory `dist/` before writing its build. The updated portfolio workflow prevents this from deleting subfolder builds by building Vite first, and then copying all project subfolders (like `vortex/`, `aurora/`) into `dist/` before uploading to GitHub Pages.
+### B. Path Rewriter (`post-process-build.cjs`)
+To solve this automatically, the sub-project workflow executes `post-process-build.cjs` on the copied files in `portfolio/<project-name>/`.
+- **For HTML files**: Rewrites all root-relative `src`, `href`, and `content` attributes (e.g. `href="/favicon.ico"` becomes `href="/vortex/favicon.ico"`).
+- **For JS, CSS, JSON, WebManifest**: Rewrites common asset paths (e.g. `"/assets/"` ➔ `"/vortex/assets/"`).
 
 ---
 
-## 5. Security & GitHub Credentials
+## 5. Strict Quality Gates & Debugging
 
-### GitHub Authentication Design
-To allow sub-project repositories to push changes to the `portfolio` repository, we require authentication.
-- **Avoid Personal Access Tokens (PATs)**: PATs are tied to individual developer accounts and are difficult to rotate.
-- **Recommended: GitHub App**: Create a dedicated private GitHub App (e.g. "Portfolio Sync Bot") owned by your GitHub account:
-  1. Grant **Repository Permissions**:
-     - `Contents`: Read & Write (to push to the `portfolio` repo)
-     - `Metadata`: Read-Only
-  2. Install the App on your user account (limiting access to `portfolio` and your sub-project repos).
-  3. Download the Private Key and note the App ID.
-  4. In each sub-project repository, add:
-     - `PORTFOLIO_SYNC_APP_ID`: The App ID.
-     - `PORTFOLIO_SYNC_PRIVATE_KEY`: The App's private key.
-  
-Using a GitHub App allows you to generate short-lived installation access tokens automatically in the Actions workflow, making the system highly secure and compliant with least-privilege principles.
-
-### Required Secrets Summary
-
-| Secret Name | Location | Description |
-| :--- | :--- | :--- |
-| `PORTFOLIO_SYNC_APP_ID` | Sub-project repos | The App ID of the GitHub App |
-| `PORTFOLIO_SYNC_PRIVATE_KEY` | Sub-project repos | The Private Key of the GitHub App |
-| `GITHUB_TOKEN` | All repos | Handled automatically by GitHub Actions for local repo read/write |
+To prevent broken deployments:
+1. **Directory Tree Debugging**: Workflows install `tree` and print the directory trees before and after key steps (e.g. build directories, portfolio checkout, final merged `dist/` directory) to make debugging fast and transparent.
+2. **Sub-Project Validation**: In the project workflow, `Verify Synced index.html Exists` fails the build immediately if `portfolio/<project-name>/index.html` is missing after copying.
+3. **Portfolio Validation**: In the portfolio workflow, `Validate Deployed Files` matches the directory list with `showcase.json` and verifies that every project exists under `dist/<project-name>/index.html`. If any directory is missing or empty, **the deployment is aborted**.
 
 ---
 
-## 6. Optimization & Caching Strategy
+## 6. GitHub Authentication & Secrets
 
-To ensure builds run as quickly as possible and stay within GitHub Free limits (2,000 minutes/month):
-- **Dependencies Cache**: Use `actions/setup-node` with `cache: 'npm'` to cache `node_modules`. For Rust projects (like TechScript or Vortyx), use `Swatinem/rust-cache` to cache compiled target crates.
-- **Build Caching**: Cache Vite’s `.vite` cache directory if building large applications.
-- **MIME & Image Optimization**: Compress images during project builds (`imagemin-lint` or `vite-plugin-image-optimizer`) before pushing to the portfolio repo to minimize bandwidth usage and Git history bloating.
-
----
-
-## 7. Quality Gates & Error Policies
-
-Every project build must pass quality gates:
-1. **Linting**: Running `npm run lint` / `cargo clippy`.
-2. **Formatting**: Running `npx prettier --check .` / `cargo fmt --check`.
-3. **Type Check**: Running `npx tsc --noEmit`.
-4. **Security Scan**: Using CodeQL or `npm audit` / `cargo audit` to scan for known vulnerabilities.
-5. **Testing**: Running unit and integration tests.
-
-If any check fails, the workflow terminates immediately, preventing broken code or metadata from reaching the `portfolio` repository.
-
----
-
-## 8. Rollback and Error Recovery Strategy
-
-Since Git controls the entire automated pipeline, rollbacks are simple and instantaneous:
-- **How to Roll Back**: If a buggy version of `vortex` is pushed, go to the `portfolio` repository, revert the commit that added `vortex`, and push. The portfolio action will run and immediately deploy the previous stable version.
-- **Build Failures**: If a push to a project repository fails during build or lint steps, the workflow halts and does *not* push to the `portfolio` repo. The live portfolio site remains completely unaffected.
-- **Discord/Slack Webhooks**: Add a notification step at the end of the workflows to send instant alerts on failures.
+To allow sub-projects to commit to the `portfolio` repo, create a private **GitHub App** and add the credentials as repository secrets:
+- `PORTFOLIO_SYNC_APP_ID`: The App ID.
+- `PORTFOLIO_SYNC_PRIVATE_KEY`: The App's private key.
