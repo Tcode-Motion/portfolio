@@ -49,7 +49,7 @@ export const HomePage: React.FC = () => {
           '@type': 'Person',
           name: 'Tanmoy Majumder',
           alternateName: 'Tcode-Motion',
-          url: 'https://tcode-motion.vercel.app',
+          url: 'https://tanmoy.is-a.dev',
           jobTitle: 'Software Engineer & Creative Developer',
           sameAs: [
             'https://github.com/Tcode-Motion',

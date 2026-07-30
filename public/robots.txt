@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /src/
+Disallow: /node_modules/
+Disallow: /dist/
+
+Sitemap: https://tanmoy.is-a.dev/sitemap.xml

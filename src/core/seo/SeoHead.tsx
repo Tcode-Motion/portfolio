@@ -34,7 +34,7 @@ export const SeoHead: React.FC<SeoHeadProps> = ({
       canonical.setAttribute('rel', 'canonical');
       document.head.appendChild(canonical);
     }
-    const currentUrl = `https://tcode-motion.vercel.app${slug ? `/${slug.replace(/^\//, '')}` : ''}`;
+    const currentUrl = `https://tanmoy.is-a.dev${slug ? `/${slug.replace(/^\//, '')}` : ''}`;
     canonical.setAttribute('href', currentUrl);
 
     // 4. Inject JSON-LD Structured Data

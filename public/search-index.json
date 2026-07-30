@@ -1,0 +1,102 @@
+[
+  {
+    "id": "techscript",
+    "title": "TechScript",
+    "tagline": "A modern programming language and developer ecosystem built from the ground up in Rust.",
+    "category": "Compiler • Developer Tool",
+    "description": "TechScript is a complete programming language ecosystem featuring a custom Lexer, Parser, AST architecture, Stack-based Bytecode VM, Standard library, and Package manager — all engineered in Rust for maximum performance.",
+    "techStack": [
+      "Rust",
+      "Cargo Workspaces",
+      "Compiler Design",
+      "AST",
+      "Bytecode VM",
+      "CLI Tooling",
+      "TypeScript"
+    ]
+  },
+  {
+    "id": "novos",
+    "title": "NovOS",
+    "tagline": "A futuristic web-based desktop operating system with neomorphic window management.",
+    "category": "Web OS • Operating System",
+    "description": "NovOS is a full web-based operating system providing a reactive desktop interface, custom window manager, virtual file system, taskbar app launcher, and built-in system app ecosystem in React & TypeScript.",
+    "techStack": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+      "Zustand",
+      "Vite"
+    ]
+  },
+  {
+    "id": "aurora-os",
+    "title": "Aurora-OS.js",
+    "tagline": "Extensible web OS game and hacking simulator framework in TypeScript.",
+    "category": "Web OS • Game Framework",
+    "description": "Aurora OS.js is an extensible web OS game and hacking simulator framework. Provides a virtual OS experience with scripting, sandboxed apps, interactive terminals, and gameplay mechanics.",
+    "techStack": [
+      "TypeScript",
+      "React",
+      "State Machine",
+      "Canvas API",
+      "WebGL"
+    ]
+  },
+  {
+    "id": "os-wallpapers",
+    "title": "OS Wallpapers",
+    "tagline": "Collection of minimalist wallpapers tailored for operating system interfaces.",
+    "category": "Design Assets • Collection",
+    "description": "A hand-crafted collection of ambient wallpapers and background textures designed specifically for custom Linux setups, Android ROMs, and desktop operating systems.",
+    "techStack": [
+      "Design",
+      "Vector Art",
+      "Digital Media",
+      "GitHub Pages"
+    ]
+  },
+  {
+    "id": "arc-reactor-3d",
+    "title": "ARC Reactor 3D",
+    "tagline": "Interactive 3D Iron Man ARC Reactor rendering engine in Three.js & TypeScript.",
+    "category": "3D Graphics • WebGL",
+    "description": "An interactive 3D WebGL experience rendering a high-detail Iron Man ARC Reactor with customizable energy core glow, rotating metallic rings, and dynamic lighting effects.",
+    "techStack": [
+      "Three.js",
+      "TypeScript",
+      "WebGL",
+      "GLSL Shaders",
+      "Vite"
+    ]
+  },
+  {
+    "id": "vortyx",
+    "title": "Vortyx",
+    "tagline": "High-performance CLI utility and system performance tool.",
+    "category": "CLI Tool • Utility",
+    "description": "Vortyx is a lightweight system performance utility designed for monitoring system resources, process trees, and runtime metrics with zero overhead.",
+    "techStack": [
+      "Rust",
+      "CLI",
+      "System Telemetry",
+      "Process Inspection"
+    ]
+  },
+  {
+    "id": "neosketch",
+    "title": "NeoSketch",
+    "tagline": "Offline AI-powered artistic photo editor for Android & Windows.",
+    "category": "Mobile App • Flutter & Rust",
+    "description": "NeoSketch is an offline AI-powered artistic photo editor for Android and Windows built with Flutter, Rust, and ONNX runtime for privacy-first image processing.",
+    "techStack": [
+      "Flutter",
+      "Dart",
+      "Rust",
+      "ONNX Runtime",
+      "Android",
+      "Windows"
+    ]
+  }
+]

@@ -113,7 +113,7 @@ export const ResumeView: React.FC = () => {
 
             {/* Footer Note */}
             <div className="pt-6 border-t border-border-subtle flex items-center justify-between font-code text-xs text-content-tertiary">
-              <span>Interactive Portfolio: tcode-motion.vercel.app</span>
+              <span>Interactive Portfolio: tanmoy.is-a.dev</span>
               <span>Available for Global Roles</span>
             </div>
 
