@@ -44,36 +44,45 @@ export const HomePage: React.FC = () => {
       <SeoHead
         title="Tanmoy Majumder — Software Engineer, TechScript Creator & Open Source Developer"
         description="Official portfolio of Tanmoy Majumder (Tcode-Motion) — Rust developer, creator of the TechScript programming language, AI developer, full-stack engineer, and open source builder from West Bengal, India."
-        slug="/"
+        slug=""
         jsonLd={[
           {
             '@context': 'https://schema.org',
-            '@type': 'Person',
-            '@id': 'https://tanmoy.is-a.dev/#person',
-            name: 'Tanmoy Majumder',
-            alternateName: ['Tcode-Motion', 'Tanmoy', 'Tanmoy Developer'],
-            url: 'https://tanmoy.is-a.dev',
-            image: 'https://github.com/Tcode-Motion.png',
-            email: 'tcodemotion@gmail.com',
-            jobTitle: 'Software Engineer & TechScript Language Creator',
-            description: 'Rust developer, creator of TechScript programming language, open source engineer, AI developer, and full-stack software engineer from West Bengal, India.',
-            knowsAbout: ['Rust', 'TechScript', 'Compiler Design', 'AI Development', 'React', 'TypeScript', 'Systems Programming', 'Open Source'],
-            nationality: { '@type': 'Country', name: 'India' },
-            address: { '@type': 'PostalAddress', addressRegion: 'West Bengal', addressCountry: 'IN' },
-            sameAs: [
-              'https://github.com/Tcode-Motion',
-              'https://x.com/TanmoyMaju40558',
-              'https://youtube.com/@tcodemotin',
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'Who is Tanmoy Majumder?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Tanmoy Majumder (also known as Tcode-Motion) is an independent software engineer and open source developer from West Bengal, India. He specializes in Rust systems programming, compiler design, AI development, and 3D web experiences. He is the creator of the TechScript programming language.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'What is TechScript programming language?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'TechScript is a modern, plain-English inspired programming language created by Tanmoy Majumder and built from scratch in Rust. It includes a custom lexer, recursive descent AST parser, bytecode compiler, NaN-boxed stack-based virtual machine, and a Studio IDE.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'What projects has Tanmoy Majumder built?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Tanmoy Majumder has built TechScript (Rust programming language), NovOS (web-based desktop OS), Aurora-OS.js (web OS game framework), Vortyx (Rust CLI utility), NeoSketch (AI photo editor for Android), and ARC Reactor 3D (Three.js WebGL engine), among other open source projects.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'How can I hire Tanmoy Majumder?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'You can contact Tanmoy Majumder through his portfolio at https://tanmoy.is-a.dev/contact or via email at tcodemotion@gmail.com. He is available for software engineering roles, open source collaboration, and technical consulting globally.',
+                },
+              },
             ],
-            mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://tanmoy.is-a.dev/' },
-          },
-          {
-            '@context': 'https://schema.org',
-            '@type': 'ProfilePage',
-            '@id': 'https://tanmoy.is-a.dev/#profilepage',
-            name: 'Tanmoy Majumder — Developer Portfolio',
-            url: 'https://tanmoy.is-a.dev/',
-            about: { '@id': 'https://tanmoy.is-a.dev/#person' },
           },
         ]}
       />
