@@ -52,7 +52,7 @@ jobs:
       # =========================================================================
       
       - name: Generate Sitemap, Robots.txt, RSS, and Search Index
-        run: node scripts/generate-seo-assets.js --portfolio .
+        run: node scripts/generate-seo-assets.cjs --portfolio .
 
       # =========================================================================
       # 3. Build Web Application

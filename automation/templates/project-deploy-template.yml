@@ -78,12 +78,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
-          node portfolio/scripts/register-project.js --metadata portfolio-metadata.json --portfolio portfolio
+          node portfolio/scripts/register-project.cjs --metadata portfolio-metadata.json --portfolio portfolio
 
       - name: Deploy Compiled Site to Portfolio Folder
         run: |
           # Extract project ID/directory name from metadata
-          PROJECT_ID=$(node -e "console.log(require('./portfolio-metadata.json').id)")
+          PROJECT_ID=$(jq -r '.id' portfolio-metadata.json)
           
           # Clean old files and recreate directory in portfolio
           rm -rf portfolio/$PROJECT_ID
