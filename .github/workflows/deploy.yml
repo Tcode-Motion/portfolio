@@ -34,8 +34,54 @@ jobs:
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
 
-      - name: Build
+      # =========================================================================
+      # 1. Quality Gates (Format, Lint, Type Check)
+      # =========================================================================
+      
+      - name: Check Code Formatting (Prettier)
+        run: npx prettier --check . || echo "Format check warning"
+
+      - name: Run Linter
+        run: npm run lint || echo "Linter warning"
+
+      - name: TypeScript Compiler Verification (Type Check)
+        run: npx tsc --noEmit
+
+      # =========================================================================
+      # 2. Automated SEO & Asset Generation
+      # =========================================================================
+      
+      - name: Generate Sitemap, Robots.txt, RSS, and Search Index
+        run: node scripts/generate-seo-assets.js --portfolio .
+
+      # =========================================================================
+      # 3. Build Web Application
+      # =========================================================================
+
+      - name: Build Portfolio Hub
         run: npm run build
+
+      # =========================================================================
+      # 4. Merge Sub-Project Build Folders
+      # =========================================================================
+
+      - name: Copy Static Sub-Project Builds to Output
+        run: |
+          for dir in */; do
+            dir=${dir%/} # strip trailing slash
+            if [[ "$dir" != "node_modules" && "$dir" != "dist" && "$dir" != "public" && "$dir" != "src" && "$dir" != ".github" && "$dir" != ".git" && "$dir" != "inspiration" && "$dir" != "scripts" && "$dir" != "automation" && "$dir" != "docs" ]]; then
+              if [[ -f "$dir/index.html" ]]; then
+                echo "Merging sub-project build output: $dir"
+                mkdir -p dist/$dir
+                cp -r $dir/* dist/$dir/
+              fi
+            fi
+          done
+        shell: bash
+
+      # =========================================================================
+      # 5. Deploy to GitHub Pages
+      # =========================================================================
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

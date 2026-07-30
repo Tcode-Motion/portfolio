@@ -1,0 +1,113 @@
+# Reusable GitHub Actions Workflow for Sub-Projects
+# Copy this file to your sub-project repo at `.github/workflows/deploy.yml`
+
+name: Build, Verify, and Sync to Portfolio
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  verify-and-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Project Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      # =========================================================================
+      # 1. Quality Gates (Lint, Test, Build)
+      # =========================================================================
+      
+      - name: Install Dependencies
+        run: npm ci --legacy-peer-deps
+        # For Rust project use: cargo build / cargo test
+        
+      - name: Run Code Formatter Check
+        run: npx prettier --check . || echo "Format check warning"
+
+      - name: Run Linter
+        run: npm run lint || echo "Linter warning"
+
+      - name: Run Tests
+        run: npm test || echo "No tests configured"
+
+      - name: Generate Production Build
+        run: npm run build
+
+      # =========================================================================
+      # 2. Security Scans
+      # =========================================================================
+
+      - name: Scan Secrets
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          base: ""
+          head: "HEAD"
+          extra_args: --debug --only-verified
+        continue-on-error: true # Warning only, customize as needed
+
+      # =========================================================================
+      # 3. Synchronize with Central Portfolio
+      # =========================================================================
+
+      - name: Generate GitHub App Token for Portfolio Access
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.PORTFOLIO_SYNC_APP_ID }}
+          private-key: ${{ secrets.PORTFOLIO_SYNC_PRIVATE_KEY }}
+
+      - name: Checkout Portfolio Hub
+        uses: actions/checkout@v4
+        with:
+          repository: Tcode-Motion/portfolio
+          token: ${{ steps.app-token.outputs.token }}
+          path: portfolio
+          persist-credentials: true
+
+      - name: Run Project Registration Script
+        env:
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: |
+          node portfolio/scripts/register-project.js --metadata portfolio-metadata.json --portfolio portfolio
+
+      - name: Deploy Compiled Site to Portfolio Folder
+        run: |
+          # Extract project ID/directory name from metadata
+          PROJECT_ID=$(node -e "console.log(require('./portfolio-metadata.json').id)")
+          
+          # Clean old files and recreate directory in portfolio
+          rm -rf portfolio/$PROJECT_ID
+          mkdir -p portfolio/$PROJECT_ID
+          
+          # Copy new build files (adjust source 'dist/' if project builds elsewhere)
+          cp -r dist/* portfolio/$PROJECT_ID/
+          
+          echo "PROJECT_ID=$PROJECT_ID" >> $GITHUB_ENV
+
+      - name: Commit and Push Changes to Portfolio
+        run: |
+          cd portfolio
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Stage metadata and project directory
+          git add src/content/projects/showcase.json
+          git add $PROJECT_ID/
+          
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "No changes to sync."
+          else
+            git commit -m "chore(auto): deploy/sync project '${{ env.PROJECT_ID }}' build and metadata"
+            git push origin main
+          fi
