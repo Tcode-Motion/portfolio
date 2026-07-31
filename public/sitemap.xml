@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
->
-  <!-- Homepage — highest priority, entity anchor for Tanmoy Majumder -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!--
+    NOTE: tanmoy.is-a.dev is a single-page React application deployed on GitHub Pages.
+    All content (About, Projects, TechScript, Contact) lives on the homepage as
+    scrollable sections — there are no separate HTML files for sub-routes.
+
+    For Google Search Console, only the homepage URL is submitted.
+    Section anchors (#about, #work, #techscript, #contact) are used for internal
+    navigation but are not separately indexable pages.
+  -->
+
+  <!-- Homepage — the only real HTML document served -->
   <url>
     <loc>https://tanmoy.is-a.dev/</loc>
     <lastmod>2026-07-31T18:00:00+05:30</lastmod>
@@ -11,35 +19,4 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- Projects — "Tanmoy Majumder projects" is the least-contested phrase found in audit -->
-  <url>
-    <loc>https://tanmoy.is-a.dev/projects</loc>
-    <lastmod>2026-07-31T18:00:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- TechScript — unique entity page, best disambiguation signal -->
-  <url>
-    <loc>https://tanmoy.is-a.dev/techscript</loc>
-    <lastmod>2026-07-31T18:00:00+05:30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- About — E-E-A-T signal, bio and background for Tanmoy Majumder -->
-  <url>
-    <loc>https://tanmoy.is-a.dev/about</loc>
-    <lastmod>2026-07-31T18:00:00+05:30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Contact -->
-  <url>
-    <loc>https://tanmoy.is-a.dev/contact</loc>
-    <lastmod>2026-07-31T18:00:00+05:30</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
 </urlset>
