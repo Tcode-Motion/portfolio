@@ -59,7 +59,7 @@ export const HeroModule: React.FC = () => {
               <div className="flex items-center gap-2 mb-6">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#c4ff36]" />
                 <span className="font-code text-xs tracking-widest text-[#a1a1aa] uppercase">
-                  SOFTWARE ENGINEER
+                  Coder · AI App Builder · Open Source
                 </span>
               </div>
             </FadeIn>

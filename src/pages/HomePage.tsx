@@ -42,8 +42,8 @@ export const HomePage: React.FC = () => {
   return (
     <>
       <SeoHead
-        title="Tanmoy Majumder — Software Engineer, TechScript Creator & Open Source Developer"
-        description="Official portfolio of Tanmoy Majumder (Tcode-Motion) — Rust developer, creator of the TechScript programming language, AI developer, full-stack engineer, and open source builder from West Bengal, India."
+        title="Tanmoy Majumder | Coder, AI App Builder & Open Source"
+        description="Tanmoy Majumder (Tcode-Motion) is a coder, AI app builder and open source contributor. Creator of TechScript — a programming language built in Rust."
         slug=""
         jsonLd={[
           {

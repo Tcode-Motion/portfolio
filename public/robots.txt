@@ -1,7 +1,50 @@
+# robots.txt — tanmoy.is-a.dev
+# Tanmoy Majumder (Tcode-Motion) — Coder, AI App Builder & Open Source Contributor
+
+# ── General crawlers ──────────────────────────────────────
 User-agent: *
 Allow: /
 Disallow: /src/
 Disallow: /node_modules/
 Disallow: /dist/
 
+# ── Google ────────────────────────────────────────────────
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+# ── AI crawlers — explicitly allowed ──────────────────────
+# These bots fetch raw HTML without executing JavaScript.
+# Static content in index.html body is their primary signal.
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# ── Sitemap ───────────────────────────────────────────────
 Sitemap: https://tanmoy.is-a.dev/sitemap.xml

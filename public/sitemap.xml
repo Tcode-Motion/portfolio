@@ -1,19 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset 
+<urlset
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-  xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
 >
+  <!-- Homepage — highest priority, entity anchor for Tanmoy Majumder -->
   <url>
     <loc>https://tanmoy.is-a.dev/</loc>
-    <lastmod>2026-07-29T15:55:11+05:30</lastmod>
+    <lastmod>2026-07-31T18:00:00+05:30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <!-- Projects — "Tanmoy Majumder projects" is the least-contested phrase found in audit -->
   <url>
-    <loc>https://tanmoy.is-a.dev/projects/</loc>
-    <lastmod>2026-07-28T21:29:01+05:30</lastmod>
+    <loc>https://tanmoy.is-a.dev/projects</loc>
+    <lastmod>2026-07-31T18:00:00+05:30</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- TechScript — unique entity page, best disambiguation signal -->
+  <url>
+    <loc>https://tanmoy.is-a.dev/techscript</loc>
+    <lastmod>2026-07-31T18:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- About — E-E-A-T signal, bio and background for Tanmoy Majumder -->
+  <url>
+    <loc>https://tanmoy.is-a.dev/about</loc>
+    <lastmod>2026-07-31T18:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <!-- Contact -->
+  <url>
+    <loc>https://tanmoy.is-a.dev/contact</loc>
+    <lastmod>2026-07-31T18:00:00+05:30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>

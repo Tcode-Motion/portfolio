@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-const SITE_NAME = 'Tanmoy Majumder Portfolio';
+const SITE_NAME = 'Tanmoy Majumder';
 const BASE_URL = 'https://tanmoy.is-a.dev';
 const DEFAULT_OG_IMAGE = 'https://github.com/Tcode-Motion.png';
 
@@ -45,8 +45,10 @@ export const SeoHead: React.FC<SeoHeadProps> = ({
   noindex = false,
 }) => {
   useEffect(() => {
-    const canonicalUrl = `${BASE_URL}${slug ? `/${slug.replace(/^\//, '')}` : ''}`;
-    const fullTitle = `${title} | ${SITE_NAME}`;
+    const canonicalUrl = `${BASE_URL}${slug ? `/${slug.replace(/^\//, '')}` : '/'}`;
+    // For the homepage the title prop already includes the full brand string.
+    // For inner pages (slug present) append " | Tanmoy Majumder" as a concise suffix.
+    const fullTitle = slug ? `${title} | ${SITE_NAME}` : title;
 
     // ── 1. Title
     document.title = fullTitle;
