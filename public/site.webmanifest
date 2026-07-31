@@ -1,23 +1,25 @@
 {
-  "name": "Tanmoy Majumder Portfolio",
-  "short_name": "Tcode-Motion",
-  "description": "Official portfolio of Tanmoy Majumder — Rust developer, TechScript creator, open source engineer",
+  "name": "Tanmoy Majumder",
+  "short_name": "Tanmoy",
+  "description": "Tanmoy Majumder (Tcode-Motion) — coder, AI app builder and open source contributor.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0a0a0a",
   "theme_color": "#0a0a0a",
   "icons": [
     {
-      "src": "https://github.com/Tcode-Motion.png",
+      "src": "/android-chrome-192x192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
-      "src": "https://github.com/Tcode-Motion.png",
+      "src": "/android-chrome-512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
   "categories": ["developer", "portfolio", "technology"],
-  "lang": "en-US"
+  "lang": "en"
 }
