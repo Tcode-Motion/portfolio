@@ -5,69 +5,69 @@
   <link>https://tanmoy.is-a.dev</link>
   <description>Latest projects and releases from Tanmoy Majumder's portfolio</description>
   <language>en-us</language>
-  <lastBuildDate>Sun, 27 Sep 2026 07:24:49 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 27 Sep 2026 07:44:04 GMT</lastBuildDate>
   <atom:link href="https://tanmoy.is-a.dev/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>TechScript</title>
       <link>https://tanmoy.is-a.dev/techscript/</link>
       <description>A modern, human-readable programming language and compiler toolchain built from scratch in Rust. - TechScript is an open-source programming language designed to make source code read like clear, structured English while retaining systems-level performance. The ecosystem includes a native Rust compiler, lexer, recursive-descent parser, strict AST representation, stack-based bytecode virtual machine, package manager, and language server.</description>
-      <pubDate>Sun, 27 Sep 2026 07:24:49 GMT</pubDate>
+      <pubDate>Sun, 27 Sep 2026 07:44:04 GMT</pubDate>
       <guid>https://tanmoy.is-a.dev/techscript/</guid>
     </item>
     <item>
       <title>Satvora AI</title>
       <link>https://satvora.me/</link>
       <description>AI health coach, multimodal food photo scanner & calorie tracker for Android. - Satvora AI is an Android application that combines multimodal computer vision with a comprehensive nutritional taxonomy designed specifically for Indian dietary diversity. It lets users scan meals, track macros, and receive evidence-informed dietary dialogue while keeping personal journal data stored locally on-device.</description>
-      <pubDate>Sun, 27 Sep 2026 07:24:49 GMT</pubDate>
+      <pubDate>Sun, 27 Sep 2026 07:44:04 GMT</pubDate>
       <guid>https://tanmoy.is-a.dev/satvora-ai/</guid>
     </item>
     <item>
       <title>KinotiX</title>
       <link>https://play.google.com/store/apps/details?id=com.kinotix.app</link>
       <description>Interactive 4K live & 3D parallax wallpaper engine published on Google Play. - KinotiX is an Android wallpaper engine published on the Google Play Store (com.kinotix.app). It provides dynamic 3D gyroscope parallax depth, interactive touch-reactive fluid simulations, AMOLED deep-black galleries, and transparent live camera backgrounds.</description>
-      <pubDate>Sun, 27 Sep 2026 07:24:49 GMT</pubDate>
+      <pubDate>Sun, 27 Sep 2026 07:44:04 GMT</pubDate>
       <guid>https://tanmoy.is-a.dev/kinotix/</guid>
     </item>
     <item>
       <title>NovOS</title>
       <link>https://tcode-motion.github.io/NovOS/</link>
       <description>A futuristic web-based desktop operating system with neomorphic window management. - NovOS is a complete web-based operating system providing a reactive desktop interface, draggable multi-window manager, POSIX virtual file system over IndexedDB, taskbar launcher, and built-in system utilities engineered in React and TypeScript.</description>
-      <pubDate>Sun, 27 Sep 2026 07:24:49 GMT</pubDate>
+      <pubDate>Sun, 27 Sep 2026 07:44:04 GMT</pubDate>
       <guid>https://tanmoy.is-a.dev/novos/</guid>
     </item>
     <item>
       <title>NeoSketch</title>
       <link>https://tanmoy.is-a.dev/apps/neosketch/</link>
       <description>Offline AI-powered artistic photo editor for Android and Windows. - NeoSketch is an offline AI-powered artistic photo editor for Android and Windows built with Flutter, Rust, and the ONNX runtime for privacy-first on-device image processing.</description>
-      <pubDate>Sun, 27 Sep 2026 07:24:49 GMT</pubDate>
+      <pubDate>Sun, 27 Sep 2026 07:44:04 GMT</pubDate>
       <guid>https://tanmoy.is-a.dev/neosketch/</guid>
     </item>
     <item>
       <title>Vortyx</title>
       <link>https://github.com/Tcode-Motion/Vortyx</link>
       <description>Modern Android media downloader and download manager built with Kotlin & Jetpack Compose. - Vortyx is a high-performance Android media downloader and transfer manager built with modern Kotlin and Jetpack Compose. It provides multi-threaded chunked downloads, pause/resume capability, and smart directory organization.</description>
-      <pubDate>Sun, 27 Sep 2026 07:24:49 GMT</pubDate>
+      <pubDate>Sun, 27 Sep 2026 07:44:04 GMT</pubDate>
       <guid>https://tanmoy.is-a.dev/vortyx/</guid>
     </item>
     <item>
       <title>ARC Reactor 3D</title>
       <link>https://tcode-motion.github.io/arc-reactor-3d/</link>
       <description>Interactive 3D Iron Man ARC Reactor rendering engine in Three.js and GLSL shaders. - An interactive 3D WebGL experience rendering a high-detail Iron Man ARC Reactor with customizable energy core glow, rotating metallic mechanical rings, and dynamic lighting effects.</description>
-      <pubDate>Sun, 27 Sep 2026 07:24:49 GMT</pubDate>
+      <pubDate>Sun, 27 Sep 2026 07:44:04 GMT</pubDate>
       <guid>https://tanmoy.is-a.dev/arc-reactor-3d/</guid>
     </item>
     <item>
       <title>Aurora-OS.js</title>
       <link>https://mental-os.github.io/Aurora-OS.js/</link>
       <description>Extensible web OS game and hacking simulator framework in TypeScript. - Aurora-OS.js is an extensible web OS game and hacking simulator framework providing a virtual operating system experience with scripting, sandboxed apps, interactive terminals, and gameplay mechanics.</description>
-      <pubDate>Sun, 27 Sep 2026 07:24:49 GMT</pubDate>
+      <pubDate>Sun, 27 Sep 2026 07:44:04 GMT</pubDate>
       <guid>https://tanmoy.is-a.dev/aurora-os/</guid>
     </item>
     <item>
       <title>OS Wallpapers</title>
       <link>https://tcode-motion.github.io/os-wallpapers/</link>
       <description>Curated collection of minimalist wallpapers tailored for operating system interfaces. - A hand-crafted collection of ambient wallpapers and background textures designed specifically for custom Linux setups, Android ROMs, and desktop operating systems.</description>
-      <pubDate>Sun, 27 Sep 2026 07:24:49 GMT</pubDate>
+      <pubDate>Sun, 27 Sep 2026 07:44:04 GMT</pubDate>
       <guid>https://tanmoy.is-a.dev/os-wallpapers/</guid>
     </item>
 </channel>

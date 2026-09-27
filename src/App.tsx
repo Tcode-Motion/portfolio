@@ -36,6 +36,10 @@ const AppContent: React.FC = () => {
   const [terminalOpen, setTerminalOpen] = useState(false);
   const [showIntro, setShowIntro] = useState(true);
 
+  const handleIntroComplete = () => {
+    setShowIntro(false);
+  };
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === '`' || e.key === '~' || (e.ctrlKey && e.key.toLowerCase() === 'k')) {
@@ -50,7 +54,7 @@ const AppContent: React.FC = () => {
   return (
     <>
       {showIntro && (
-        <PreloaderSequence onComplete={() => setShowIntro(false)} />
+        <PreloaderSequence onComplete={handleIntroComplete} />
       )}
       <ScrollToTop />
       <BackgroundEngine />
