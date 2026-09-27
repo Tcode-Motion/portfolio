@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-// Curated authentic macOS first-boot multilingual greetings
+// Authentic macOS first-boot multilingual system greetings
 const GREETINGS = [
   'Hello',         // English
   'Bonjour',       // French
@@ -13,62 +13,50 @@ const GREETINGS = [
   'नमस्ते',        // Hindi
   'হ্যালো',         // Bengali (Tanmoy's native language)
   'Olá',           // Portuguese
+  'Привет',        // Russian
+  'مرحبا',         // Arabic
   'Hello',         // Final English reveal greeting
 ];
 
-export const PreloaderSequence: React.FC<{ onComplete: () => void }> = ({ onComplete }) => {
+interface PreloaderSequenceProps {
+  onComplete: () => void;
+}
+
+export const PreloaderSequence: React.FC<PreloaderSequenceProps> = ({ onComplete }) => {
   const [index, setIndex] = useState(0);
-  const [isZoomingOut, setIsZoomingOut] = useState(false);
+  const [isZooming, setIsZooming] = useState(false);
   const [isDone, setIsDone] = useState(false);
-  const hasFinishedRef = useRef(false);
+  const onCompleteRef = useRef(onComplete);
+  onCompleteRef.current = onComplete;
 
+  // Render-driven sequential transition: guarantees EVERY language is committed to the DOM
+  // and visible for at least 115ms before advancing, completely immune to frame drops or batching.
   useEffect(() => {
-    // 1. Accessibility: Instant fade if user prefers reduced motion
-    if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      const quickTimer = setTimeout(() => {
-        if (!hasFinishedRef.current) {
-          hasFinishedRef.current = true;
+    const isFinalWord = index === GREETINGS.length - 1;
+
+    if (!isFinalWord) {
+      // Step to next greeting after guaranteed display time (115ms)
+      const timer = setTimeout(() => {
+        setIndex((prev) => prev + 1);
+      }, 115);
+      return () => clearTimeout(timer);
+    } else {
+      // Reached final "Hello": hold for 220ms, then trigger cinematic zoom-in burst
+      const holdTimer = setTimeout(() => {
+        setIsZooming(true);
+
+        // Allow 580ms for the text to expand massively, cover the entire screen, and dissolve
+        const exitTimer = setTimeout(() => {
           setIsDone(true);
-          onComplete();
-        }
-      }, 150);
-      return () => clearTimeout(quickTimer);
+          onCompleteRef.current?.();
+        }, 580);
+
+        return () => clearTimeout(exitTimer);
+      }, 220);
+
+      return () => clearTimeout(holdTimer);
     }
-
-    // 2. Multilingual cadence: 110ms per greeting so each language is clearly visible
-    const intervalMs = 110;
-    let currentStep = 0;
-    const maxSteps = GREETINGS.length - 1;
-
-    const intervalId = setInterval(() => {
-      currentStep++;
-      if (currentStep <= maxSteps) {
-        setIndex(currentStep);
-      } else {
-        clearInterval(intervalId);
-      }
-    }, intervalMs);
-
-    // 3. At ~1.3s: Trigger the dramatic full zoom-out + fade exit
-    const zoomOutTimer = setTimeout(() => {
-      setIsZoomingOut(true);
-    }, (maxSteps * intervalMs) + 90);
-
-    // 4. At ~1.7s: Complete the animation and reveal the portfolio underneath
-    const completeTimer = setTimeout(() => {
-      if (!hasFinishedRef.current) {
-        hasFinishedRef.current = true;
-        setIsDone(true);
-        onComplete();
-      }
-    }, (maxSteps * intervalMs) + 480);
-
-    return () => {
-      clearInterval(intervalId);
-      clearTimeout(zoomOutTimer);
-      clearTimeout(completeTimer);
-    };
-  }, [onComplete]);
+  }, [index]);
 
   if (isDone) {
     return null;
@@ -80,31 +68,31 @@ export const PreloaderSequence: React.FC<{ onComplete: () => void }> = ({ onComp
     <div
       aria-label="Welcome greeting"
       aria-live="polite"
-      className="fixed inset-0 z-[99999] flex items-center justify-center select-none overflow-hidden"
+      className="fixed inset-0 z-[99999] flex items-center justify-center select-none overflow-hidden pointer-events-none"
       style={{
         backgroundColor: '#07090e',
-        opacity: isZoomingOut ? 0 : 1,
-        pointerEvents: isZoomingOut ? 'none' : 'auto',
-        transition: 'opacity 0.38s cubic-bezier(0.16, 1, 0.3, 1)',
+        opacity: isZooming ? 0 : 1,
+        transition: 'opacity 0.58s cubic-bezier(0.2, 0, 0, 1)',
         willChange: 'opacity',
       }}
     >
-      {/* Centered Multilingual Text with Apple-like zoom-out exit */}
+      {/* Centered Multilingual Text with Apple first-boot cinematic zoom-in reveal */}
       <div
-        className="w-full max-w-full px-6 flex items-center justify-center text-center will-change-transform"
+        className="w-full max-w-full px-6 flex items-center justify-center text-center will-change-transform pointer-events-none"
         style={{
-          transform: isZoomingOut ? 'scale(0.12)' : 'scale(1)',
-          opacity: isZoomingOut ? 0 : 1,
-          filter: isZoomingOut ? 'blur(8px)' : 'none',
-          transition: isZoomingOut
-            ? 'transform 0.38s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.32s ease-out, filter 0.32s ease-out'
+          transform: isZooming ? 'scale(16)' : 'scale(1)',
+          transformOrigin: 'center center',
+          opacity: isZooming ? 0 : 1,
+          filter: isZooming ? 'blur(8px)' : 'none',
+          transition: isZooming
+            ? 'transform 0.58s cubic-bezier(0.2, 0, 0, 1), opacity 0.5s cubic-bezier(0.4, 0, 1, 1), filter 0.52s ease-out'
             : 'none',
         }}
       >
         <span
-          className="font-display font-bold tracking-tight text-white inline-block text-center leading-none select-none"
+          className="font-display font-bold tracking-tight text-white inline-block text-center leading-none select-none whitespace-nowrap"
           style={{
-            fontSize: 'clamp(3.8rem, 15vw, 11rem)',
+            fontSize: 'clamp(4rem, 17vw, 12.5rem)',
             letterSpacing: '-0.04em',
             textRendering: 'optimizeLegibility',
             WebkitFontSmoothing: 'antialiased',

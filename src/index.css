@@ -13,6 +13,7 @@
     background-color: #07090e !important;
     scroll-padding-top: 5rem;
     scroll-behavior: smooth;
+    overflow-x: clip;
     cursor: default !important;
   }
 
@@ -21,8 +22,7 @@
     color: #f1f5f9 !important;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow-x: hidden;
-    overscroll-behavior-y: none;
+    overflow-x: clip;
     cursor: default !important;
   }
 
