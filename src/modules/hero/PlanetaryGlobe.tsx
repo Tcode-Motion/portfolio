@@ -1,37 +1,45 @@
-import { useRef, useMemo } from 'react';
+import React, { useRef, useMemo, useEffect } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
-import { useMouse } from '@/core/cursor/MouseProvider';
 
-interface PlanetaryGlobeProps {
-  scrollProgress?: number;
-}
-
-export function PlanetaryGlobe({ scrollProgress = 0 }: PlanetaryGlobeProps) {
+export const PlanetaryGlobe: React.FC = () => {
   const groupRef = useRef<THREE.Group>(null);
   const globeRef = useRef<THREE.Points>(null);
   const coreMeshRef = useRef<THREE.Mesh>(null);
   const ring1Ref = useRef<THREE.LineLoop>(null);
   const ring2Ref = useRef<THREE.LineLoop>(null);
-  const ring3Ref = useRef<THREE.LineLoop>(null);
   const ringDustRef = useRef<THREE.Points>(null);
 
-  const { nx, ny } = useMouse();
+  // Passive mouse tracking with ZERO React re-renders
+  const mouseRef = useRef({ x: 0, y: 0, targetX: 0, targetY: 0 });
+  const timeRef = useRef(0);
 
-  // 1. High-Density Particle Shell Geometry with 6-Region Geographic Continent Color Map
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseRef.current.targetX = (e.clientX / window.innerWidth) * 2 - 1;
+      mouseRef.current.targetY = -(e.clientY / window.innerHeight) * 2 + 1;
+    };
+
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  // 1. High-Performance Particle Shell (2,200 points Fibonacci distribution with chromatic spectral aura)
   const { positions, colors } = useMemo(() => {
-    const count = 4800;
+    const count = 2200;
     const pos = new Float32Array(count * 3);
     const col = new Float32Array(count * 3);
 
-    const cAmber = new THREE.Color('#f59e0b');   // Golden Yellow / Amber
-    const cLime = new THREE.Color('#c4ff36');    // Cyber Lime
-    const cGreen = new THREE.Color('#10b981');   // Emerald Green
-    const cCyan = new THREE.Color('#06b6d4');    // Electric Cyan
-    const cPink = new THREE.Color('#ec4899');    // Magenta / Pink
-    const cPurple = new THREE.Color('#8b5cf6');  // Deep Purple
-    const cWhite = new THREE.Color('#f8fafc');   // Polar Diamond Ice White
-    const cSky = new THREE.Color('#38bdf8');     // Polar Sky Blue
+    const cAmber = new THREE.Color('#f59e0b');
+    const cLime = new THREE.Color('#c4ff36');
+    const cGreen = new THREE.Color('#10b981');
+    const cCyan = new THREE.Color('#06b6d4');
+    const cPink = new THREE.Color('#ec4899');
+    const cPurple = new THREE.Color('#8b5cf6');
+    const cWhite = new THREE.Color('#f8fafc');
+    const cSky = new THREE.Color('#38bdf8');
+
+    const palette = [cAmber, cLime, cGreen, cCyan, cPink, cPurple];
 
     for (let i = 0; i < count; i++) {
       const phi = Math.acos(-1 + (2 * i) / count);
@@ -46,53 +54,49 @@ export function PlanetaryGlobe({ scrollProgress = 0 }: PlanetaryGlobeProps) {
       pos[i * 3 + 1] = y;
       pos[i * 3 + 2] = z;
 
-      // Silky Smooth Cosine Wave Spherical Color Aura Blending (Zero Sharp Borders)
-      const angleNormalized = (Math.atan2(y, x) + Math.PI) / (Math.PI * 2); // 0.0 to 1.0
-      const colorPalette = [cAmber, cLime, cGreen, cCyan, cPink, cPurple];
-      const scaledIdx = angleNormalized * colorPalette.length;
-      const idx1 = Math.floor(scaledIdx) % colorPalette.length;
-      const idx2 = (idx1 + 1) % colorPalette.length;
-      const blendFactor = scaledIdx - Math.floor(scaledIdx);
+      // Chromatic spherical aura
+      const angleNorm = (Math.atan2(y, x) + Math.PI) / (Math.PI * 2);
+      const scaledIdx = angleNorm * palette.length;
+      const idx1 = Math.floor(scaledIdx) % palette.length;
+      const idx2 = (idx1 + 1) % palette.length;
+      const blend = scaledIdx - Math.floor(scaledIdx);
+      const smoothBlend = 0.5 - 0.5 * Math.cos(blend * Math.PI);
 
-      // Smooth cosine ease for zero-border transition
-      const smoothBlend = 0.5 - 0.5 * Math.cos(blendFactor * Math.PI);
-      let finalColor = colorPalette[idx1].clone().lerp(colorPalette[idx2], smoothBlend);
+      let finalColor = palette[idx1].clone().lerp(palette[idx2], smoothBlend);
 
-      // Smooth polar ice cap blending towards northern ice white & southern sky blue
+      // Polar ice blending
       if (phi < 0.55) {
         const polarFactor = (0.55 - phi) / 0.55;
-        finalColor = finalColor.clone().lerp(cWhite, Math.pow(polarFactor, 1.4));
+        finalColor.lerp(cWhite, Math.pow(polarFactor, 1.4));
       } else if (phi > Math.PI - 0.55) {
         const polarFactor = (phi - (Math.PI - 0.55)) / 0.55;
-        finalColor = finalColor.clone().lerp(cSky, Math.pow(polarFactor, 1.4));
+        finalColor.lerp(cSky, Math.pow(polarFactor, 1.4));
       }
 
-      // Add subtle luminance variation per particle
-      const noise = 0.85 + Math.random() * 0.3;
-      col[i * 3] = Math.min(1, finalColor.r * noise);
-      col[i * 3 + 1] = Math.min(1, finalColor.g * noise);
-      col[i * 3 + 2] = Math.min(1, finalColor.b * noise);
+      col[i * 3] = finalColor.r;
+      col[i * 3 + 1] = finalColor.g;
+      col[i * 3 + 2] = finalColor.b;
     }
 
     return { positions: pos, colors: col };
   }, []);
 
-  // 2. Structured 3D Orbital Particle Belt (Equatorial Disc Dust)
+  // 2. Equatorial dust particle belt (120 points)
   const { dustPositions, dustColors } = useMemo(() => {
-    const count = 350;
+    const count = 120;
     const pos = new Float32Array(count * 3);
     const col = new Float32Array(count * 3);
     const colorLime = new THREE.Color('#c4ff36');
     const colorCyan = new THREE.Color('#22d3ee');
 
     for (let i = 0; i < count; i++) {
-      const angle = (i / count) * Math.PI * 2 + (Math.random() - 0.5) * 0.1;
-      const radius = 2.85 + (Math.random() - 0.5) * 0.25;
+      const angle = (i / count) * Math.PI * 2;
+      const radius = 2.85 + (Math.random() - 0.5) * 0.2;
       pos[i * 3] = Math.cos(angle) * radius;
       pos[i * 3 + 1] = Math.sin(angle) * radius;
-      pos[i * 3 + 2] = (Math.random() - 0.5) * 0.15;
+      pos[i * 3 + 2] = (Math.random() - 0.5) * 0.12;
 
-      const c = Math.random() > 0.5 ? colorLime : colorCyan;
+      const c = i % 2 === 0 ? colorLime : colorCyan;
       col[i * 3] = c.r;
       col[i * 3 + 1] = c.g;
       col[i * 3 + 2] = c.b;
@@ -100,8 +104,8 @@ export function PlanetaryGlobe({ scrollProgress = 0 }: PlanetaryGlobeProps) {
     return { dustPositions: pos, dustColors: col };
   }, []);
 
-  // 3. Structured 3D Gyroscopic Ring Geometries
-  const createRingGeometry = (radius: number, segments = 180) => {
+  // 3. Lightweight Orbital Rings (72 segments)
+  const createRingGeometry = (radius: number, segments = 72) => {
     const points: THREE.Vector3[] = [];
     for (let i = 0; i <= segments; i++) {
       const theta = (i / segments) * Math.PI * 2;
@@ -110,14 +114,13 @@ export function PlanetaryGlobe({ scrollProgress = 0 }: PlanetaryGlobeProps) {
     return new THREE.BufferGeometry().setFromPoints(points);
   };
 
-  const ringGeo1 = useMemo(() => createRingGeometry(2.85), []);
-  const ringGeo2 = useMemo(() => createRingGeometry(3.35), []);
-  const ringGeo3 = useMemo(() => createRingGeometry(3.85), []);
+  const ringGeo1 = useMemo(() => createRingGeometry(2.85, 72), []);
+  const ringGeo2 = useMemo(() => createRingGeometry(3.35, 72), []);
 
-  // 4. Structured Orbital Node Dots along 3D Ring Paths
+  // 4. Satellite Node Dots (8 nodes)
   const nodeDots = useMemo(() => {
     const dots = [];
-    const count = 16;
+    const count = 8;
     const colorLime = new THREE.Color('#c4ff36');
     const colorPurple = new THREE.Color('#8b5cf6');
 
@@ -125,280 +128,120 @@ export function PlanetaryGlobe({ scrollProgress = 0 }: PlanetaryGlobeProps) {
       const angle = (i / count) * Math.PI * 2;
       const radius = 3.35;
       dots.push({
-        position: new THREE.Vector3(Math.cos(angle) * radius, Math.sin(angle) * radius, (Math.random() - 0.5) * 0.2),
+        position: new THREE.Vector3(Math.cos(angle) * radius, Math.sin(angle) * radius, 0),
         color: i % 2 === 0 ? colorLime : colorPurple,
-        size: 0.05 + Math.random() * 0.02,
       });
     }
     return dots;
   }, []);
 
-  useFrame((state) => {
-    const t = state.clock.elapsedTime;
+  useFrame((_, delta) => {
+    const dt = Math.min(delta, 0.05);
+    timeRef.current += dt;
+    const t = timeRef.current;
 
-    // Responsive Coordinates & Scale: Centered and scaled-down on phone/tablet, fully frozen on PC/Desktop
+    // Smooth lerp mouse tracking
+    mouseRef.current.x = THREE.MathUtils.lerp(mouseRef.current.x, mouseRef.current.targetX, dt * 4);
+    mouseRef.current.y = THREE.MathUtils.lerp(mouseRef.current.y, mouseRef.current.targetY, dt * 4);
+
     const width = typeof window !== 'undefined' ? window.innerWidth : 1200;
     const isMobile = width < 768;
-    const isTablet = width >= 768 && width < 1024;
 
-    let targetX = 2.2;
-    let targetY = 0.1;
-    let targetZ = -0.6;
-    let targetScale = 0.85;
-
-    if (isMobile) {
-      targetX = 0.0;
-      targetY = -0.7;
-      targetZ = -1.0;
-      targetScale = 0.55;
-    } else if (isTablet) {
-      targetX = 1.0;
-      targetY = -0.2;
-      targetZ = -0.8;
-      targetScale = 0.70;
-    }
-
-    if (scrollProgress <= 0.15) {
-      const p = scrollProgress / 0.15;
-      if (isMobile) {
-        targetX = THREE.MathUtils.lerp(0.0, 0.0, p);
-        targetY = THREE.MathUtils.lerp(-0.7, -0.8, p);
-        targetZ = THREE.MathUtils.lerp(-1.0, -3.2, p);
-        targetScale = THREE.MathUtils.lerp(0.55, 0.28, p);
-      } else if (isTablet) {
-        targetX = THREE.MathUtils.lerp(1.0, -2.0, p);
-        targetY = THREE.MathUtils.lerp(-0.2, -0.8, p);
-        targetZ = THREE.MathUtils.lerp(-0.8, -3.5, p);
-        targetScale = THREE.MathUtils.lerp(0.70, 0.32, p);
-      } else {
-        targetX = THREE.MathUtils.lerp(2.2, -4.2, p);
-        targetY = THREE.MathUtils.lerp(0.1, -1.2, p);
-        targetZ = THREE.MathUtils.lerp(-0.6, -4.5, p);
-        targetScale = THREE.MathUtils.lerp(0.85, 0.35, p);
-      }
-    } else if (scrollProgress <= 0.35) {
-      const p = (scrollProgress - 0.15) / 0.2;
-      if (isMobile) {
-        targetX = THREE.MathUtils.lerp(0.0, 0.0, p);
-        targetY = THREE.MathUtils.lerp(-0.8, 0.3, p);
-        targetZ = THREE.MathUtils.lerp(-3.2, 0.0, p);
-        targetScale = THREE.MathUtils.lerp(0.28, 0.85, p);
-      } else if (isTablet) {
-        targetX = THREE.MathUtils.lerp(-2.0, 1.8, p);
-        targetY = THREE.MathUtils.lerp(-0.8, 0.6, p);
-        targetZ = THREE.MathUtils.lerp(-3.5, 0.4, p);
-        targetScale = THREE.MathUtils.lerp(0.32, 1.20, p);
-      } else {
-        targetX = THREE.MathUtils.lerp(-4.2, 3.8, p);
-        targetY = THREE.MathUtils.lerp(-1.2, 1.1, p);
-        targetZ = THREE.MathUtils.lerp(-4.5, 0.8, p);
-        targetScale = THREE.MathUtils.lerp(0.35, 1.65, p);
-      }
-    } else if (scrollProgress <= 0.55) {
-      const p = (scrollProgress - 0.35) / 0.2;
-      if (isMobile) {
-        targetX = THREE.MathUtils.lerp(0.0, 0.0, p);
-        targetY = THREE.MathUtils.lerp(0.3, -0.6, p);
-        targetZ = THREE.MathUtils.lerp(0.0, -1.5, p);
-        targetScale = THREE.MathUtils.lerp(0.85, 0.45, p);
-      } else if (isTablet) {
-        targetX = THREE.MathUtils.lerp(1.8, -1.8, p);
-        targetY = THREE.MathUtils.lerp(0.6, -0.4, p);
-        targetZ = THREE.MathUtils.lerp(0.4, -2.0, p);
-        targetScale = THREE.MathUtils.lerp(1.20, 0.50, p);
-      } else {
-        targetX = THREE.MathUtils.lerp(3.8, -3.5, p);
-        targetY = THREE.MathUtils.lerp(1.1, -0.8, p);
-        targetZ = THREE.MathUtils.lerp(0.8, -2.8, p);
-        targetScale = THREE.MathUtils.lerp(1.65, 0.55, p);
-      }
-    } else if (scrollProgress <= 0.75) {
-      const p = (scrollProgress - 0.55) / 0.2;
-      if (isMobile) {
-        targetX = THREE.MathUtils.lerp(0.0, 0.0, p);
-        targetY = THREE.MathUtils.lerp(-0.6, 0.3, p);
-        targetZ = THREE.MathUtils.lerp(-1.5, -0.6, p);
-        targetScale = THREE.MathUtils.lerp(0.45, 0.65, p);
-      } else if (isTablet) {
-        targetX = THREE.MathUtils.lerp(-1.8, 1.5, p);
-        targetY = THREE.MathUtils.lerp(-0.4, 0.3, p);
-        targetZ = THREE.MathUtils.lerp(-2.0, -0.5, p);
-        targetScale = THREE.MathUtils.lerp(0.50, 0.90, p);
-      } else {
-        targetX = THREE.MathUtils.lerp(-3.5, 3.0, p);
-        targetY = THREE.MathUtils.lerp(-0.8, 0.5, p);
-        targetZ = THREE.MathUtils.lerp(-2.8, -0.4, p);
-        targetScale = THREE.MathUtils.lerp(0.55, 1.20, p);
-      }
-    } else if (scrollProgress <= 0.90) {
-      const p = (scrollProgress - 0.75) / 0.15;
-      if (isMobile) {
-        targetX = THREE.MathUtils.lerp(0.0, 0.0, p);
-        targetY = THREE.MathUtils.lerp(0.3, -0.1, p);
-        targetZ = THREE.MathUtils.lerp(-0.6, 0.1, p);
-        targetScale = THREE.MathUtils.lerp(0.65, 0.90, p);
-      } else if (isTablet) {
-        targetX = THREE.MathUtils.lerp(1.5, 0.0, p);
-        targetY = THREE.MathUtils.lerp(0.3, -0.1, p);
-        targetZ = THREE.MathUtils.lerp(-0.5, 0.1, p);
-        targetScale = THREE.MathUtils.lerp(0.90, 1.20, p);
-      } else {
-        targetX = THREE.MathUtils.lerp(3.0, 0.0, p);
-        targetY = THREE.MathUtils.lerp(0.5, -0.1, p);
-        targetZ = THREE.MathUtils.lerp(-0.4, 0.2, p);
-        targetScale = THREE.MathUtils.lerp(1.20, 1.50, p);
-      }
-    } else {
-      if (isMobile) {
-        targetX = 0.0;
-        targetY = -0.1;
-        targetZ = 0.1;
-        targetScale = 0.90;
-      } else if (isTablet) {
-        targetX = 0.0;
-        targetY = -0.1;
-        targetZ = 0.1;
-        targetScale = 1.20;
-      } else {
-        targetX = 0.0;
-        targetY = -0.1;
-        targetZ = 0.2;
-        targetScale = 1.50;
-      }
-    }
+    // Stable anchor position: stays visible and elegant across all pages without hiding
+    const targetX = isMobile ? 0.0 : 2.1;
+    const targetY = isMobile ? -0.4 : 0.05;
+    const targetZ = isMobile ? -1.1 : -0.6;
+    const targetScale = isMobile ? 0.6 : 0.85;
 
     if (groupRef.current) {
-      const mouseRotX = (ny - 0.5) * 0.75;
-      const mouseRotY = (nx - 0.5) * 0.95;
-      const mouseRotZ = (nx - 0.5) * (ny - 0.5) * 0.45;
+      groupRef.current.position.x = THREE.MathUtils.lerp(groupRef.current.position.x, targetX, 0.08);
+      groupRef.current.position.y = THREE.MathUtils.lerp(groupRef.current.position.y, targetY + Math.sin(t * 0.5) * 0.05, 0.08);
+      groupRef.current.position.z = THREE.MathUtils.lerp(groupRef.current.position.z, targetZ, 0.08);
+      groupRef.current.scale.setScalar(THREE.MathUtils.lerp(groupRef.current.scale.x, targetScale, 0.08));
 
-      const gyroX = Math.sin(t * 0.15) * 0.35 + mouseRotX;
-      const gyroY = t * 0.22 + mouseRotY + scrollProgress * Math.PI * 2.0;
-      const gyroZ = Math.cos(t * 0.12) * 0.28 + mouseRotZ;
-
-      groupRef.current.position.x = THREE.MathUtils.lerp(groupRef.current.position.x, targetX, 0.07);
-      groupRef.current.position.y = THREE.MathUtils.lerp(groupRef.current.position.y, targetY, 0.07);
-      groupRef.current.position.z = THREE.MathUtils.lerp(groupRef.current.position.z, targetZ, 0.07);
-      groupRef.current.scale.setScalar(THREE.MathUtils.lerp(groupRef.current.scale.x, targetScale, 0.07));
-
-      groupRef.current.rotation.x = THREE.MathUtils.lerp(groupRef.current.rotation.x, gyroX, 0.06);
-      groupRef.current.rotation.y = THREE.MathUtils.lerp(groupRef.current.rotation.y, gyroY, 0.06);
-      groupRef.current.rotation.z = THREE.MathUtils.lerp(groupRef.current.rotation.z, gyroZ, 0.06);
+      // Gentle interactive tilt + rotation
+      groupRef.current.rotation.y = mouseRef.current.x * 0.35 + t * 0.1;
+      groupRef.current.rotation.x = -mouseRef.current.y * 0.25 + Math.sin(t * 0.2) * 0.1;
     }
 
-    // Omnidirectional 3D Multi-Axis Rotation (Pitch X, Yaw Y, Roll Z)
     if (globeRef.current) {
-      globeRef.current.rotation.y = t * 0.32 + scrollProgress * Math.PI * 2.5;
-      globeRef.current.rotation.x = t * 0.22 + Math.sin(t * 0.15) * 0.4 + Math.sin(scrollProgress * Math.PI * 3.0) * 0.5;
-      globeRef.current.rotation.z = Math.cos(t * 0.18) * 0.35 + Math.cos(scrollProgress * Math.PI * 2.0) * 0.4;
+      globeRef.current.rotation.y += dt * 0.22;
     }
     if (coreMeshRef.current) {
-      coreMeshRef.current.rotation.y = -t * 0.28;
-      coreMeshRef.current.rotation.x = Math.cos(t * 0.20) * 0.30;
-      coreMeshRef.current.rotation.z = Math.sin(t * 0.16) * 0.25;
+      coreMeshRef.current.rotation.y -= dt * 0.15;
     }
-    if (coreMeshRef.current) {
-      coreMeshRef.current.rotation.y = -t * 0.30;
-      coreMeshRef.current.rotation.x = Math.cos(t * 0.18) * 0.20;
-    }
-
-    // Structured 3D Gyroscopic Ring Rotations
     if (ring1Ref.current) {
-      ring1Ref.current.rotation.z = t * 0.30 + scrollProgress * Math.PI;
-      ring1Ref.current.rotation.y = Math.sin(t * 0.15) * 0.30;
+      ring1Ref.current.rotation.z += dt * 0.25;
     }
     if (ringDustRef.current) {
-      ringDustRef.current.rotation.z = t * 0.30 + scrollProgress * Math.PI;
-      ringDustRef.current.rotation.y = Math.sin(t * 0.15) * 0.30;
+      ringDustRef.current.rotation.z += dt * 0.25;
     }
     if (ring2Ref.current) {
-      ring2Ref.current.rotation.z = -t * 0.25 - scrollProgress * Math.PI;
-      ring2Ref.current.rotation.x = Math.cos(t * 0.18) * 0.35;
-    }
-    if (ring3Ref.current) {
-      ring3Ref.current.rotation.z = t * 0.20;
-      ring3Ref.current.rotation.y = Math.cos(t * 0.14) * 0.25;
+      ring2Ref.current.rotation.z -= dt * 0.20;
     }
   });
 
   return (
-    <group ref={groupRef} position={[2.5, 0.1, -0.5]}>
-      {/* Dark Spherical Core Mesh for Solid Planet Body with Rim Lighting */}
+    <group ref={groupRef} position={[2.1, 0.05, -0.6]}>
+      {/* Dark Spherical Core */}
       <mesh ref={coreMeshRef}>
-        <sphereGeometry args={[2.12, 64, 64]} />
-        <meshStandardMaterial
-          color="#050505"
-          roughness={0.25}
-          metalness={0.8}
-          emissive="#0a2010"
-          emissiveIntensity={0.6}
-        />
+        <sphereGeometry args={[2.12, 24, 24]} />
+        <meshBasicMaterial color="#060910" />
       </mesh>
 
-      {/* 3D Particle Shell — Smooth 360° Axial Rotation */}
+      {/* 3D Particle Shell */}
       <points ref={globeRef}>
         <bufferGeometry>
           <bufferAttribute attach="attributes-position" args={[positions, 3]} />
           <bufferAttribute attach="attributes-color" args={[colors, 3]} />
         </bufferGeometry>
         <pointsMaterial
-          size={0.032}
+          size={0.035}
           vertexColors
           transparent
-          opacity={0.92}
+          opacity={0.9}
           sizeAttenuation
           blending={THREE.AdditiveBlending}
         />
       </points>
 
-      {/* Inner Glowing Core Point Lights */}
-      <pointLight color="#c4ff36" intensity={2.2} distance={10} decay={2} position={[-1.5, 1.5, 1]} />
-      <pointLight color="#8b5cf6" intensity={1.8} distance={10} decay={2} position={[2, -1.5, -1]} />
-
-      {/* 3D Gyroscopic Ring Band 1 — Equatorial Disc (Neon Lime) */}
+      {/* Gyroscopic Ring 1 (Cyber Lime) */}
       <primitive
         ref={ring1Ref}
-        object={new THREE.LineLoop(ringGeo1, new THREE.LineBasicMaterial({ color: '#c4ff36', transparent: true, opacity: 0.75 }))}
+        object={new THREE.LineLoop(ringGeo1, new THREE.LineBasicMaterial({ color: '#c4ff36', transparent: true, opacity: 0.65 }))}
         rotation={[Math.PI / 3, Math.PI / 6, 0]}
       />
 
-      {/* Ring 1 Equatorial Dust Particle Belt */}
+      {/* Ring 1 Dust Particle Belt */}
       <points ref={ringDustRef} rotation={[Math.PI / 3, Math.PI / 6, 0]}>
         <bufferGeometry>
           <bufferAttribute attach="attributes-position" args={[dustPositions, 3]} />
           <bufferAttribute attach="attributes-color" args={[dustColors, 3]} />
         </bufferGeometry>
         <pointsMaterial
-          size={0.025}
+          size={0.024}
           vertexColors
           transparent
-          opacity={0.85}
+          opacity={0.8}
           sizeAttenuation
           blending={THREE.AdditiveBlending}
         />
       </points>
 
-      {/* 3D Gyroscopic Ring Band 2 — Polar Orbit (Deep Purple) */}
+      {/* Gyroscopic Ring 2 (Purple) */}
       <primitive
         ref={ring2Ref}
-        object={new THREE.LineLoop(ringGeo2, new THREE.LineBasicMaterial({ color: '#8b5cf6', transparent: true, opacity: 0.65 }))}
+        object={new THREE.LineLoop(ringGeo2, new THREE.LineBasicMaterial({ color: '#8b5cf6', transparent: true, opacity: 0.55 }))}
         rotation={[-Math.PI / 4, Math.PI / 3, Math.PI / 4]}
       />
 
-      {/* 3D Gyroscopic Ring Band 3 — Outer Inclined Orbit (Electric Cyan) */}
-      <primitive
-        ref={ring3Ref}
-        object={new THREE.LineLoop(ringGeo3, new THREE.LineBasicMaterial({ color: '#22d3ee', transparent: true, opacity: 0.5 }))}
-        rotation={[Math.PI / 6, -Math.PI / 3, Math.PI / 2]}
-      />
-
-      {/* Satellite Node Dots orbiting along Ring Band 2 */}
+      {/* Satellite Node Dots (8 nodes with 6x6 low poly) */}
       {nodeDots.map((dot, i) => (
-        <mesh key={i} position={dot.position} scale={dot.size}>
-          <sphereGeometry args={[1, 16, 16]} />
-          <meshBasicMaterial color={dot.color} transparent opacity={0.85} />
+        <mesh key={i} position={dot.position} scale={0.05}>
+          <sphereGeometry args={[1, 6, 6]} />
+          <meshBasicMaterial color={dot.color} transparent opacity={0.8} />
         </mesh>
       ))}
     </group>
   );
-}
+};

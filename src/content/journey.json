@@ -1,0 +1,48 @@
+{
+  "title": "Engineering Journey",
+  "tagline": "How a curiosity for fundamental systems evolved into building compilers, Android engines, and technical software.",
+  "milestones": [
+    {
+      "year": "2021",
+      "phase": "Foundations & First Programs",
+      "summary": "Started programming by writing C and Python scripts. Focused on foundational computing concepts: memory models, pointers, algorithms, and command-line interfaces.",
+      "technologies": ["C", "Python", "CLI", "Data Structures"],
+      "highlight": "Built first algorithmic scripts and learned the value of understanding the machine from low levels."
+    },
+    {
+      "year": "2022",
+      "phase": "Mobile & UI Development",
+      "summary": "Expanded into client-side application development using Flutter and Dart. Shipped first mobile user interfaces and explored responsive layouts and local state management.",
+      "technologies": ["Flutter", "Dart", "Android SDK", "Git"],
+      "highlight": "Developed Aurora Music prototype, learning audio routing, background services, and reactive mobile architectures."
+    },
+    {
+      "year": "2023",
+      "phase": "Systems Programming & 3D Web",
+      "summary": "Dived deeply into Rust for memory safety without garbage collection. Simultaneously explored 3D graphics on the web with WebGL, Three.js, and GLSL shaders.",
+      "technologies": ["Rust", "Three.js", "WebGL", "GLSL Shaders", "TypeScript"],
+      "highlight": "Created ARC Reactor 3D and Solar System simulations, mastering coordinate systems, matrix transformations, and GPU render loops."
+    },
+    {
+      "year": "2024",
+      "phase": "Operating Systems & Language Design",
+      "summary": "Challenged myself to build complex multi-layered software. Built NovOS (a full web operating system with window manager and POSIX virtual filesystem in IndexedDB) and began engineering TechScript.",
+      "technologies": ["Rust", "React", "TypeScript", "IndexedDB", "Compiler Design"],
+      "highlight": "Wrote the initial lexer, recursive descent parser, and AST engine for TechScript entirely in Rust."
+    },
+    {
+      "year": "2025",
+      "phase": "Android Publishing & AI Applications",
+      "summary": "Engineered and published KinotiX: 4K Live & 3D Wallpaper to the Google Play Store, managing real sensor-driven render loops and Android lifecycle constraints. Initiated development on Satvora AI.",
+      "technologies": ["Kotlin", "Android", "OpenGL ES", "Multimodal AI", "Room Database"],
+      "highlight": "Achieved production release on Google Play with KinotiX (Developer ID: 8946471561851740040) and initiated closed testing for Satvora AI."
+    },
+    {
+      "year": "2026",
+      "phase": "TechScript 2.0 & Production Ecosystems",
+      "summary": "Launched the TechScript 2.0 language specification with stack-based bytecode VM, package management foundation, and CLI driver. Optimizing Satvora AI across Indian regional food taxonomies.",
+      "technologies": ["Rust", "Bytecode VM", "LLVM", "Kotlin", "WebAssembly", "Jetpack Compose"],
+      "highlight": "Actively advancing compiler tooling and maintaining verified Android products on the public market."
+    }
+  ]
+}

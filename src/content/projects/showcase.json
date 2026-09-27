@@ -4,43 +4,127 @@
     "featured": true,
     "layout": "featured",
     "title": "TechScript",
-    "tagline": "A modern programming language and developer ecosystem built from the ground up in Rust.",
-    "category": "Compiler • Developer Tool",
+    "tagline": "A modern, human-readable programming language and compiler toolchain built from scratch in Rust.",
+    "category": "Compiler • Programming Language",
     "color": "#c4ff36",
-    "description": "TechScript is a complete programming language ecosystem featuring a custom Lexer, Parser, AST architecture, Stack-based Bytecode VM, Standard library, and Package manager — all engineered in Rust for maximum performance.",
-    "problem": "Most modern languages are either overly complex, hard to extend, or lack an integrated developer-first toolchain.",
-    "solution": "Built from scratch in Rust with a modular Cargo workspace architecture. Features a custom Lexer & Parser producing a strict AST, a Stack-based Bytecode VM, a Standard library, and a Package manager foundation.",
-    "techStack": ["Rust", "Cargo Workspaces", "Compiler Design", "AST", "Bytecode VM", "CLI Tooling", "TypeScript"],
+    "description": "TechScript is an open-source programming language designed to make source code read like clear, structured English while retaining systems-level performance. The ecosystem includes a native Rust compiler, lexer, recursive-descent parser, strict AST representation, stack-based bytecode virtual machine, package manager, and language server.",
+    "problem": "Modern programming languages often enforce heavy punctuation syntax that obscures procedural intent, while high-level scripting languages lack deterministic native toolchains and integrated compilation pipelines.",
+    "solution": "Engineered a complete 2.0 language specification and compiler driver ('tsc') in Rust using Cargo workspaces. Features keyword-delimited blocks (do/when/loop/end), strict type checking, intermediate bytecode representation, and a stack-based VM runtime.",
+    "techStack": ["Rust", "Cargo Workspaces", "Compiler Design", "AST", "Bytecode VM", "CLI Tooling", "WebAssembly", "TypeScript"],
     "githubUrl": "https://github.com/Tcode-Motion/techscript",
     "githubRepo": "Tcode-Motion/techscript",
-    "liveUrl": "https://techscript.is-a.dev/",
+    "liveUrl": "https://tanmoy.is-a.dev/techscript/",
     "features": [
-      "Custom Lexer & Parser producing strict AST",
-      "Stack-based Bytecode Virtual Machine runtime",
-      "Modular Cargo workspace architecture",
-      "Package manager foundation & Standard Library",
-      "Future LLVM backend & Language Server (LSP) roadmap"
+      "Custom Lexer & Tokenizer with zero-copy source slice spans",
+      "Recursive descent parser generating validated Abstract Syntax Trees (AST)",
+      "Stack-based Bytecode Virtual Machine with NaN-boxed value representations",
+      "Standard library modules for I/O, strings, math, HTTP, and data structures",
+      "Unified 'tsc' command-line driver supporting run, build, check, test, format, and lint",
+      "Interactive in-browser WebAssembly execution playground"
     ],
-    "architecture": "Lexer → Parser → AST → Bytecode Compiler → Stack VM → Runtime Output",
-    "timeline": "2024 — Active development",
+    "architecture": "Source (.txs) → Lexer (Tokens) → Parser (AST) → Semantic Analyzer → IR Lowering → Bytecode Compiler / LLVM Backend → VM Runtime / Native Binary",
+    "timeline": "2024 — Active",
     "challenges": [
-      "Designing a type system that balances simplicity with expressiveness",
-      "Implementing a stack-based VM from scratch in Rust",
-      "Managing Cargo workspace dependencies for 6+ crates"
+      "Implementing efficient stack frames and lexical scope resolution in a custom Rust VM",
+      "Balancing plain-English readability with unambiguous grammar rules",
+      "Optimizing memory allocation through AST node arena pools and zero-copy string slicing"
     ],
     "optimizations": [
-      "Zero-copy string slicing in the Lexer",
-      "Arena allocation for AST nodes",
-      "Bytecode instruction folding for constant expressions"
+      "Zero-copy string tokenization across source code buffer spans",
+      "Bytecode instruction folding for constant arithmetic expressions",
+      "Arena-allocated syntax tree nodes to reduce heap allocation churn"
     ],
     "roadmap": [
-      { "phase": "Phase 1", "title": "Core Rust Lexer, Parser & Cargo Workspaces Architecture", "status": "completed" },
-      { "phase": "Phase 2", "title": "TechScript v2.0 AST Generator & Stack Bytecode VM Runtime", "status": "completed" },
-      { "phase": "Phase 3", "title": "Package Manager Foundation (tspkg) & Standard Library Modules", "status": "completed" },
-      { "phase": "Phase 4", "title": "In-Browser WebAssembly Playground & Interactive Sandbox Execution", "status": "completed" },
-      { "phase": "Phase 5", "title": "LLVM IR Emitter & Language Server Protocol (LSP) IDE Server Integration", "status": "in-progress" }
+      { "phase": "Phase 1", "title": "Core Rust Lexer, Parser & Cargo Workspace Setup", "status": "completed" },
+      { "phase": "Phase 2", "title": "TechScript 2.0 AST Generator & Stack Bytecode VM Runtime", "status": "completed" },
+      { "phase": "Phase 3", "title": "Standard Library Modules & CLI Driver ('tsc')", "status": "completed" },
+      { "phase": "Phase 4", "title": "Interactive WebAssembly Compiler Sandbox", "status": "completed" },
+      { "phase": "Phase 5", "title": "LLVM Native IR Emitter & Language Server Protocol (LSP)", "status": "in-progress" }
     ],
     "interactiveType": "playground"
+  },
+  {
+    "id": "satvora-ai",
+    "featured": true,
+    "layout": "featured",
+    "title": "Satvora AI",
+    "tagline": "AI health coach, multimodal food photo scanner & calorie tracker for Android.",
+    "category": "Mobile App • Health & AI",
+    "color": "#10b981",
+    "description": "Satvora AI is an Android application that combines multimodal computer vision with a comprehensive nutritional taxonomy designed specifically for Indian dietary diversity. It lets users scan meals, track macros, and receive evidence-informed dietary dialogue while keeping personal journal data stored locally on-device.",
+    "problem": "Most calorie tracking applications rely on Western-centric food databases, require tedious manual gram typing, and store sensitive personal biometrics on third-party servers.",
+    "solution": "Built an Android-native application that leverages camera-based multimodal meal analysis, offline-first local SQLite/Room data architecture, and multi-lingual Indian dietary taxonomy.",
+    "techStack": ["Android", "Kotlin", "Multimodal AI", "Computer Vision", "Room Database", "Jetpack Compose", "Coroutines"],
+    "liveUrl": "https://satvora.me/",
+    "playStoreUrl": "https://play.google.com/store/apps/details?id=com.Satvora.AI",
+    "features": [
+      "Multimodal food photo scanning with automatic ingredient and portion estimation",
+      "Comprehensive regional Indian dish catalog supporting 14 Indian languages",
+      "Offline-first local storage architecture ensuring personal nutrition logs remain on-device",
+      "Barcode lookup for packaged consumer food products",
+      "Evidence-informed dietary feedback with zero unsupported medical claims"
+    ],
+    "architecture": "Camera Scanner → Multimodal Vision Parser → Food Taxonomy Mapper → Local Room Database → Reactive Compose UI",
+    "timeline": "2025 — Active Closed Testing",
+    "challenges": [
+      "Distinguishing complex multi-ingredient regional Indian dishes with diverse gravies",
+      "Guaranteeing zero latency on low-end Android hardware via asynchronous background processing",
+      "Enforcing strict privacy boundaries so health logs are not uploaded needlessly"
+    ],
+    "optimizations": [
+      "Local Room database indexing for instant sub-millisecond food searches",
+      "Client-side image normalization and compression prior to model inference",
+      "Asynchronous background image pre-processing with Kotlin Coroutines"
+    ],
+    "roadmap": [
+      { "phase": "Phase 1", "title": "Multimodal Food Scanner & Core Macro Calculation", "status": "completed" },
+      { "phase": "Phase 2", "title": "Regional Indian Dietary Database & Multi-Language Support", "status": "completed" },
+      { "phase": "Phase 3", "title": "Closed Testing Track on Google Play with Active Tester Feedback", "status": "in-progress" },
+      { "phase": "Phase 4", "title": "Public Google Play Production Release", "status": "planned" }
+    ],
+    "interactiveType": "case-study"
+  },
+  {
+    "id": "kinotix",
+    "featured": true,
+    "layout": "featured",
+    "title": "KinotiX",
+    "tagline": "Interactive 4K live & 3D parallax wallpaper engine published on Google Play.",
+    "category": "Android App • Graphics Engine",
+    "color": "#f43f5e",
+    "description": "KinotiX is an Android wallpaper engine published on the Google Play Store (com.kinotix.app). It provides dynamic 3D gyroscope parallax depth, interactive touch-reactive fluid simulations, AMOLED deep-black galleries, and transparent live camera backgrounds.",
+    "problem": "Live wallpaper applications on mobile devices frequently cause severe battery drain, frame drops, and lack physical depth responsiveness.",
+    "solution": "Built a custom OpenGL ES rendering engine in Kotlin with strict lifecycle hooks that completely suspends render loops when the device is locked or occluded.",
+    "techStack": ["Android", "Kotlin", "OpenGL ES", "Hardware Gyro Sensors", "Fluid Simulation", "WallpaperService"],
+    "githubUrl": "https://github.com/Tcode-Motion/kinotix",
+    "githubRepo": "Tcode-Motion/kinotix",
+    "liveUrl": "https://play.google.com/store/apps/details?id=com.kinotix.app",
+    "playStoreUrl": "https://play.google.com/store/apps/details?id=com.kinotix.app",
+    "features": [
+      "Hardware gyroscope and accelerometer-driven multi-plane parallax depth",
+      "Touch-reactive Eulerian fluid simulation with ripples and particle physics",
+      "AMOLED true-black dark themes to conserve OLED display battery life",
+      "Live transparent camera feed mode rendering through wallpaper surface",
+      "Automated battery saver mode suspending GPU calls when screen is off"
+    ],
+    "architecture": "Hardware Sensor Events → Physics Velocity Field → OpenGL ES Shader Pipeline → SurfaceHolder Canvas",
+    "timeline": "2024 — Published on Google Play",
+    "challenges": [
+      "Maintaining smooth 60–120Hz display refresh rates while executing fluid physics shaders",
+      "Calibrating multi-axis sensor smoothing to avoid jitter during hand tremors"
+    ],
+    "optimizations": [
+      "Low-overhead native OpenGL shader uniforms caching",
+      "Dynamic framerate throttling during static periods",
+      "Zero background execution when device display is inactive"
+    ],
+    "roadmap": [
+      { "phase": "Phase 1", "title": "OpenGL ES Gyro Parallax Core & WallpaperService Pipeline", "status": "completed" },
+      { "phase": "Phase 2", "title": "Touch Fluid Simulation & AMOLED Theme Library", "status": "completed" },
+      { "phase": "Phase 3", "title": "Google Play Production Store Deployment", "status": "completed" },
+      { "phase": "Phase 4", "title": "Custom User Video Import & 3D Layer Editor", "status": "in-progress" }
+    ],
+    "interactiveType": "case-study"
   },
   {
     "id": "novos",
@@ -50,50 +134,142 @@
     "tagline": "A futuristic web-based desktop operating system with neomorphic window management.",
     "category": "Web OS • Operating System",
     "color": "#38bdf8",
-    "description": "NovOS is a full web-based operating system providing a reactive desktop interface, custom window manager, virtual file system, taskbar app launcher, and built-in system app ecosystem in React & TypeScript.",
-    "problem": "Standard web portfolios feel flat, static, and fail to showcase desktop-grade state management and windowing systems.",
-    "solution": "Engineered a custom windowing engine with draggable floating viewports, virtual file system, theme customization, and an integrated suite of desktop applications.",
-    "techStack": ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "Zustand", "Vite"],
+    "description": "NovOS is a complete web-based operating system providing a reactive desktop interface, draggable multi-window manager, POSIX virtual file system over IndexedDB, taskbar launcher, and built-in system utilities engineered in React and TypeScript.",
+    "problem": "Standard web portfolios feel flat, static, and fail to demonstrate complex multi-entity state management, windowing systems, and filesystem architectures.",
+    "solution": "Engineered a custom windowing engine with draggable floating viewports, virtual file system with persistent storage, theme customization, and an integrated suite of desktop applications.",
+    "techStack": ["React", "TypeScript", "Tailwind CSS", "Zustand", "IndexedDB", "Vite"],
     "githubUrl": "https://github.com/Tcode-Motion/NovOS",
     "githubRepo": "Tcode-Motion/NovOS",
     "liveUrl": "https://tcode-motion.github.io/NovOS/",
     "features": [
-      "Custom reactive window manager with maximize/minimize/snap",
-      "Virtual File System with folder hierarchy & file previews",
-      "Taskbar app launcher & dynamic system tray",
-      "Neomorphic dark glass design system",
-      "Built-in terminal emulator & system utilities"
+      "Reactive window manager with maximize, minimize, snap, and z-index depth management",
+      "Persistent virtual file system using browser IndexedDB for real file operations",
+      "Taskbar app launcher, notification tray, and dynamic system clock",
+      "Built-in terminal emulator with custom shell commands and file manipulation utilities"
     ],
-    "architecture": "React Desktop Shell → Window Manager → Virtual FS → State Stores → App Renders",
-    "timeline": "2024 — Open Source Release",
+    "architecture": "React Desktop Shell → Window Focus Engine → IndexedDB VFS Layer → Zustand State Stores → Viewport Render",
+    "timeline": "2024 — Open Source",
     "challenges": [
-      "Managing z-index ordering & active window focus states across multiple apps",
-      "Implementing smooth 60fps window dragging and resizing performance",
-      "Building an in-memory virtual file system with persistent state"
+      "Managing focus states and dynamic z-index layers across multiple concurrent windows",
+      "Ensuring 60fps window dragging and resizing performance with complex child layouts"
     ],
     "optimizations": [
-      "Virtual DOM window isolation to prevent re-renders",
-      "GPU-accelerated transform CSS for window physics",
-      "Lazy loading application sub-modules"
+      "Window state memoization preventing cascading re-renders during drags",
+      "CSS transform GPU acceleration for window coordinates",
+      "Lazy loading application sub-modules on demand"
     ],
     "roadmap": [
-      { "phase": "Phase 1", "title": "Reactive Window Manager with Maximize, Snap & Focus Engine", "status": "completed" },
-      { "phase": "Phase 2", "title": "Virtual File System with Folder Hierarchy & Previews", "status": "completed" },
-      { "phase": "Phase 3", "title": "Neomorphic Dark Glass System & Taskbar App Launcher", "status": "completed" },
-      { "phase": "Phase 4", "title": "In-Browser WebAssembly Terminal Execution Engine", "status": "in-progress" },
-      { "phase": "Phase 5", "title": "Cloud Sync Infrastructure & Multi-Monitor Workspaces", "status": "planned" }
+      { "phase": "Phase 1", "title": "Reactive Window Manager & Snap Engine", "status": "completed" },
+      { "phase": "Phase 2", "title": "IndexedDB Virtual File System & File Previews", "status": "completed" },
+      { "phase": "Phase 3", "title": "Terminal Emulator & System Utilities", "status": "completed" },
+      { "phase": "Phase 4", "title": "In-Browser WebAssembly Application Sandbox", "status": "in-progress" }
     ],
-    "interactiveType": "3d-device"
+    "interactiveType": "case-study"
+  },
+  {
+    "id": "neosketch",
+    "featured": false,
+    "layout": "standard",
+    "title": "NeoSketch",
+    "tagline": "Offline AI-powered artistic photo editor for Android and Windows.",
+    "category": "Mobile App • Flutter & Rust",
+    "color": "#00b4ab",
+    "description": "NeoSketch is an offline AI-powered artistic photo editor for Android and Windows built with Flutter, Rust, and the ONNX runtime for privacy-first on-device image processing.",
+    "problem": "Cloud-based photo editors compromise user privacy, introduce latency, and require constant high-speed internet connections.",
+    "solution": "Engineered an on-device image processing pipeline leveraging Flutter for UI, Rust for systems logic, and ONNX Runtime for local neural network inference.",
+    "techStack": ["Flutter", "Dart", "Rust", "ONNX Runtime", "Dart FFI", "Android", "Windows"],
+    "githubUrl": "https://github.com/Tcode-Motion/NeoSketch",
+    "githubRepo": "Tcode-Motion/NeoSketch",
+    "liveUrl": "https://tanmoy.is-a.dev/apps/neosketch/",
+    "features": [
+      "100% offline AI artistic filters and style transfer",
+      "Zero cloud data transfers — photos never leave the user's hardware",
+      "Cross-platform Flutter UI for Android and Windows",
+      "High-speed zero-copy memory bridge between Dart and Rust FFI"
+    ],
+    "architecture": "Flutter UI → Dart FFI Bridge → Rust Processing Core → ONNX Neural Model Inference → Render Output",
+    "timeline": "2024",
+    "challenges": ["Optimizing ONNX neural model execution speed across heterogeneous mobile chipsets"],
+    "optimizations": ["Zero-copy memory sharing between Dart and Rust FFI buffers"],
+    "roadmap": [
+      { "phase": "Phase 1", "title": "Flutter UI & Cross-Platform Canvas Frame", "status": "completed" },
+      { "phase": "Phase 2", "title": "Rust FFI Bridge & ONNX Model Execution Core", "status": "completed" },
+      { "phase": "Phase 3", "title": "Batch Image Processing & Model Quantization", "status": "in-progress" }
+    ],
+    "interactiveType": "case-study"
+  },
+  {
+    "id": "vortyx",
+    "featured": false,
+    "layout": "standard",
+    "title": "Vortyx",
+    "tagline": "Modern Android media downloader and download manager built with Kotlin & Jetpack Compose.",
+    "category": "Mobile App • Tool",
+    "color": "#f59e0b",
+    "description": "Vortyx is a high-performance Android media downloader and transfer manager built with modern Kotlin and Jetpack Compose. It provides multi-threaded chunked downloads, pause/resume capability, and smart directory organization.",
+    "problem": "Most media downloaders are cluttered with invasive advertisements, lack background transfer reliability, and suffer from poor Material Design standards.",
+    "solution": "Engineered a lightweight, ad-free Android utility with Material 3 guidelines, Jetpack WorkManager background task management, and asynchronous I/O.",
+    "techStack": ["Kotlin", "Jetpack Compose", "Android SDK", "Material 3", "Coroutines", "WorkManager"],
+    "githubUrl": "https://github.com/Tcode-Motion/Vortyx",
+    "githubRepo": "Tcode-Motion/Vortyx",
+    "liveUrl": "https://github.com/Tcode-Motion/Vortyx",
+    "features": [
+      "Material 3 dynamic theming interface with smooth Compose animations",
+      "Resumable multi-threaded chunked file downloads",
+      "Automated categorization into Video, Audio, Image, and Document directories",
+      "Background worker tasks utilizing Android Jetpack WorkManager"
+    ],
+    "architecture": "Compose UI → ViewModel StateFlow → WorkManager Dispatcher → OkHttp Network Engine → Scoped Storage",
+    "timeline": "2024",
+    "challenges": ["Managing reliable background download transfers across aggressive Android OEM battery optimizations"],
+    "optimizations": ["Non-blocking asynchronous network polling and I/O buffer streaming"],
+    "roadmap": [
+      { "phase": "Phase 1", "title": "Core Kotlin Engine & Jetpack Compose UI", "status": "completed" },
+      { "phase": "Phase 2", "title": "Multi-threaded Download Manager & Storage Access Framework", "status": "completed" },
+      { "phase": "Phase 3", "title": "Speed Limiting & Batch Queue Management", "status": "in-progress" }
+    ],
+    "interactiveType": "case-study"
+  },
+  {
+    "id": "arc-reactor-3d",
+    "featured": false,
+    "layout": "standard",
+    "title": "ARC Reactor 3D",
+    "tagline": "Interactive 3D Iron Man ARC Reactor rendering engine in Three.js and GLSL shaders.",
+    "category": "3D Graphics • WebGL",
+    "color": "#00f2fe",
+    "description": "An interactive 3D WebGL experience rendering a high-detail Iron Man ARC Reactor with customizable energy core glow, rotating metallic mechanical rings, and dynamic lighting effects.",
+    "problem": "Rendering complex mechanical models with glowing plasma cores requires heavy geometry and custom GLSL tuning for smooth 60fps web performance.",
+    "solution": "Utilized custom GLSL fragment shaders and optimized Three.js geometries for realistic energy core glow and physical metallic rendering.",
+    "techStack": ["Three.js", "TypeScript", "WebGL", "GLSL Shaders", "Vite"],
+    "githubUrl": "https://github.com/Tcode-Motion/arc-reactor-3d",
+    "githubRepo": "Tcode-Motion/arc-reactor-3d",
+    "liveUrl": "https://tcode-motion.github.io/arc-reactor-3d/",
+    "features": [
+      "Real-time 3D metallic mechanical ring rotation physics",
+      "Custom GLSL bloom and plasma core shader effects",
+      "Interactive mouse and touch orbit controls"
+    ],
+    "architecture": "Three.js Scene Graph → GLSL Energy Core Shader → Metallic Ring Mesh → Canvas WebGLRenderer",
+    "timeline": "2024",
+    "challenges": ["Simulating realistic glowing energy core shaders at 60fps across mobile browsers"],
+    "optimizations": ["Instanced mesh rendering and uniform parameter caching"],
+    "roadmap": [
+      { "phase": "Phase 1", "title": "3D Mesh Geometry & Ring Physics Rotation Engine", "status": "completed" },
+      { "phase": "Phase 2", "title": "Custom GLSL Bloom Core Energy Shaders", "status": "completed" },
+      { "phase": "Phase 3", "title": "Audio-Reactive Pulse Mode Integration", "status": "in-progress" }
+    ],
+    "interactiveType": "case-study"
   },
   {
     "id": "aurora-os",
-    "featured": true,
-    "layout": "featured",
+    "featured": false,
+    "layout": "standard",
     "title": "Aurora-OS.js",
     "tagline": "Extensible web OS game and hacking simulator framework in TypeScript.",
     "category": "Web OS • Game Framework",
     "color": "#a855f7",
-    "description": "Aurora OS.js is an extensible web OS game and hacking simulator framework. Provides a virtual OS experience with scripting, sandboxed apps, interactive terminals, and gameplay mechanics.",
+    "description": "Aurora-OS.js is an extensible web OS game and hacking simulator framework providing a virtual operating system experience with scripting, sandboxed apps, interactive terminals, and gameplay mechanics.",
     "problem": "Building complex web OS simulators requires huge boilerplate for process isolation and app sandboxing.",
     "solution": "Built a modular web OS architecture with a virtual process scheduler, terminal emulator, and custom app registration system.",
     "techStack": ["TypeScript", "React", "State Machine", "Canvas API", "WebGL"],
@@ -101,34 +277,28 @@
     "githubRepo": "Tcode-Motion/Aurora-OS.js",
     "liveUrl": "https://mental-os.github.io/Aurora-OS.js/",
     "features": [
-      "Virtual process scheduler & app execution framework",
+      "Virtual process scheduler and application execution framework",
       "Extensible terminal interface with custom command scripts",
       "Glassmorphism UI design system",
-      "Sandboxed gameplay & hacking simulator mechanics"
+      "Sandboxed gameplay and hacking simulator mechanics"
     ],
-    "architecture": "Kernel → Shell → App Sandbox → Window Manager → Viewport",
+    "architecture": "Virtual Kernel → Shell → App Sandbox → Window Manager → Viewport",
     "timeline": "2024",
-    "challenges": [
-      "Sandboxing virtual app execution without polluting global scope",
-      "Designing a pluggable command registry for the terminal"
-    ],
-    "optimizations": [
-      "Dynamic module imports for app packages",
-      "Optimized DOM event delegation"
-    ],
+    "challenges": ["Sandboxing virtual app execution without polluting global scope"],
+    "optimizations": ["Dynamic module imports for app packages"],
     "roadmap": [
       { "phase": "Phase 1", "title": "Virtual Kernel & Shell Execution Framework", "status": "completed" },
       { "phase": "Phase 2", "title": "Pluggable Terminal Emulator & Command Engine", "status": "completed" },
-      { "phase": "Phase 3", "title": "App Sandboxing & Interactive Hacking Gameplay Engine", "status": "in-progress" }
+      { "phase": "Phase 3", "title": "App Sandboxing & Interactive Gameplay Mechanics", "status": "in-progress" }
     ],
-    "interactiveType": "architecture-diagram"
+    "interactiveType": "case-study"
   },
   {
     "id": "os-wallpapers",
     "featured": false,
     "layout": "standard",
     "title": "OS Wallpapers",
-    "tagline": "Collection of minimalist wallpapers tailored for operating system interfaces.",
+    "tagline": "Curated collection of minimalist wallpapers tailored for operating system interfaces.",
     "category": "Design Assets • Collection",
     "color": "#ec4899",
     "description": "A hand-crafted collection of ambient wallpapers and background textures designed specifically for custom Linux setups, Android ROMs, and desktop operating systems.",
@@ -149,97 +319,8 @@
     "optimizations": ["Lossless PNG & WebP compression"],
     "roadmap": [
       { "phase": "Phase 1", "title": "Minimalist OLED Dark Wallpaper Collection", "status": "completed" },
-      { "phase": "Phase 2", "title": "Multi-Aspect Ratio Optimization Pipeline", "status": "completed" },
-      { "phase": "Phase 3", "title": "Community Submission Portal & Automated Processing", "status": "in-progress" }
-    ]
-  },
-  {
-    "id": "arc-reactor-3d",
-    "featured": false,
-    "layout": "standard",
-    "title": "ARC Reactor 3D",
-    "tagline": "Interactive 3D Iron Man ARC Reactor rendering engine in Three.js & TypeScript.",
-    "category": "3D Graphics • WebGL",
-    "color": "#00f2fe",
-    "description": "An interactive 3D WebGL experience rendering a high-detail Iron Man ARC Reactor with customizable energy core glow, rotating metallic rings, and dynamic lighting effects.",
-    "problem": "Complex 3D mechanical models require heavy geometry and shader tuning for 60fps web performance.",
-    "solution": "Utilized custom GLSL shaders and optimized Three.js geometries for realistic energy core glow and physical metallic rendering.",
-    "techStack": ["Three.js", "TypeScript", "WebGL", "GLSL Shaders", "Vite"],
-    "githubUrl": "https://github.com/Tcode-Motion/arc-reactor-3d",
-    "githubRepo": "Tcode-Motion/arc-reactor-3d",
-    "liveUrl": "https://tcode-motion.github.io/arc-reactor-3d/",
-    "features": [
-      "Real-time 3D metallic mechanical ring rotation",
-      "Custom GLSL bloom & energy core shader effects",
-      "Interactive mouse & touch orbit control"
+      { "phase": "Phase 2", "title": "Multi-Aspect Ratio Optimization Pipeline", "status": "completed" }
     ],
-    "architecture": "Three.js Scene → GLSL Energy Shader → Metallic Ring Mesh → Canvas Renderer",
-    "timeline": "2024",
-    "challenges": ["Simulating realistic glowing energy core shaders at 60fps"],
-    "optimizations": ["Instanced mesh rendering & shader uniform caching"],
-    "roadmap": [
-      { "phase": "Phase 1", "title": "3D Mesh Geometry & Ring Physics Rotation Engine", "status": "completed" },
-      { "phase": "Phase 2", "title": "Custom GLSL Bloom Core Energy Shaders", "status": "completed" },
-      { "phase": "Phase 3", "title": "Audio-Reactive Pulse Mode Integration", "status": "in-progress" }
-    ]
-  },
-  {
-    "id": "vortyx",
-    "featured": false,
-    "layout": "standard",
-    "title": "Vortyx",
-    "tagline": "High-performance CLI utility and system performance tool.",
-    "category": "CLI Tool • Utility",
-    "color": "#f59e0b",
-    "description": "Vortyx is a lightweight system performance utility designed for monitoring system resources, process trees, and runtime metrics with zero overhead.",
-    "problem": "Existing system monitoring tools consume heavy memory and introduce lag during intensive workloads.",
-    "solution": "Engineered a low-footprint CLI utility focused on ultra-fast process inspection and CPU/RAM telemetry.",
-    "techStack": ["Rust", "CLI", "System Telemetry", "Process Inspection"],
-    "githubUrl": "https://github.com/Tcode-Motion/Vortyx",
-    "githubRepo": "Tcode-Motion/Vortyx",
-    "liveUrl": "http://techscript.is-a.dev/Vortyx/",
-    "features": [
-      "Real-time CPU, RAM, & process metrics",
-      "Zero-dependency binary execution",
-      "Customizable terminal dashboard"
-    ],
-    "architecture": "Kernel Metrics API → Polling Engine → Terminal Renderer → Dashboard Output",
-    "timeline": "2024",
-    "challenges": ["Cross-platform kernel metrics extraction"],
-    "optimizations": ["Asynchronous non-blocking metrics polling"],
-    "roadmap": [
-      { "phase": "Phase 1", "title": "Rust Core Engine & Real-Time Telemetry CLI", "status": "completed" },
-      { "phase": "Phase 2", "title": "Zero-Dependency Cross-Platform Binary Target", "status": "completed" },
-      { "phase": "Phase 3", "title": "Network Throughput & Storage I/O Monitoring Dashboard", "status": "in-progress" }
-    ]
-  },
-  {
-    "id": "neosketch",
-    "featured": false,
-    "layout": "standard",
-    "title": "NeoSketch",
-    "tagline": "Offline AI-powered artistic photo editor for Android & Windows.",
-    "category": "Mobile App • Flutter & Rust",
-    "color": "#00b4ab",
-    "description": "NeoSketch is an offline AI-powered artistic photo editor for Android and Windows built with Flutter, Rust, and ONNX runtime for privacy-first image processing.",
-    "problem": "Cloud-based AI photo editors compromise user privacy and require constant internet connectivity.",
-    "solution": "Engineered an offline image processing pipeline leveraging Flutter UI, Rust FFI, and ONNX neural network models.",
-    "techStack": ["Flutter", "Dart", "Rust", "ONNX Runtime", "Android", "Windows"],
-    "githubUrl": "https://github.com/Tcode-Motion/NeoSketch",
-    "githubRepo": "Tcode-Motion/NeoSketch",
-    "features": [
-      "100% offline AI artistic filters & style transfer",
-      "Cross-platform Flutter UI for Android & Windows",
-      "High-speed Rust native FFI bridge"
-    ],
-    "architecture": "Flutter UI → Dart FFI → Rust Native Core → ONNX Neural Model Execution",
-    "timeline": "2024",
-    "challenges": ["Optimizing ONNX neural model execution speed on mobile GPUs"],
-    "optimizations": ["Zero-copy memory sharing between Dart and Rust FFI"],
-    "roadmap": [
-      { "phase": "Phase 1", "title": "Flutter UI & Cross-Platform Window Frame", "status": "completed" },
-      { "phase": "Phase 2", "title": "Rust FFI Bridge & ONNX Model Execution Core", "status": "completed" },
-      { "phase": "Phase 3", "title": "Batch Image Processing & Custom Filter Training", "status": "in-progress" }
-    ]
+    "interactiveType": "case-study"
   }
 ]

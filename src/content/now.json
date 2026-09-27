@@ -1,0 +1,73 @@
+{
+  "lastUpdated": "2026-09-27",
+  "location": "West Bengal, India",
+  "currentFocus": "TechScript compiler optimizations, Satvora AI beta testing cycles, and Android graphics engines.",
+  "sections": [
+    {
+      "category": "Currently Building",
+      "items": [
+        {
+          "title": "TechScript 2.0 Toolchain & Compiler Pipeline",
+          "description": "Refining the Rust-based compiler driver ('tsc') with AST validation, bytecode instruction folding, and Language Server Protocol (LSP) integration for IDE diagnostics.",
+          "link": "/techscript/",
+          "status": "In Active Development"
+        },
+        {
+          "title": "Satvora AI Closed Testing & Regional Nutrition Models",
+          "description": "Iterating on multimodal food scanning accuracy, ingredient OCR, and local Room database caching during the Google Play closed testing phase with community testers.",
+          "link": "/apps/satvora-ai/",
+          "status": "Beta Testing Track"
+        }
+      ]
+    },
+    {
+      "category": "Currently Maintaining",
+      "items": [
+        {
+          "title": "KinotiX: 4K Live & 3D Wallpaper (Google Play)",
+          "description": "Monitoring production performance, sensor battery consumption, and display refresh rate compliance on diverse Android devices.",
+          "link": "https://play.google.com/store/apps/details?id=com.kinotix.app",
+          "status": "Live on Google Play"
+        },
+        {
+          "title": "NovOS Web Operating System",
+          "description": "Maintaining the reactive window manager, IndexedDB virtual file system, and open source web desktop ecosystem on GitHub.",
+          "link": "https://github.com/Tcode-Motion/NovOS",
+          "status": "Open Source"
+        }
+      ]
+    },
+    {
+      "category": "Currently Experimenting With",
+      "items": [
+        {
+          "title": "On-Device Neural Inference (ONNX + Rust FFI)",
+          "description": "Benchmarking zero-copy memory pipelines between Dart/Flutter and native Rust libraries running quantized ONNX models without cloud dependencies.",
+          "link": "/projects/neosketch/",
+          "status": "Research & Prototyping"
+        },
+        {
+          "title": "Multi-Threaded Android Media Pipeline in Kotlin",
+          "description": "Developing asynchronous chunked download algorithms in Vortyx using Jetpack WorkManager and Kotlin Coroutines.",
+          "link": "/projects/vortyx/",
+          "status": "Experimental"
+        }
+      ]
+    },
+    {
+      "category": "Recently Shipped",
+      "items": [
+        {
+          "title": "KinotiX Google Play Store Deployment",
+          "description": "Completed closed testing gate requirements and launched KinotiX to the public Google Play Store catalog.",
+          "date": "2025"
+        },
+        {
+          "title": "TechScript 2.0 Language Architecture Specification",
+          "description": "Completed the 2.0 language rewrite featuring keyword-delimited block structure, custom lexer, parser, and stack-based bytecode VM.",
+          "date": "2025"
+        }
+      ]
+    }
+  ]
+}

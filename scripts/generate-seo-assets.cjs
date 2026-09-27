@@ -36,6 +36,13 @@ const getLastmod = (filePath) => {
 const run = () => {
   try {
     const publicPath = path.join(portfolioPath, 'public');
+    const distPath = path.join(portfolioPath, 'dist');
+    const writeAsset = (filename, content) => {
+      fs.writeFileSync(path.join(publicPath, filename), content, 'utf8');
+      if (fs.existsSync(distPath)) {
+        fs.writeFileSync(path.join(distPath, filename), content, 'utf8');
+      }
+    };
     const showcasePath = path.join(portfolioPath, 'src', 'content', 'projects', 'showcase.json');
     
     if (!fs.existsSync(showcasePath)) {
@@ -60,28 +67,51 @@ const run = () => {
       
     console.log('[SEO-Audit] Verified indexable static subfolders:', projectSubdirs);
 
-    // 2. Build list of sitemap entry objects
+    const appsPath = path.join(portfolioPath, 'src', 'content', 'apps.json');
+    const apps = fs.existsSync(appsPath) ? JSON.parse(fs.readFileSync(appsPath, 'utf8')) : [];
+
+    // 2. Build list of sitemap entry objects for all verified canonical routes
     const sitemapEntries = [
-      {
-        loc: `${baseUrl}/`,
-        lastmod: getLastmod(path.join(portfolioPath, 'index.html')),
-        changefreq: 'weekly',
-        priority: '1.0'
-      },
-      {
-        loc: `${baseUrl}/projects/`,
-        lastmod: getLastmod(path.join(portfolioPath, 'src', 'pages', 'HomePage.tsx')),
-        changefreq: 'weekly',
-        priority: '0.8'
-      }
+      { loc: `${baseUrl}/`, lastmod: getLastmod(path.join(portfolioPath, 'index.html')), changefreq: 'weekly', priority: '1.0' },
+      { loc: `${baseUrl}/about/`, lastmod: getLastmod(path.join(portfolioPath, 'src', 'pages', 'AboutPage.tsx')), changefreq: 'monthly', priority: '0.9' },
+      { loc: `${baseUrl}/projects/`, lastmod: getLastmod(path.join(portfolioPath, 'src', 'pages', 'ProjectsPage.tsx')), changefreq: 'weekly', priority: '0.9' },
+      { loc: `${baseUrl}/apps/`, lastmod: getLastmod(path.join(portfolioPath, 'src', 'pages', 'AppsPage.tsx')), changefreq: 'weekly', priority: '0.9' },
+      { loc: `${baseUrl}/techscript/`, lastmod: getLastmod(path.join(portfolioPath, 'src', 'pages', 'TechScriptPage.tsx')), changefreq: 'weekly', priority: '0.9' },
+      { loc: `${baseUrl}/technologies/`, lastmod: getLastmod(path.join(portfolioPath, 'src', 'pages', 'TechnologiesPage.tsx')), changefreq: 'monthly', priority: '0.8' },
+      { loc: `${baseUrl}/now/`, lastmod: getLastmod(path.join(portfolioPath, 'src', 'pages', 'NowPage.tsx')), changefreq: 'weekly', priority: '0.8' },
+      { loc: `${baseUrl}/workflow/`, lastmod: getLastmod(path.join(portfolioPath, 'src', 'pages', 'WorkflowPage.tsx')), changefreq: 'monthly', priority: '0.8' },
+      { loc: `${baseUrl}/journey/`, lastmod: getLastmod(path.join(portfolioPath, 'src', 'pages', 'JourneyPage.tsx')), changefreq: 'monthly', priority: '0.8' },
+      { loc: `${baseUrl}/connect/`, lastmod: getLastmod(path.join(portfolioPath, 'src', 'pages', 'ConnectPage.tsx')), changefreq: 'monthly', priority: '0.8' },
+      { loc: `${baseUrl}/resume/`, lastmod: getLastmod(path.join(portfolioPath, 'src', 'pages', 'ResumePage.tsx')), changefreq: 'monthly', priority: '0.7' },
+      { loc: `${baseUrl}/blog/`, lastmod: getLastmod(path.join(portfolioPath, 'src', 'pages', 'BlogPage.tsx')), changefreq: 'monthly', priority: '0.7' }
     ];
+
+    // Add individual showcase project pages
+    showcase.forEach(p => {
+      sitemapEntries.push({
+        loc: `${baseUrl}/projects/${p.id}/`,
+        lastmod: getLastmod(showcasePath),
+        changefreq: 'monthly',
+        priority: '0.8'
+      });
+    });
+
+    // Add individual app pages
+    apps.forEach(a => {
+      sitemapEntries.push({
+        loc: `${baseUrl}/apps/${a.id}/`,
+        lastmod: getLastmod(appsPath),
+        changefreq: 'monthly',
+        priority: '0.8'
+      });
+    });
 
     projectSubdirs.forEach(dir => {
       sitemapEntries.push({
         loc: `${baseUrl}/${dir}/`,
         lastmod: getLastmod(path.join(portfolioPath, dir, 'index.html')),
         changefreq: 'monthly',
-        priority: '0.8'
+        priority: '0.7'
       });
     });
 
@@ -119,12 +149,12 @@ ${sitemapFiles.map(file => `  <sitemap>
   </sitemap>`).join('\n')}
 </sitemapindex>`;
       
-      fs.writeFileSync(path.join(publicPath, 'sitemap.xml'), indexXml, 'utf8');
+      writeAsset('sitemap.xml', indexXml);
       console.log('Successfully wrote sitemap index (sitemap.xml) and chunked sub-sitemaps.');
     } else {
       // Single sitemap file (standard)
       const xml = generateSitemapXml(cleanEntries);
-      fs.writeFileSync(path.join(publicPath, 'sitemap.xml'), xml, 'utf8');
+      writeAsset('sitemap.xml', xml);
       console.log('Successfully generated standardized sitemap.xml.');
     }
 
@@ -137,7 +167,7 @@ Disallow: /dist/
 
 Sitemap: ${baseUrl}/sitemap.xml
 `;
-    fs.writeFileSync(path.join(publicPath, 'robots.txt'), robots, 'utf8');
+    writeAsset('robots.txt', robots);
     console.log('Successfully generated robots.txt pointing to live sitemap.');
 
     // 4. Generate Search Index
@@ -149,7 +179,7 @@ Sitemap: ${baseUrl}/sitemap.xml
       description: p.description,
       techStack: p.techStack || []
     }));
-    fs.writeFileSync(path.join(publicPath, 'search-index.json'), JSON.stringify(searchIndex, null, 2), 'utf8');
+    writeAsset('search-index.json', JSON.stringify(searchIndex, null, 2));
     console.log('Successfully generated search-index.json');
 
     // 5. Generate RSS Feed
@@ -177,7 +207,7 @@ ${rssItems.join('\n')}
 </channel>
 </rss>`;
 
-    fs.writeFileSync(path.join(publicPath, 'feed.xml'), rss, 'utf8');
+    writeAsset('feed.xml', rss);
     console.log('Successfully generated feed.xml (RSS)');
     
   } catch (error) {

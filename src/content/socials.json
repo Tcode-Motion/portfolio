@@ -3,30 +3,80 @@
     "platform": "GitHub",
     "username": "Tcode-Motion",
     "url": "https://github.com/Tcode-Motion",
-    "icon": "github"
+    "icon": "github",
+    "rel": "me",
+    "description": "Open-source repositories, compilers, and projects"
   },
   {
-    "platform": "Twitter / X",
-    "username": "TanmoyMaju40558",
-    "url": "https://x.com/TanmoyMaju40558",
-    "icon": "twitter"
+    "platform": "Google Play",
+    "username": "Tanmoy Majumder",
+    "url": "https://play.google.com/store/apps/dev?id=8946471561851740040",
+    "icon": "play",
+    "rel": "me",
+    "description": "Official Google Play Developer Console profile"
   },
   {
-    "platform": "Discord",
-    "username": "tcodemotion",
-    "url": "https://discord.com/users/tcodemotion",
-    "icon": "message-square"
+    "platform": "X (Twitter)",
+    "username": "@Tcodemotion",
+    "url": "https://x.com/Tcodemotion",
+    "icon": "twitter",
+    "rel": "me",
+    "description": "Tech discussions, releases, and developer updates"
+  },
+  {
+    "platform": "about.me",
+    "username": "Tanmoy.majumder",
+    "url": "https://about.me/Tanmoy.majumder",
+    "icon": "user",
+    "rel": "me",
+    "description": "Verified personal biography & professional profile"
   },
   {
     "platform": "YouTube",
     "username": "@tcodemotin",
     "url": "https://www.youtube.com/@tcodemotin",
-    "icon": "youtube"
+    "icon": "youtube",
+    "rel": "me",
+    "description": "Project demos, tutorials, and development breakdowns"
   },
   {
     "platform": "Instagram",
-    "username": "tcodemotion",
+    "username": "@tcodemotion",
     "url": "https://www.instagram.com/tcodemotion/",
-    "icon": "instagram"
+    "icon": "instagram",
+    "rel": "me",
+    "description": "Visual work, developer lifestyle, and highlights"
+  },
+  {
+    "platform": "ORCID",
+    "username": "0009-0007-9079-130X",
+    "url": "https://orcid.org/0009-0007-9079-130X",
+    "icon": "award",
+    "rel": "me",
+    "description": "Verified academic & researcher identifier"
+  },
+  {
+    "platform": "Reddit",
+    "username": "u/tcodemotion",
+    "url": "https://www.reddit.com/user/tcodemotion/",
+    "icon": "message-circle",
+    "rel": "me",
+    "description": "Community discussions, beta testing & feedback"
+  },
+  {
+    "platform": "Discord",
+    "username": "tcodemotion",
+    "url": "https://discord.com/users/tcodemotion",
+    "icon": "message-square",
+    "rel": "me",
+    "description": "Direct developer chat and real-time collaboration"
+  },
+  {
+    "platform": "Email",
+    "username": "tcodemotion@gmail.com",
+    "url": "mailto:tcodemotion@gmail.com",
+    "icon": "mail",
+    "rel": "nofollow",
+    "description": "Direct communication for collaboration and inquiries"
   }
 ]

@@ -1,0 +1,76 @@
+[
+  {
+    "id": "rust",
+    "name": "Rust",
+    "category": "Systems & Compilers",
+    "icon": "shield",
+    "description": "Used for high-performance memory-safe systems programming, compiler engineering, and native cross-platform core libraries.",
+    "whyChosen": "Rust provides zero-cost abstractions, strict compile-time borrow checking, and effortless concurrency without the overhead of a garbage collector.",
+    "projects": [
+      { "id": "techscript", "name": "TechScript", "role": "Entire compiler, lexer, AST, bytecode VM, and CLI driver" },
+      { "id": "neosketch", "name": "NeoSketch", "role": "Native image processing engine and ONNX neural runtime bridge" }
+    ]
+  },
+  {
+    "id": "kotlin",
+    "name": "Kotlin & Android SDK",
+    "category": "Mobile Systems",
+    "icon": "smartphone",
+    "description": "Used for developing native Android applications, graphics wallpaper engines, and modern Material 3 mobile interfaces.",
+    "whyChosen": "Kotlin offers concise null-safety, first-class Coroutines for asynchronous concurrency, and deep integration with the Android runtime and Jetpack libraries.",
+    "projects": [
+      { "id": "kinotix", "name": "KinotiX", "role": "OpenGL ES live wallpaper engine and hardware sensor pipeline on Google Play" },
+      { "id": "satvora-ai", "name": "Satvora AI", "role": "Android application with camera scanning, Room DB, and local UI" },
+      { "id": "vortyx", "name": "Vortyx", "role": "Material 3 download manager with Jetpack WorkManager background engine" },
+      { "id": "cloudvault", "name": "CloudVault", "role": "Jetpack Compose storage manager interfacing with native TDLib" }
+    ]
+  },
+  {
+    "id": "typescript",
+    "name": "TypeScript & React",
+    "category": "Web Architectures",
+    "icon": "code",
+    "description": "Used for architecting complex browser-based desktop environments, developer portfolios, and interactive client applications.",
+    "whyChosen": "TypeScript brings strict compile-time typing to web ecosystems, enabling large-scale state management and robust component architectures.",
+    "projects": [
+      { "id": "novos", "name": "NovOS", "role": "Web-based desktop operating system shell and windowing engine" },
+      { "id": "aurora-os", "name": "Aurora-OS.js", "role": "Web OS simulation and game framework" },
+      { "id": "arc-reactor-3d", "name": "ARC Reactor 3D", "role": "Interactive 3D mechanical visualizer in Three.js and TypeScript" }
+    ]
+  },
+  {
+    "id": "flutter",
+    "name": "Flutter & Dart",
+    "category": "Cross-Platform Mobile",
+    "icon": "layers",
+    "description": "Used for building fluid cross-platform user interfaces that bind natively to low-level C and Rust engines.",
+    "whyChosen": "Flutter provides high-performance custom canvas rendering with Skia/Impeller and frictionless Dart FFI foreign function bindings.",
+    "projects": [
+      { "id": "neosketch", "name": "NeoSketch", "role": "Cross-platform mobile and desktop image editing canvas" },
+      { "id": "aurora-music", "name": "Aurora Music", "role": "Reactive mobile audio streaming and playlist interface" }
+    ]
+  },
+  {
+    "id": "threejs",
+    "name": "Three.js & WebGL / GLSL",
+    "category": "3D & Creative Shaders",
+    "icon": "box",
+    "description": "Used for hardware-accelerated 3D graphics, customized GLSL fragment shaders, and interactive spatial web experiences.",
+    "whyChosen": "WebGL unlocks direct GPU computing in standard web browsers, enabling real-time lighting, materials, and physics simulations.",
+    "projects": [
+      { "id": "arc-reactor-3d", "name": "ARC Reactor 3D", "role": "High-fidelity Iron Man reactor with GLSL glow shaders" },
+      { "id": "solar-system", "name": "Solar System", "role": "3D astronomical simulation with orbital physics" }
+    ]
+  },
+  {
+    "id": "python",
+    "name": "Python & Computer Vision",
+    "category": "Machine Vision & Scripting",
+    "icon": "terminal",
+    "description": "Used for computer vision prototypes, automated image processing scripts, and developer tooling.",
+    "whyChosen": "Python excels at rapid prototyping, data extraction, and integrating computer vision libraries like OpenCV and MediaPipe.",
+    "projects": [
+      { "id": "ar-keyboard", "name": "AR Keyboard", "role": "Hand landmark detection and virtual air-typing computer vision" }
+    ]
+  }
+]

@@ -10,41 +10,25 @@
 
   html {
     color-scheme: dark;
+    background-color: #07090e !important;
     scroll-padding-top: 5rem;
-    cursor: none;
-  }
-
-  @media (pointer: coarse) {
-    html { cursor: auto; }
-  }
-
-  html.lenis, html.lenis body {
-    height: auto;
-  }
-
-  .lenis.lenis-smooth {
-    scroll-behavior: auto !important;
-  }
-
-  .lenis.lenis-smooth [data-lenis-prevent] {
-    overscroll-behavior: contain;
+    scroll-behavior: smooth;
+    cursor: default !important;
   }
 
   body {
-    background-color: var(--bg);
-    color: var(--text-1);
+    background-color: #07090e !important;
+    color: #f1f5f9 !important;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
     overscroll-behavior-y: none;
+    cursor: default !important;
   }
 
-  input, textarea, select { cursor: text; }
-  a, button, [role="button"] { cursor: none; }
-
-  @media (pointer: coarse) {
-    a, button, [role="button"] { cursor: auto; }
-  }
+  input, textarea, select { cursor: text !important; }
+  a, button, [role="button"], input[type="submit"], input[type="button"], label[for], summary { cursor: pointer !important; }
+  pre, code { cursor: text !important; }
 
   ::selection {
     background: rgba(196, 255, 54, 0.2);

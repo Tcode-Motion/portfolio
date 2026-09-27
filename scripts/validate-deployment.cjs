@@ -41,31 +41,52 @@ expectedProjects.forEach(projectId => {
   }
 });
 
+// 2.5 Verify Core Knowledge Hub Prerendered Routes
+const coreRoutes = [
+  'about',
+  'projects',
+  'apps',
+  'techscript',
+  'technologies',
+  'now',
+  'workflow',
+  'journey',
+  'connect'
+];
+
+console.log('\nValidating Core Knowledge Hub Prerendered Routes...');
+coreRoutes.forEach(route => {
+  const routeIndex = path.join(distPath, route, 'index.html');
+  if (!fs.existsSync(routeIndex)) {
+    console.error(`Validation Error: Prerendered route '${route}' is missing at ${routeIndex}`);
+    validationFailed = true;
+  } else {
+    console.log(`✓ Core route '/${route}/' verified.`);
+  }
+});
+
+// 2.6 Verify SEO Assets in dist/
+['sitemap.xml', 'robots.txt', 'feed.xml', '404.html'].forEach(asset => {
+  const assetPath = path.join(distPath, asset);
+  if (!fs.existsSync(assetPath)) {
+    console.warn(`[SEO Warning] '${asset}' is missing in dist/ output at ${assetPath}`);
+  } else {
+    console.log(`✓ SEO asset '${asset}' verified in dist/.`);
+  }
+});
+
 // 3. Cross-reference with showcase.json
 if (fs.existsSync(showcasePath)) {
   const showcase = JSON.parse(fs.readFileSync(showcasePath, 'utf8'));
-  console.log('\nCross-referencing showcase.json with deployments...');
+  console.log('\nCross-referencing showcase.json with project detail routes...');
   
   showcase.forEach(project => {
     if (!project.id) return;
-    
-    // Check if the project is configured to deploy locally
-    const isHostedLocally = project.liveUrl && (
-      project.liveUrl.includes('tanmoy.is-a.dev') ||
-      project.liveUrl.includes('tcode-motion.github.io/portfolio')
-    );
-    
-    if (isHostedLocally) {
-      const projectDistDir = path.join(distPath, project.id);
-      const projectIndex = path.join(projectDistDir, 'index.html');
-      
-      console.log(`Validating showcase project '${project.id}'...`);
-      if (!fs.existsSync(projectIndex)) {
-        console.error(`Validation Error: Project '${project.id}' is registered in showcase.json but its deployment files or index.html are missing at ${projectIndex}`);
-        validationFailed = true;
-      } else {
-        console.log(`✓ Showcase project '${project.id}' verified.`);
-      }
+    const projectRoute = path.join(distPath, 'projects', project.id, 'index.html');
+    if (!fs.existsSync(projectRoute)) {
+      console.warn(`[Route Warning] Case study route for '${project.id}' is missing at ${projectRoute}`);
+    } else {
+      console.log(`✓ Project route '/projects/${project.id}/' verified.`);
     }
   });
 } else {

@@ -1,11 +1,12 @@
-/* ── Display Font ── */
+/* ── Display Font (Geometric, Modern, Razor-Sharp Tech) ── */
 h1, h2, h3, .font-display {
-  font-family: 'Syne', -apple-system, sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  letter-spacing: -0.03em;
 }
 
 /* ── Body Font ── */
 p, span, label, input, textarea, h4, h5, h6, .font-body {
-  font-family: 'Inter', -apple-system, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 /* ── Code Font ── */

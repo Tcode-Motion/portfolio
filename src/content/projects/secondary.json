@@ -1,66 +1,58 @@
 [
   {
-    "id": "aurora-music",
-    "title": "Aurora Music",
-    "tagline": "Open-source AI music streaming app built with Flutter — offline playback, sleek UI, 18+ stars on GitHub.",
-    "category": "Mobile App",
-    "techStack": ["Flutter", "Dart", "AI Integration"],
-    "githubUrl": "https://github.com/Tcode-Motion/Aurora-Music"
-  },
-  {
-    "id": "voicevault-ai",
-    "title": "VoiceVault AI",
-    "tagline": "AI-powered voice cloning and recognition system with real-time inference — 18+ stars.",
-    "category": "AI Application",
-    "techStack": ["Flutter", "Dart", "AI APIs"],
-    "githubUrl": "https://github.com/Tcode-Motion/VoiceVault-Ai"
-  },
-  {
-    "id": "wallvault",
-    "title": "WallVault",
-    "tagline": "Modern desktop wallpaper manager focused on performance and aesthetics — 7+ stars.",
-    "category": "Desktop App",
-    "techStack": ["Tauri", "React", "Rust"],
-    "githubUrl": "https://github.com/Tcode-Motion/WallVault"
-  },
-  {
-    "id": "armenu-ai",
-    "title": "Arm-Menu-Ai",
-    "tagline": "AI-powered interactive 3D restaurant menu with AR visualization — 16+ stars.",
-    "category": "Web & 3D Application",
-    "techStack": ["Next.js", "TypeScript", "Three.js"],
-    "githubUrl": "https://github.com/Tcode-Motion/Arm-Menu-Ai"
-  },
-  {
-    "id": "nutrilens-ai",
-    "title": "NutriLens AI",
-    "tagline": "AI-powered food analysis app — snap a photo, get ingredient breakdown and nutrition data.",
-    "category": "AI Application",
-    "techStack": ["Python", "FastAPI", "AI APIs"],
-    "githubUrl": "https://github.com/Tcode-Motion/Nutrilens-Ai"
-  },
-  {
-    "id": "funnelcore",
-    "title": "FunnelCore",
-    "tagline": "Developer software platform exploring scalable backend architecture — TypeScript + Node.",
-    "category": "Backend System",
-    "techStack": ["TypeScript", "Node.js"],
-    "githubUrl": "https://github.com/Tcode-Motion/FunnelCore"
-  },
-  {
     "id": "ar-keyboard",
     "title": "AR Keyboard",
-    "tagline": "Augmented reality keyboard using hand tracking — type in the air with computer vision.",
-    "category": "AR / AI Application",
+    "tagline": "Augmented reality virtual keyboard using computer vision hand tracking — type in the air.",
+    "category": "Computer Vision / AR",
     "techStack": ["Python", "OpenCV", "MediaPipe"],
     "githubUrl": "https://github.com/Tcode-Motion/AR-Keyboard"
   },
   {
     "id": "solar-system",
     "title": "Solar System",
-    "tagline": "Interactive 3D solar system visualization with realistic orbits and planet textures.",
-    "category": "Creative / Web",
-    "techStack": ["JavaScript", "Three.js"],
+    "tagline": "Interactive 3D astronomical simulation with orbital dynamics and celestial body textures.",
+    "category": "3D Graphics / WebGL",
+    "techStack": ["JavaScript", "Three.js", "WebGL"],
     "githubUrl": "https://github.com/Tcode-Motion/solar-system"
+  },
+  {
+    "id": "computer-part-map",
+    "title": "Computer Part Map",
+    "tagline": "Interactive visual map and architectural guide exploring computer hardware components.",
+    "category": "Educational / Web",
+    "techStack": ["HTML", "CSS", "JavaScript"],
+    "githubUrl": "https://github.com/Tcode-Motion/computer-part-map"
+  },
+  {
+    "id": "ar-photo",
+    "title": "AR Photo Gallery",
+    "tagline": "Universal marker-based AR photo gallery working natively in smartphone web browsers.",
+    "category": "WebXR / AR",
+    "techStack": ["HTML", "JavaScript", "WebXR"],
+    "githubUrl": "https://github.com/Tcode-Motion/ar-photo"
+  },
+  {
+    "id": "weather-dashboard",
+    "title": "Weather Dashboard",
+    "tagline": "Clean meteorological dashboard with real-time API telemetry and dynamic forecasts.",
+    "category": "Web Application",
+    "techStack": ["TypeScript", "Tailwind CSS", "REST APIs"],
+    "githubUrl": "https://github.com/Tcode-Motion/weather-dashboard"
+  },
+  {
+    "id": "aurora-music",
+    "title": "Aurora Music",
+    "tagline": "Open-source audio streaming and offline playback client built with Flutter.",
+    "category": "Mobile App",
+    "techStack": ["Flutter", "Dart", "Audio APIs"],
+    "githubUrl": "https://github.com/Tcode-Motion/Aurora-Music"
+  },
+  {
+    "id": "minivibe-offline-music-player",
+    "title": "MiniVibe Player",
+    "tagline": "Lightweight, zero-overhead offline audio player for minimal distraction listening.",
+    "category": "Audio Utility",
+    "techStack": ["HTML5 Audio", "JavaScript", "CSS"],
+    "githubUrl": "https://github.com/Tcode-Motion/minivibe-offline-music-player"
   }
 ]

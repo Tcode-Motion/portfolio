@@ -1,51 +1,57 @@
-import React, { useEffect, useState, Suspense } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { PlanetaryGlobe } from '@/modules/hero/PlanetaryGlobe';
 
 export const GlobalPlanetaryCanvas: React.FC = () => {
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const [canRender, setCanRender] = useState(true);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      if (totalHeight > 0) {
-        const progress = Math.min(1, Math.max(0, window.scrollY / totalHeight));
-        setScrollProgress(progress);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-
-    return () => window.removeEventListener('scroll', handleScroll);
+    // Check if user explicitly asked for reduced motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setCanRender(false);
+    }
   }, []);
 
-  // 3D Distance Depth Opacity Modulation (Fades to 0.35 in deep space, brightens to 0.98 during close flyby)
-  const depthFactor = Math.sin(scrollProgress * Math.PI * 3.5) * 0.30;
-  const globeOpacity = Math.max(0.35, Math.min(0.98, 0.70 + depthFactor));
+  if (!canRender) {
+    return null;
+  }
 
   return (
     <div
-      className="fixed inset-0 pointer-events-none z-[1] overflow-hidden transition-opacity duration-300"
-      style={{ opacity: globeOpacity }}
+      className="fixed inset-0 pointer-events-none z-[1] overflow-hidden select-none"
+      style={{ opacity: 0.85 }}
+      aria-hidden="true"
     >
-      <Suspense fallback={null}>
-        <Canvas
-          camera={{ position: [0, 0, 7.5], fov: 44 }}
-          dpr={[1, 1.5]}
-          gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
-          style={{ background: 'transparent' }}
-        >
-          <PlanetaryGlobe scrollProgress={scrollProgress} />
-        </Canvas>
-      </Suspense>
+      <Canvas
+        camera={{ position: [0, 0, 7.5], fov: 44 }}
+        dpr={1}
+        gl={{
+          antialias: false,
+          alpha: true,
+          powerPreference: 'default',
+          preserveDrawingBuffer: false,
+        }}
+        onCreated={({ gl }) => {
+          const dom = gl.domElement;
+          // Crucial: prevent browser from permanently abandoning context on transient driver hiccups
+          dom.addEventListener(
+            'webglcontextlost',
+            (event) => {
+              event.preventDefault();
+            },
+            false
+          );
+        }}
+        style={{ background: 'transparent', pointerEvents: 'none', width: '100%', height: '100%' }}
+      >
+        <PlanetaryGlobe />
+      </Canvas>
 
-      {/* Atmospheric Ambient Glow behind Planet */}
+      {/* Atmospheric Ambient Glow behind Planet (pure hardware CSS radial gradient, 0% blur overhead) */}
       <div
-        className="absolute top-1/4 right-10 w-[550px] h-[550px] rounded-full blur-[150px] pointer-events-none opacity-20 transition-all duration-700"
+        className="absolute top-1/4 right-6 w-[450px] h-[450px] rounded-full pointer-events-none opacity-20"
         style={{
-          background: 'radial-gradient(circle, #c4ff36 0%, rgba(139,92,246,0.3) 50%, transparent 80%)',
-          transform: `translate3d(0, ${scrollProgress * -100}px, 0)`,
+          background: 'radial-gradient(circle, rgba(99,102,241,0.25) 0%, rgba(139,92,246,0.1) 40%, transparent 70%)',
         }}
       />
     </div>

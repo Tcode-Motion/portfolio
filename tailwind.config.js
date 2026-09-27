@@ -31,9 +31,9 @@ export default {
         },
       },
       fontFamily: {
-        display: ['Syne', '-apple-system', 'sans-serif'],
+        display: ['"Plus Jakarta Sans"', 'Inter', '-apple-system', 'sans-serif'],
         body: ['Inter', '-apple-system', 'sans-serif'],
-        code: ['JetBrains Mono', 'monospace'],
+        code: ['"JetBrains Mono"', 'monospace'],
       },
       fontSize: {
         'display': ['clamp(2.5rem, 5vw, 5rem)', { lineHeight: '1.0', letterSpacing: '-0.03em', fontWeight: '700' }],

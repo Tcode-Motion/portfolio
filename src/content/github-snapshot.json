@@ -1,0 +1,83 @@
+{
+  "lastUpdated": "2026-09-27",
+  "username": "Tcode-Motion",
+  "publicRepoCount": 19,
+  "totalStars": 83,
+  "totalForks": 2,
+  "topLanguages": [
+    [
+      "HTML",
+      10
+    ],
+    [
+      "TypeScript",
+      5
+    ],
+    [
+      "Python",
+      1
+    ],
+    [
+      "JavaScript",
+      1
+    ]
+  ],
+  "featuredRepos": [
+    {
+      "name": "techscript",
+      "description": "Open-source programming language built with Rust, featuring native compiler, virtual machine, package manager, and modern tooling.",
+      "stars": 7,
+      "language": "Rust / Systems",
+      "url": "https://github.com/Tcode-Motion/techscript"
+    },
+    {
+      "name": "Vortyx",
+      "description": "Modern Android media downloader and download manager built with Kotlin and Jetpack Compose.",
+      "stars": 8,
+      "language": "Kotlin / Jetpack",
+      "url": "https://github.com/Tcode-Motion/Vortyx"
+    },
+    {
+      "name": "NovOS",
+      "description": "Web-based desktop operating system with reactive window management and POSIX VFS over IndexedDB.",
+      "stars": 7,
+      "language": "TypeScript / React",
+      "url": "https://github.com/Tcode-Motion/NovOS"
+    },
+    {
+      "name": "os-wallpapers",
+      "description": "Curated collection of high-quality minimalist wallpapers tailored for operating systems.",
+      "stars": 7,
+      "language": "Design / Web",
+      "url": "https://github.com/Tcode-Motion/os-wallpapers"
+    },
+    {
+      "name": "kinotix",
+      "description": "Android 4K Live & 3D Wallpaper engine with gyro parallax depth and fluid physics.",
+      "stars": 3,
+      "language": "Android / OpenGL",
+      "url": "https://github.com/Tcode-Motion/kinotix"
+    },
+    {
+      "name": "Neo-Sketch-AI",
+      "description": "Offline AI photo editor using Flutter, Rust FFI, and ONNX Runtime.",
+      "stars": 0,
+      "language": "Flutter / Rust",
+      "url": "https://github.com/Tcode-Motion/Neo-Sketch-AI"
+    },
+    {
+      "name": "AR-Keyboard",
+      "description": "Augmented reality virtual keyboard using computer vision hand landmark tracking.",
+      "stars": 5,
+      "language": "Python / OpenCV",
+      "url": "https://github.com/Tcode-Motion/AR-Keyboard"
+    },
+    {
+      "name": "arc-reactor-3d",
+      "description": "Interactive 3D Iron Man ARC Reactor rendering engine in Three.js & GLSL shaders.",
+      "stars": 5,
+      "language": "TypeScript / WebGL",
+      "url": "https://github.com/Tcode-Motion/arc-reactor-3d"
+    }
+  ]
+}

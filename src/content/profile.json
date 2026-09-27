@@ -1,36 +1,31 @@
 {
-  "name": "Tanmoy",
+  "name": "Tanmoy Majumder",
   "handle": "Tcode-Motion",
-  "title": "Rust Language Creator • 3D Web Developer • Open Source Builder",
+  "aliases": ["Tcode-Motion", "Tanmoy", "tcodemotion"],
+  "title": "Coder, AI App Builder & Open Source Contributor",
   "roles": [
-    "Rust Language Creator",
-    "3D Web Developer",
-    "Open Source Builder",
-    "Compiler Engineer",
-    "Systems Architect"
+    "Compiler & Systems Enthusiast",
+    "Android & Mobile App Developer",
+    "AI Application Builder",
+    "Open Source Contributor",
+    "Full-Stack Web Architect"
   ],
-  "location": "West Bengal, India 🇮🇳",
-  "blog": "https://github.com/Tcode-Motion/techscript",
+  "location": "West Bengal, India",
+  "country": "India",
   "githubUsername": "Tcode-Motion",
-  "tagline": "I don't just write code. I architect the future. Predict the future by coding it. ⚡",
-  "elevatorPitch": "I'm Tanmoy (alias Tcode-Motion) — an independent developer and open source builder from West Bengal, India. I specialize in Rust systems programming, 3D web development, WebGL/GLSL shaders, programming language design, and native GUI with Egui. Creator of TechScript 2.0 — a plain-English programming language with a native Rust compiler, bytecode VM, and built-in Studio IDE.",
-  "philosophy": "I don't just write code. I architect the future. Predict the future by coding it. ⚡",
-  "targetAudience": [
-    "Recruiters at world-class technology companies",
-    "Startup founders",
-    "Engineering managers",
-    "Open-source maintainers",
-    "Design agencies",
-    "Potential clients",
-    "Technical collaborators",
-    "Fellow developers"
-  ],
+  "tagline": "Building programming languages, privacy-first mobile apps, and technical tools from scratch.",
+  "elevatorPitch": "I am Tanmoy Majumder (online alias Tcode-Motion) — a coder, AI app builder, and open source contributor from West Bengal, India. I specialize in Rust systems programming, Android mobile development (Kotlin & Flutter), and modern web architectures. I am the creator of TechScript (a plain-English programming language with a Rust compiler and bytecode VM) and developer of Android applications including KinotiX on Google Play and Satvora AI.",
+  "philosophy": "Software should be fast, transparent, and grounded in understanding every layer — from lexers and bytecodes to native mobile runtimes and accessible user interfaces.",
   "contactEmail": "tcodemotion@gmail.com",
+  "googlePlayDevId": "8946471561851740040",
+  "googlePlayDevUrl": "https://play.google.com/store/apps/dev?id=8946471561851740040",
+  "orcid": "https://orcid.org/0009-0007-9079-130X",
+  "aboutMe": "https://about.me/Tanmoy.majumder",
   "superpowers": [
-    "Creator of TechScript 2.0 — Native Rust Compiler, Bytecode VM, NaN-boxed stack VM, and Studio IDE",
-    "Cinematic Web Operating Systems (NovOS — POSIX VFS via IndexedDB, 40+ apps, Nova AI)",
-    "Desktop Native GUI (WallVault — Sci-fi wallpaper desktop app built with Tauri v2 + React)",
-    "3D WebGL & GLSL Shader Architecture (Three.js, GLSL, Custom Shaders)",
-    "Full-Stack Web & Open Source Tooling (React, TypeScript, Vite, Tailwind CSS, Python PyPI)"
+    "Compiler Architecture: Creator of TechScript (custom Lexer, Parser, AST, Bytecode VM, and toolchain in Rust)",
+    "Android Development: Published KinotiX (4K Live & 3D Wallpaper) on Google Play and Satvora AI health scanner",
+    "Systems & Offline AI: Combining Rust FFI, ONNX runtime, and Flutter for offline neural processing in NeoSketch",
+    "Web Operating Systems: Architected NovOS with reactive window management and POSIX VFS over IndexedDB",
+    "Full-Stack & Open Source: 15+ repositories across Rust, TypeScript, Python, Kotlin, and Flutter"
   ]
 }

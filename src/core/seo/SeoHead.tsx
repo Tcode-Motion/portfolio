@@ -82,8 +82,8 @@ export const SeoHead: React.FC<SeoHeadProps> = ({
     setMeta('meta[name="twitter:description"]', 'content', description);
     setMeta('meta[name="twitter:image"]',       'content', ogImage);
     setMeta('meta[name="twitter:image:alt"]',   'content', `${title} — Tanmoy Majumder`);
-    setMeta('meta[name="twitter:site"]',        'content', '@TanmoyMaju40558');
-    setMeta('meta[name="twitter:creator"]',     'content', '@TanmoyMaju40558');
+    setMeta('meta[name="twitter:site"]',        'content', '@Tcodemotion');
+    setMeta('meta[name="twitter:creator"]',     'content', '@Tcodemotion');
 
     // ── 7. Page-specific JSON-LD
     // NOTE: Person and WebSite schemas are already injected statically in index.html

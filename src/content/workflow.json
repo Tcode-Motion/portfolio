@@ -1,0 +1,64 @@
+{
+  "title": "Engineering Workflow",
+  "tagline": "How I architect, engineer, test, and ship technical software from first principles.",
+  "philosophy": "Great software begins with understanding constraints before typing code. I prefer explicit data models, minimal unnecessary abstractions, and building things from the ground up to understand how they work under the hood.",
+  "aiRole": "I treat AI coding agents and LLM tooling as high-velocity pair programmers for scaffolding, exploring alternative implementations, and accelerating test coverage. However, every architectural boundary, memory layout, invariant check, and product decision is intentionally designed and verified by me.",
+  "stages": [
+    {
+      "step": "01",
+      "name": "Problem Framing & First Principles",
+      "summary": "Strip the problem of preconceptions. What are the mechanical requirements? Is this best solved as a compiler, a native mobile app, or a lightweight CLI tool?",
+      "practices": [
+        "Analyzing data flow and latency constraints before choosing frameworks",
+        "Evaluating whether external dependencies can be replaced with standard library code",
+        "Documenting core invariants and failure boundaries upfront"
+      ]
+    },
+    {
+      "step": "02",
+      "name": "Architecture & Schema Design",
+      "summary": "Design the data structures first. If the state representation and AST types are clean, the surrounding algorithms become significantly simpler.",
+      "practices": [
+        "Defining strict TypeScript types or Rust enums/structs before writing procedural logic",
+        "Designing database schemas (Room/SQLite) and cache invalidation strategies early",
+        "Structuring modular Cargo workspaces or clean package boundaries"
+      ]
+    },
+    {
+      "step": "03",
+      "name": "Implementation & Pair Programming",
+      "summary": "Iterative development combining focused manual coding with AI agent acceleration. Code is written in small, verifiable increments with constant execution feedback.",
+      "practices": [
+        "Writing core algorithms and engine loops manually to guarantee memory & time efficiency",
+        "Using AI assistants to generate test fixtures, edge-case tables, and standard API bindings",
+        "Maintaining readable, self-documenting code with clear symbol nomenclature"
+      ]
+    },
+    {
+      "step": "04",
+      "name": "Benchmarking & Edge-Case Testing",
+      "summary": "Testing beyond the happy path. In compilers: fuzzing syntax errors and recursion depth. In Android: verifying lifecycle pause states, orientation flips, and memory pressure.",
+      "practices": [
+        "Profiling render loops to ensure 60–120Hz display refresh stability (OpenGL ES / Three.js)",
+        "Testing offline degradation when network APIs or cloud services are unreachable",
+        "Validating zero memory leaks across sustained background runs"
+      ]
+    },
+    {
+      "step": "05",
+      "name": "Deterministic Release & Distribution",
+      "summary": "Automated build verification through GitHub Actions CI/CD. Artifacts are validated for integrity, size constraints, and live URL health before deployment.",
+      "practices": [
+        "Automated linting, TypeScript type-checking, and build validation gates in GitHub Actions",
+        "Automated SEO generation (sitemaps, robots.txt, and search indices) at build time",
+        "Publishing to production stores (Google Play Console) and static edge networks"
+      ]
+    }
+  ],
+  "toolchain": [
+    { "category": "Core Languages", "items": ["Rust", "Kotlin", "TypeScript", "Python", "Dart", "C"] },
+    { "category": "Platforms & SDKs", "items": ["Android SDK", "Jetpack Compose", "Flutter", "WebAssembly", "Node.js", "Vite"] },
+    { "category": "Graphics & UI", "items": ["OpenGL ES", "Three.js", "GLSL Shaders", "Tailwind CSS", "Framer Motion"] },
+    { "category": "Tooling & CI", "items": ["Git", "Cargo", "Gradle", "GitHub Actions", "Docker", "VS Code"] }
+  ]
+}

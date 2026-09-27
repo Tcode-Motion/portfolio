@@ -2,9 +2,9 @@
   {
     "id": "techscript",
     "title": "TechScript",
-    "tagline": "A modern programming language and developer ecosystem built from the ground up in Rust.",
-    "category": "Compiler • Developer Tool",
-    "description": "TechScript is a complete programming language ecosystem featuring a custom Lexer, Parser, AST architecture, Stack-based Bytecode VM, Standard library, and Package manager — all engineered in Rust for maximum performance.",
+    "tagline": "A modern, human-readable programming language and compiler toolchain built from scratch in Rust.",
+    "category": "Compiler • Programming Language",
+    "description": "TechScript is an open-source programming language designed to make source code read like clear, structured English while retaining systems-level performance. The ecosystem includes a native Rust compiler, lexer, recursive-descent parser, strict AST representation, stack-based bytecode virtual machine, package manager, and language server.",
     "techStack": [
       "Rust",
       "Cargo Workspaces",
@@ -12,7 +12,39 @@
       "AST",
       "Bytecode VM",
       "CLI Tooling",
+      "WebAssembly",
       "TypeScript"
+    ]
+  },
+  {
+    "id": "satvora-ai",
+    "title": "Satvora AI",
+    "tagline": "AI health coach, multimodal food photo scanner & calorie tracker for Android.",
+    "category": "Mobile App • Health & AI",
+    "description": "Satvora AI is an Android application that combines multimodal computer vision with a comprehensive nutritional taxonomy designed specifically for Indian dietary diversity. It lets users scan meals, track macros, and receive evidence-informed dietary dialogue while keeping personal journal data stored locally on-device.",
+    "techStack": [
+      "Android",
+      "Kotlin",
+      "Multimodal AI",
+      "Computer Vision",
+      "Room Database",
+      "Jetpack Compose",
+      "Coroutines"
+    ]
+  },
+  {
+    "id": "kinotix",
+    "title": "KinotiX",
+    "tagline": "Interactive 4K live & 3D parallax wallpaper engine published on Google Play.",
+    "category": "Android App • Graphics Engine",
+    "description": "KinotiX is an Android wallpaper engine published on the Google Play Store (com.kinotix.app). It provides dynamic 3D gyroscope parallax depth, interactive touch-reactive fluid simulations, AMOLED deep-black galleries, and transparent live camera backgrounds.",
+    "techStack": [
+      "Android",
+      "Kotlin",
+      "OpenGL ES",
+      "Hardware Gyro Sensors",
+      "Fluid Simulation",
+      "WallpaperService"
     ]
   },
   {
@@ -20,13 +52,58 @@
     "title": "NovOS",
     "tagline": "A futuristic web-based desktop operating system with neomorphic window management.",
     "category": "Web OS • Operating System",
-    "description": "NovOS is a full web-based operating system providing a reactive desktop interface, custom window manager, virtual file system, taskbar app launcher, and built-in system app ecosystem in React & TypeScript.",
+    "description": "NovOS is a complete web-based operating system providing a reactive desktop interface, draggable multi-window manager, POSIX virtual file system over IndexedDB, taskbar launcher, and built-in system utilities engineered in React and TypeScript.",
     "techStack": [
       "React",
       "TypeScript",
       "Tailwind CSS",
-      "Framer Motion",
       "Zustand",
+      "IndexedDB",
+      "Vite"
+    ]
+  },
+  {
+    "id": "neosketch",
+    "title": "NeoSketch",
+    "tagline": "Offline AI-powered artistic photo editor for Android and Windows.",
+    "category": "Mobile App • Flutter & Rust",
+    "description": "NeoSketch is an offline AI-powered artistic photo editor for Android and Windows built with Flutter, Rust, and the ONNX runtime for privacy-first on-device image processing.",
+    "techStack": [
+      "Flutter",
+      "Dart",
+      "Rust",
+      "ONNX Runtime",
+      "Dart FFI",
+      "Android",
+      "Windows"
+    ]
+  },
+  {
+    "id": "vortyx",
+    "title": "Vortyx",
+    "tagline": "Modern Android media downloader and download manager built with Kotlin & Jetpack Compose.",
+    "category": "Mobile App • Tool",
+    "description": "Vortyx is a high-performance Android media downloader and transfer manager built with modern Kotlin and Jetpack Compose. It provides multi-threaded chunked downloads, pause/resume capability, and smart directory organization.",
+    "techStack": [
+      "Kotlin",
+      "Jetpack Compose",
+      "Android SDK",
+      "Material 3",
+      "Coroutines",
+      "WorkManager"
+    ]
+  },
+  {
+    "id": "arc-reactor-3d",
+    "title": "ARC Reactor 3D",
+    "tagline": "Interactive 3D Iron Man ARC Reactor rendering engine in Three.js and GLSL shaders.",
+    "category": "3D Graphics • WebGL",
+    "description": "An interactive 3D WebGL experience rendering a high-detail Iron Man ARC Reactor with customizable energy core glow, rotating metallic mechanical rings, and dynamic lighting effects.",
+    "techStack": [
+      "Three.js",
+      "TypeScript",
+      "WebGL",
+      "GLSL Shaders",
       "Vite"
     ]
   },
@@ -35,7 +112,7 @@
     "title": "Aurora-OS.js",
     "tagline": "Extensible web OS game and hacking simulator framework in TypeScript.",
     "category": "Web OS • Game Framework",
-    "description": "Aurora OS.js is an extensible web OS game and hacking simulator framework. Provides a virtual OS experience with scripting, sandboxed apps, interactive terminals, and gameplay mechanics.",
+    "description": "Aurora-OS.js is an extensible web OS game and hacking simulator framework providing a virtual operating system experience with scripting, sandboxed apps, interactive terminals, and gameplay mechanics.",
     "techStack": [
       "TypeScript",
       "React",
@@ -47,7 +124,7 @@
   {
     "id": "os-wallpapers",
     "title": "OS Wallpapers",
-    "tagline": "Collection of minimalist wallpapers tailored for operating system interfaces.",
+    "tagline": "Curated collection of minimalist wallpapers tailored for operating system interfaces.",
     "category": "Design Assets • Collection",
     "description": "A hand-crafted collection of ambient wallpapers and background textures designed specifically for custom Linux setups, Android ROMs, and desktop operating systems.",
     "techStack": [
@@ -55,48 +132,6 @@
       "Vector Art",
       "Digital Media",
       "GitHub Pages"
-    ]
-  },
-  {
-    "id": "arc-reactor-3d",
-    "title": "ARC Reactor 3D",
-    "tagline": "Interactive 3D Iron Man ARC Reactor rendering engine in Three.js & TypeScript.",
-    "category": "3D Graphics • WebGL",
-    "description": "An interactive 3D WebGL experience rendering a high-detail Iron Man ARC Reactor with customizable energy core glow, rotating metallic rings, and dynamic lighting effects.",
-    "techStack": [
-      "Three.js",
-      "TypeScript",
-      "WebGL",
-      "GLSL Shaders",
-      "Vite"
-    ]
-  },
-  {
-    "id": "vortyx",
-    "title": "Vortyx",
-    "tagline": "High-performance CLI utility and system performance tool.",
-    "category": "CLI Tool • Utility",
-    "description": "Vortyx is a lightweight system performance utility designed for monitoring system resources, process trees, and runtime metrics with zero overhead.",
-    "techStack": [
-      "Rust",
-      "CLI",
-      "System Telemetry",
-      "Process Inspection"
-    ]
-  },
-  {
-    "id": "neosketch",
-    "title": "NeoSketch",
-    "tagline": "Offline AI-powered artistic photo editor for Android & Windows.",
-    "category": "Mobile App • Flutter & Rust",
-    "description": "NeoSketch is an offline AI-powered artistic photo editor for Android and Windows built with Flutter, Rust, and ONNX runtime for privacy-first image processing.",
-    "techStack": [
-      "Flutter",
-      "Dart",
-      "Rust",
-      "ONNX Runtime",
-      "Android",
-      "Windows"
     ]
   }
 ]

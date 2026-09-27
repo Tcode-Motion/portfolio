@@ -1,22 +1,163 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <!--
-    NOTE: tanmoy.is-a.dev is a single-page React application deployed on GitHub Pages.
-    All content (About, Projects, TechScript, Contact) lives on the homepage as
-    scrollable sections — there are no separate HTML files for sub-routes.
-
-    For Google Search Console, only the homepage URL is submitted.
-    Section anchors (#about, #work, #techscript, #contact) are used for internal
-    navigation but are not separately indexable pages.
-  -->
-
-  <!-- Homepage — the only real HTML document served -->
+<urlset 
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+  xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
+>
   <url>
     <loc>https://tanmoy.is-a.dev/</loc>
-    <lastmod>2026-07-31T18:00:00+05:30</lastmod>
+    <lastmod>2026-08-01T00:08:13+05:30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-
+  <url>
+    <loc>https://tanmoy.is-a.dev/about/</loc>
+    <lastmod>2026-07-30T13:31:23+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tanmoy.is-a.dev/apps/</loc>
+    <lastmod>2026-09-27T06:43:01.838Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tanmoy.is-a.dev/apps/cloudvault/</loc>
+    <lastmod>2026-09-27T05:05:52.093Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tanmoy.is-a.dev/apps/kinotix/</loc>
+    <lastmod>2026-09-27T05:05:52.093Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tanmoy.is-a.dev/apps/neosketch/</loc>
+    <lastmod>2026-09-27T05:05:52.093Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tanmoy.is-a.dev/apps/satvora-ai/</loc>
+    <lastmod>2026-09-27T05:05:52.093Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tanmoy.is-a.dev/apps/vortyx/</loc>
+    <lastmod>2026-09-27T05:05:52.093Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tanmoy.is-a.dev/blog/</loc>
+    <lastmod>2026-07-28T21:29:01+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tanmoy.is-a.dev/connect/</loc>
+    <lastmod>2026-09-27T06:45:04.357Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tanmoy.is-a.dev/journey/</loc>
+    <lastmod>2026-09-27T06:44:16.448Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tanmoy.is-a.dev/now/</loc>
+    <lastmod>2026-09-27T06:44:38.224Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tanmoy.is-a.dev/projects/</loc>
+    <lastmod>2026-07-30T13:31:23+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tanmoy.is-a.dev/projects/arc-reactor-3d/</loc>
+    <lastmod>2026-07-29T15:55:11+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tanmoy.is-a.dev/projects/aurora-os/</loc>
+    <lastmod>2026-07-29T15:55:11+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tanmoy.is-a.dev/projects/kinotix/</loc>
+    <lastmod>2026-07-29T15:55:11+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tanmoy.is-a.dev/projects/neosketch/</loc>
+    <lastmod>2026-07-29T15:55:11+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tanmoy.is-a.dev/projects/novos/</loc>
+    <lastmod>2026-07-29T15:55:11+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tanmoy.is-a.dev/projects/os-wallpapers/</loc>
+    <lastmod>2026-07-29T15:55:11+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tanmoy.is-a.dev/projects/satvora-ai/</loc>
+    <lastmod>2026-07-29T15:55:11+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tanmoy.is-a.dev/projects/techscript/</loc>
+    <lastmod>2026-07-29T15:55:11+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tanmoy.is-a.dev/projects/vortyx/</loc>
+    <lastmod>2026-07-29T15:55:11+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tanmoy.is-a.dev/resume/</loc>
+    <lastmod>2026-07-30T13:31:23+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tanmoy.is-a.dev/technologies/</loc>
+    <lastmod>2026-09-27T05:19:54.185Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tanmoy.is-a.dev/techscript/</loc>
+    <lastmod>2026-07-30T13:31:23+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tanmoy.is-a.dev/workflow/</loc>
+    <lastmod>2026-09-27T06:43:50.977Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
